@@ -1,0 +1,33 @@
+body,html,li,p,ul{margin:0;padding:0}*{box-sizing:border-box}
+
+.header>a:link,.header>a:visited{text-decoration:none;color:#fff}
+
+
+.section_main{display:flex;flex-direction:column;align-items:center;padding:100px}
+form{width:40vw}
+.main_title{font-size:3em;padding:30px 0 50px}
+
+
+
+.login_btn,.login_btn:hover{transition:all .2s;transition-timing-function:ease-in}
+.login_btn{width:350px;height:80px;border-radius:15px;background-color:#c10a28;margin-top:50px;color:#fff;border:0;box-shadow:none;font-size:2em}
+.login_btn:hover{font-size:2.1em;font-weight:700}
+
+.wrap_finds {
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	width: 40vw;
+	color: gray;
+	padding-top: 30px;
+}
+
+.wrap_finds > .finds_divider {
+	padding: 0 30px;
+}
+
+.wrap_finds > a:link,
+.wrap_finds > a:visited {
+	color: gray;
+}
+

@@ -1,0 +1,43 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0px;
+    padding: 0px;
+}
+
+/* header nav */
+.header > a:link, a:visited {
+    text-decoration: none;
+    color: white;
+}
+.header_top {
+    width: 100vw;
+    height: 40px;
+    background-color: white;
+}
+.header_nav {
+    width: 100vw;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(197, 0, 0);
+    color: white;
+    font-size: 1em;
+}
+.header_nav > div {
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+}
+.header_nav > div:first-child {
+    margin-left: 15vw;
+}
+.header_nav > div:last-child {
+    margin-right: 15vw;
+}
+.header_nav > span {
+    padding: 0 10px;
+}

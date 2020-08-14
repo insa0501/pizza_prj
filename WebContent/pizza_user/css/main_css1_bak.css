@@ -1,0 +1,197 @@
+:root {
+    --boxShadow: 0px 20px 30px rgba(0, 0, 0, 0.527);
+    --boxShadow2: 0px 30px 50px rgba(0, 0, 0, 0.171);
+    --colorLightgray: rgb(238, 238, 238);
+    --colorgray: rgb(195, 195, 195);
+    --colorDarkgray: rgb(160, 160, 160);
+    --colorbluegray: rgb(214, 221, 228);
+    --colorvioletgray: rgb(233, 231, 232);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0px;
+    padding: 0px;
+    background-color: rgb(221, 221, 221);
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* header nav */
+.header_top {
+    width: 100vw;
+    height: 40px;
+    background-color: white;
+}
+.header_nav {
+    width: 100vw;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(197, 0, 0);
+    color: white;
+    font-size: 1em;
+}
+
+.header_nav > div {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 50px;
+}
+
+.header_nav > div:first-child {
+    width: 400px;
+    margin-left: 100px;
+}
+
+.header_nav > div:last-child {
+    width: 300px;
+    margin-right: 100px;
+}
+
+.header_nav > span {
+    padding: 0 10px;
+}
+
+/* main menu */
+.articles {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    width: 84vw;
+    padding: 40px 8vw;
+}
+
+.articles > .menu_top_img {
+    
+    height: 350px;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-image: url(https://akamai.pizzahut.co.kr/banner/pdlist/premium_list_o.jpg);
+}
+
+/* .menu_top_img > img {
+    width: 100%;
+    height: 350px;
+    object-fit: fill;
+} */
+
+    /* divider */
+.menu_divider{
+    height: 70px;
+    display: flex;
+    align-items: flex-end;
+    border-top: 1px solid gray;
+    margin-top: 50px;
+}
+
+.menu_divider > span {
+    font-size: 2.5em;
+    font-weight: 600;
+}
+
+.menu_wrap{
+    max-width: 1700px;
+    display: grid;
+    /* grid-template-columns: repeat(auto-fit, minmax(150px, 280px)); */
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+    /* margin: 0 auto; */
+}
+
+.menu_wrap > .pizza_menu {
+    height: 350px;
+    background-color: white;
+    box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.137);
+}
+
+.pizza_menu > .pizza_img {
+    height: 60%;
+    background-color: black;
+    background-size: cover;
+    background-position: center center;
+}
+
+.pizza_menu > .pizza_discription {
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+.pizza_menu:nth-child(1) > .pizza_img {
+    background-image: url(https://akamai.pizzahut.co.kr/images/products/list/P_CF_UC.jpg);
+}
+
+.pizza_menu:nth-child(2) > .pizza_img {
+    background-image: url(https://akamai.pizzahut.co.kr/images/products/list/P_CF_JC.jpg);
+}
+
+.pizza_menu:nth-child(3) > .pizza_img {
+    background-image: url(https://akamai.pizzahut.co.kr/images/products/list/P_CA_LS.jpg);
+}
+
+
+/* 주문하러가기 버튼 */
+.section_btn {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.submit_btn {
+    width: 350px;
+    height: 100px;
+    border-radius: 15px;
+    background-color: rgb(193, 10, 40);
+    margin-top: 50px;
+    color: white;
+    font-size: 2em;
+    border: none;
+    box-shadow: none;
+}
+
+
+/* footer */
+.footer {
+    width: 100%;
+    height: 150px;
+    text-align: center;
+    padding-top: 50px;
+}
+
+.go_to_top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    font-size: 1.5em;
+    font-weight: bolder;
+    background-color: rgb(193, 10, 40);
+}
+
+a:link, a:visited{
+    text-decoration: none;
+    color: white;
+}

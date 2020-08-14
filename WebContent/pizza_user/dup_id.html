@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="http://localhost/html_prj/common/css/main.css">
+<title>아이디 확인</title>
+<style type="text/css">
+	#idWrap{ width:470px; height:274px; background: #FFFFFF url("../js0703/images/id_background.png") no-repeat; 
+		margin: 0px auto;	position:relative;}
+	label{ font-size:20px; font-weight:bold; vertical-align: middle;}
+	
+	#idFrm{ width:300px; position: absolute; top:70px; left:60px;}
+</style>
+<!-- Google CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+
+<script type="text/javascript">
+$(function(){
+	$("#btn").click(function(){
+		if($("[name='id']").val().trim()==""){
+			alert("중복검사에 사용할 아이디는 필수 입력입니다.");
+			return;
+		}//end if
+		
+		$("[name='cFrm']").submit();
+	});//click
+	
+	$("[name='id']").keydown(function(evt){
+		if(evt.which == 13 ){
+			if($("[name='id']").val().trim()==""){
+				alert("중복검사에 사용할 아이디는 필수 입력입니다.");
+				return;
+			}//end if
+			
+			$("[name='id']").submit;
+		}//end if
+	});//keydown
+});//ready
+
+	function useId(id){
+		opener.window.document.frm.id.value=id;
+		self.close();
+	}//useId
+</script>
+</head>
+<body>
+<div id="idWrap">
+	<Form name="cFrm" action="id_dup" method="get">
+	<div id="idFrm">
+		<label>아이디</label>
+		<input type="text" name="id" class="inputBox" style="width:160px;"/>
+		<input type="button" value="사용" name="btn" class="btn" onclick="useId()"/>
+	</div>
+	</Form>
+</div>
+</body>
+</html>
