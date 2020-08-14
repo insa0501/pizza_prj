@@ -50,11 +50,7 @@
 				alert("메뉴명을 입력하세요.");
 				return;
 			}
-			
-			if($("#menu_type").val() == ""){
-				alert("메뉴타입을 입력하세요.");
-				return;
-			}
+		 
 			
 			if($("#menu_price").val() == ""){
 				alert("메뉴가격을 입력하세요.");
@@ -96,7 +92,11 @@
 					<tr>
 						<th class="colTh">메뉴분류</th>
 						<td class="colTd">
-							<input type="text"  name="menu_type" id="menu_type" class="colTd1" />
+							<!-- <input type="text"  name="menu_type" id="menu_type" class="colTd1" /> -->
+							<select name="menu_type" id="menu_type">
+							   <option value="피자">피자</option>
+							   <option value="사이드">사이드</option>
+							</select>
 						</td>
 						<th class="colTh">판매가</th>
 						<td class="colTd">
