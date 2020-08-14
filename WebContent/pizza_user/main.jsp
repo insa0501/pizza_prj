@@ -19,7 +19,7 @@
 
 	List<MainMenuVO> mmList_side = mDAO.selectMainMenu("사이드");
 	pageContext.setAttribute("mmList_side", mmList_side);
-
+	// test 주석
 %>    
 
 <!DOCTYPE html>
