@@ -1,0 +1,15 @@
+.my_page_menu{
+    border: 1px solid #333333;
+    background-color: red;
+    width: 200px;
+}
+
+.main_content{
+    background-color: royalblue;
+    width: 300px;
+}
+
+.container{
+	display: flex;
+	
+}
