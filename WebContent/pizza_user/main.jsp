@@ -73,23 +73,26 @@
 <body>
     <section class="header">
       <div class="header_top"></div>
+	  <div class="header_logoImg">
+		<img src="http://localhost/pizza_prj/images/logo.png">
+	  </div>
       <div class="header_nav" id="header_nav">
           <div>
               <a href="#pizza_divider">피자</a>
               <a href="#side_divider">사이드</a>
           </div>
           <div>
-               <c:choose>
-                <c:when test="${not empty user_name}">
-              	    <span><a href="http://localhost/pizza_prj/pizza_user/user_order_list.jsp"><strong><c:out value="${user_name}"/>님</strong></a> </span>
-                    <span><a href="#void" onclick="logout()">로그아웃</a></span>
-                </c:when>
-                <c:otherwise>
-              	    <span>회원가입</span>
-                	<span><a href="http://localhost/pizza_prj/pizza_user/user_login.jsp">로그인</a></span>
-                
-                </c:otherwise>
-             </c:choose>
+			<c:choose>
+				<c:when test="${not empty user_name}">
+					<a href="http://localhost/pizza_prj/pizza_user/user_order_list.jsp">
+						<strong><c:out value="${user_name}" />님</strong></a>
+					<a href="#void" onclick="logout()">로그아웃</a>
+				</c:when>
+				<c:otherwise>
+					<a href="#void">회원가입</a>
+					<a href="http://localhost/pizza_prj/pizza_user/user_login.jsp">로그인</a>
+				</c:otherwise>
+			</c:choose>
           </div>
       </div>
   </section>
@@ -107,7 +110,7 @@
 
          <c:forEach var="menu_pizza" items="${mmList_pizza}" varStatus="status">
                 <div class="pizza_menu">
-                    <div class="pizza_img" style="background: #ffffff url(http://localhost/pizza_prj/common/images/${ menu_pizza.menu_img })"> </div>
+                    <div class="pizza_img" style="background: #ffffff url(http://localhost/pizza_prj/images/${ menu_pizza.menu_img })"> </div>
                     <div class="pizza_discription">
                         <span>${menu_pizza.menu_name} </span>
                         <span>${menu_pizza.menu_price} 원</span>
@@ -143,7 +146,7 @@
             
             <c:forEach var="menu_side" items="${mmList_side}" varStatus="status">
                 <div class="pizza_menu">
-                    <div class="pizza_img" style="background: #ffffff url(http://localhost/pizza_prj/common/images/${ menu_side.menu_img })"> </div>
+                    <div class="pizza_img" style="background: #ffffff url(http://localhost/pizza_prj/images/${ menu_side.menu_img })"> </div>
                     <div class="pizza_discription">
                         <span>${menu_side.menu_name}</span>
                         <span>${menu_side.menu_price} 원</span>
