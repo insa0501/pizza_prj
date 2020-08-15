@@ -1,6 +1,5 @@
 @charset "UTF-8";
 
-
 body {
 	display: flex;
 	flex-direction: column;
@@ -10,6 +9,8 @@ body {
 .main_container {
 	width: 70vw;
 	margin-top: 100px;
+	display: flex;
+	flex-direction: column;
 }
 
 .page_title {
@@ -25,35 +26,35 @@ body {
 }
 
 .item_select {
-	width: 100px; 
+	width: 100px;
 	height: 45px;
 }
 
-.input_selectData { 
-	width: 300px; 
+.input_selectData {
+	width: 300px;
 	height: 45px;
-	font-family: inherit; 
-	border: 1px solid #999; 
-	border-radius: 0px; 
+	font-family: inherit;
+	border: 1px solid #999;
+	border-radius: 0px;
 	-webkit-appearance: none;
-	-moz-appearance: none; 
+	-moz-appearance: none;
 	appearance: none;
 }
 
 .btn_submit {
-	width: 80px; 
+	width: 80px;
 	height: 45px;
 	background-color: #c50000;
 	color: white;
-	transition:all .1s;
-	transition-timing-function:ease-in;
+	transition: all .1s;
+	transition-timing-function: ease-in;
 	box-shadow: none;
 	border: none;
 }
 
 .btn_submit:hover {
-	transition:all .1s;
-	transition-timing-function:ease-in;
+	transition: all .1s;
+	transition-timing-function: ease-in;
 	font-size: 1.05em;
 }
 
@@ -61,23 +62,23 @@ body {
 	margin-bottom: 50px;
 }
 
-.table > th {
+.table>th {
 	text-align: center;
 }
 
 .table_a {
 	text-decoration: none;
 	color: #c50000;
-	transition:all .1s;
-	transition-timing-function:ease-in;
+	transition: all .1s;
+	transition-timing-function: ease-in;
 }
 
 .table_a:hover {
 	text-decoration: none;
 	color: #c50000;
 	font-weight: 800;
-	transition:all .1s;
-	transition-timing-function:ease-in;
+	transition: all .1s;
+	transition-timing-function: ease-in;
 }
 
 .table_a:link, .table_a:visited {
@@ -85,4 +86,37 @@ body {
 	color: #c50000;
 }
 
+/* pagination */
+.section_pagination {
+	/*pagination div*/
+	width: 300px;
+	text-align: center;
+	margin: 0 auto;
+	display: flex;
+	justify-content: center;
+}
 
+.section_pagination a {
+	width: 35px;
+	height: 35px;
+	color: black;
+	text-decoration: none;
+	line-height: 35px;
+	border-radius: 50%;
+}
+
+.section_pagination a.active {
+	background-color: #c50000;
+	color: white;
+}
+
+.section_pagination a:hover:not(.active) {
+	background-color: #ddd;
+}
+
+.section_pagination a,
+.section_pagination a.active,
+.section_pagination a:hover:not(.active) {
+	transition: all .15s;
+	transition-timing-function: ease-in;
+	}
