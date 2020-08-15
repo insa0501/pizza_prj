@@ -77,8 +77,13 @@ if (current_page > pageNumber) {	//현재페이지가 폼에 표시된 번호보
 
 curPage = startPage;	//폼의 시작번호를 페이지 이동용 임시 변수에 저장
 while (curPage <= endPage){		//페이지 이동용 임시 변수가 폼의 마지막 번호보다 작거나 같다면
-	indexList = indexList +"<a href='"+list_url+"&current_page="+curPage+"'>["+curPage+"]</a>";		//[번호]를 a태그에 담아서 폼 형태를 담은 변수에 추가
-		
+	//[번호]를 a태그에 담아서 폼 형태를 담은 변수에 추가
+	if(current_page==curPage){
+		indexList = indexList +"<a href='"+list_url+"&current_page="+curPage+"' class='pagination_num active'> "+curPage+" </a>";		
+	} else {
+		indexList = indexList +"<a href='"+list_url+"&current_page="+curPage+"' class='pagination_num'> "+curPage+" </a>";		
+	}
+
 	curPage++;	//페이지 이동용 임시 변수를 증가시켜서 페이지이동 폼의 번호가 for문처럼 만들어지게 한다.
 }//end while
 	
@@ -233,17 +238,22 @@ return indexList;	//페이지 이동폼을 담은 변수를 반환
     </section>
     <section class="main_container">
         <div class="page_title">메뉴관리</div>
+        
         <form action="admin_menu_mgr.jsp">
-        <div id="search" class="selectbox">
-                <select name="selectType"  class="item_select">
-                    <option value="menu_name"${ param.selectType=="menu_name"?" selected='selected'":"" }>메뉴명</option>
-                    <option value="menu_price"${ param.selectType=="menu_price"?" selected='selected'":"" }>판매가</option>
-                    <option value="menu_type"${ param.selectType=="menu_type"?" selected='selected'":"" }>메뉴분류</option>
-                    <option value="menu_activity"${ param.selectType=="menu_activity"?" selected='selected'":"" }>상태</option>
-                </select>
-            <input type="text" name="selectData" class="input_selectData" value="${ param.selectData }"/>
-            <input type="submit" id="search_btn" value="검색" class="btn_submit"/>
-            <a href="admin_menu_mgr.jsp?page_flag=admin_menu_add"><input type="button" value="메뉴추가" class="btn_submit"/></a>
+        <div class="section_search">
+	        <div id="search" class="selectbox">
+	            <select name="selectType"  class="item_select">
+	                <option value="menu_name"${ param.selectType=="menu_name"?" selected='selected'":"" }>메뉴명</option>
+	                <option value="menu_price"${ param.selectType=="menu_price"?" selected='selected'":"" }>판매가</option>
+	                <option value="menu_type"${ param.selectType=="menu_type"?" selected='selected'":"" }>메뉴분류</option>
+	                <option value="menu_activity"${ param.selectType=="menu_activity"?" selected='selected'":"" }>상태</option>
+	            </select>
+	        </div>
+			<div id="search_input"><input type="text" id="selectData" class="input_selectData" name="selectData" placeholder="검색어를 입력하세요"/></div>
+            <div id="search_btn"><input type="submit"value="검색" class="btn_submit"/></div>
+            <c:if test="${not empty param.selectData }">
+	            <div id="searched_text" class="searched_text"> [ ${ param.selectData } ] 로 검색한 결과입니다.</div>
+            </c:if>
         </div>
         </form>
     
@@ -288,7 +298,7 @@ return indexList;	//페이지 이동폼을 담은 변수를 반환
                 <tr>
                     <td>
                     	<a href="admin_menu_mgr.jsp?<%= selectQuery.toString() %>&current_page=<%= currentPage
-                    	%>&page_flag=admin_menu_detail&param_menu=<%= mVO.getMenu_name() %>"><%= mVO.getMenu_name() %></a>
+                    	%>&page_flag=admin_menu_detail&param_menu=<%= mVO.getMenu_name() %>" class="table_a"><%= mVO.getMenu_name() %></a>
                     </td>
                     <td><%= mVO.getMenu_price() %></td>
                     <td><%= mVO.getMenu_type() %></td>
@@ -297,7 +307,8 @@ return indexList;	//페이지 이동폼을 담은 변수를 반환
             <%}//end for%>
             </table>
         </div>
-        <div id="result_paging" style="height: 20px; text-align: center;">
+        <a href="admin_menu_mgr.jsp?page_flag=admin_menu_add" class="add_menu_btn"><input type="button" value="메뉴추가" class="btn_submit add"/></a>
+        <div id="result_paging" class="section_pagination">
         <%= indexList(currentPage, totalPage, "admin_menu_mgr.jsp?"+selectQuery.toString()) %>
         </div>
             <%

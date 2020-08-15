@@ -71,8 +71,12 @@ if (current_page > pageNumber) {	//현재페이지가 폼에 표시된 번호보
 
 curPage = startPage;	//폼의 시작번호를 페이지 이동용 임시 변수에 저장
 while (curPage <= endPage){		//페이지 이동용 임시 변수가 폼의 마지막 번호보다 작거나 같다면
-	indexList = indexList +"<a href='"+list_url+"&current_page="+curPage+"'>["+curPage+"]</a>";		//[번호]를 a태그에 담아서 폼 형태를 담은 변수에 추가
-		
+	//[번호]를 a태그에 담아서 폼 형태를 담은 변수에 추가
+	if(current_page==curPage){
+		indexList = indexList +"<a href='"+list_url+"&current_page="+curPage+"' class='pagination_num active'> "+curPage+" </a>";		
+	} else {
+		indexList = indexList +"<a href='"+list_url+"&current_page="+curPage+"' class='pagination_num'> "+curPage+" </a>";		
+	}
 	curPage++;	//페이지 이동용 임시 변수를 증가시켜서 페이지이동 폼의 번호가 for문처럼 만들어지게 한다.
 }//end while
 	
@@ -94,102 +98,7 @@ return indexList;	//페이지 이동폼을 담은 변수를 반환
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style type="text/css">
-        #container{
-            width: 100vw;
-            border: 1px solid;
-            position: absolute;
-        }
-        #page_title{
-            font-size: x-large;
-        }
-        table{
-            clear: both;
-            margin:0 auto;
-            border-collapse: collapse;
-        }
-        tr,td,th{
-            border-collapse: collapse;
-            border:1px solid;
-        }
-        th{
-            background-color: bisque;
-        }
-        #search > div{
-            float: left;
-            text-align: center;
-        }
-        #search{
-            left:50%;
-
-            /* 디자인 적용되면 꼬일듯 */
-            width: 330px;
-            margin-left: -165px;
-            /*  */
-
-            position: relative;
-            text-align: center;
-        }
-        #result{
-            height: 400px;
-        }
-        #result_paging{
-            margin:0 auto;
-        }
-
-        ul{
-            list-style: none;
-            margin:0;
-            padding:0;
-            text-align: center;
-        }
-        li{
-            margin: 0 auto;
-            padding: 0 0 0 0;
-            border:0;
-            display: inline;
-        }
-        * {
-		    box-sizing: border-box;
-		}
-		
-		html, body {
-		    margin: 0px;
-		    padding: 0px;
-		}
-		
-		/* header nav */
-		.header > a:link, a:visited {
-		}
-		.header_top {
-		    width: 100vw;
-		    height: 40px;
-		    background-color: white;
-		}
-		.header_nav {
-		    width: 100vw;
-		    height: 70px;
-		    display: flex;
-		    align-items: center;
-		    justify-content: space-between;
-		    background-color: rgb(197, 0, 0);
-		    color: white;
-		    font-size: 1em;
-		}
-		.header_nav > div {
-		    width: 200px;
-		    display: flex;
-		    justify-content: space-between;
-		}
-		.header_nav > div:first-child {
-		    margin-left: 15vw;
-		}
-		.header_nav > div:last-child {
-		    margin-right: 15vw;
-		}
-		.header_nav > span {
-		    padding: 0 10px;
-		}
-/******************************* 팝업창 관련 CSS **********************************/
+	/******************************* 팝업창 관련 CSS **********************************/
 	#popupWrap{ width: 700px; min-height: 400px; border: 1px solid #BFBFBF; background-color: #FFFFFF}
 	#popupHeader{ height: 30px; background-color: #C10A28; margin-top: 20px}
 	#popupBody{ min-height: 368px; margin-top: 25px; margin-left: 40px }
@@ -200,11 +109,14 @@ return indexList;	//페이지 이동폼을 담은 변수를 반환
 	.colTd{width: 210px; height: 35px;}
 	th{vertical-align: middle; border: 1px solid #CFCFCF; background-color: #EAEAEA}
 	td{text-align: center; vertical-align: middle; border: 1px solid #CFCFCF}
-/******************************* 팝업창 관련 CSS **********************************/
+	/******************************* 팝업창 관련 CSS **********************************/
     </style>
 <!-- Google CDN -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="../common/css/common_header_footer.css">
+<link rel="stylesheet" href="../common/css/commom_admin_tables.css">
+ 
 <script type="text/javascript">
 
 	/************************* 팝업창이 열린 페이지면 뒤로가기로 다시 접근 막기 ****************************/
@@ -236,6 +148,9 @@ return indexList;	//페이지 이동폼을 담은 변수를 반환
 <body>
     <section class="header">
         <div class="header_top"></div>
+        <div class="header_logoImg">
+			<img src="http://localhost/pizza_prj/common/images/logo.png">
+		</div>
     <!--******************************* 팝업창 열기 **********************************  -->
 		<c:if test="${ not empty param.page_flag }">
 		<div style="position:absolute; z-index:9999; left: 650px; top: 70px">
@@ -244,41 +159,46 @@ return indexList;	//페이지 이동폼을 담은 변수를 반환
 		</c:if>
 	<!--******************************* 팝업창 열기 **********************************  -->
         <div class="header_nav" id="header_nav">
-            <div style="float: left">
+            <div>
                 <a href="admin_order_mgr.jsp">주문관리</a>
                 <a href="admin_menu_mgr.jsp">메뉴관리</a>
                 <a href="admin_user_mgr.jsp">유저관리</a>
             </div>
-            <div style="float: right"><a href="#void" onclick="logout()">로그아웃</a></div>
+            <div><a href="#void" onclick="logout()">로그아웃</a></div>
         </div>
     </section>
-    <div id="container" style="clear: both">
-        <div id="page_title">회원관리</div>
+    <section class="main_container">
+        <div class="page_title">회원관리</div>
+        
         <form action="admin_user_mgr.jsp">
         <div id="search">
-            <div id="search_item">
-                <select name="selectType">
-                
-                    <option value="user_id"${ param.selectType=="user_id"?" selected='selected'":"" }>아이디</option>
-                    <option value="user_name"${ param.selectType=="user_name"?" selected='selected'":"" }>회원명</option>
-                    <option value="user_addr1"${ param.selectType=="user_addr1"?" selected='selected'":"" }>주소</option>
-                    <option value="user_phone"${ param.selectType=="user_phone"?" selected='selected'":"" }>연락처</option>
-                    <option value="user_status"${ param.selectType=="user_status"?" selected='selected'":"" }>상태</option>
-                </select>
-            </div>
-            <div id="search_input"><input type="text" value="${ param.selectData }" name="selectData"/></div>
-            <div id="search_btn"><input type="submit"id="search_btn" value="검색"/></div>
+       		<div class="section_search">
+	            <div id="search_item" class="selectbox">
+	                <select name="selectType" id="item_select" class="item_select">
+	                    <option value="user_id"${ param.selectType=="user_id"?" selected='selected'":"" }>아이디</option>
+	                    <option value="user_name"${ param.selectType=="user_name"?" selected='selected'":"" }>회원명</option>
+	                    <option value="user_addr1"${ param.selectType=="user_addr1"?" selected='selected'":"" }>주소</option>
+	                    <option value="user_phone"${ param.selectType=="user_phone"?" selected='selected'":"" }>연락처</option>
+	                    <option value="user_status"${ param.selectType=="user_status"?" selected='selected'":"" }>상태</option>
+	                </select>
+	            </div>
+	            <div id="search_input"><input type="text" id="selectData" class="input_selectData" name="selectData" placeholder="검색어를 입력하세요"/></div>
+                <div id="search_btn"><input type="submit"value="검색" class="btn_submit"/></div>
+	            <c:if test="${not empty param.selectData }">
+		            <div id="searched_text" class="searched_text"> [ ${ param.selectData } ] 로 검색한 결과입니다.</div>
+	            </c:if>
+        	</div>
         </div>
         </form>
     
         <div id="result">
-            <table id="user_tab">
-                <tr>
-                    <th style="width: 200px;">아이디</th>
-                    <th style="width: 100px;">회원명</th>
-                    <th style="width: 200px;">주소</th>
-                    <th style="width: 150px;">연락처</th>
-                    <th style="width: 80px;">상태</th>
+            <table id="user_tab" class="table">
+                <tr class="table-danger">
+                    <th style="text-align: center">아이디</th>
+                    <th style="text-align: center">회원명</th>
+                    <th style="text-align: center">주소</th>
+                    <th style="text-align: center">연락처</th>
+                    <th style="text-align: center">상태</th>
                 </tr>
             <%
             try{
@@ -314,7 +234,7 @@ return indexList;	//페이지 이동폼을 담은 변수를 반환
                     <td>
                     	<a href="admin_user_mgr.jsp?<%= selectQuery.toString() %>&current_page=<%= currentPage 
                     	%>&page_flag=admin_user_detail&param_user_id=<%= mVO.getUser_id()
-                    	%>&param_user_status=<%= mVO.getUser_status() %>"><%= mVO.getUser_id() %></a>
+                    	%>&param_user_status=<%= mVO.getUser_status() %>" class="table_a"><%= mVO.getUser_id() %></a>
                     </td>
                     <td><%= mVO.getUser_name()==null?"":mVO.getUser_name() %></td>
                     <td><%= mVO.getUser_addr1()==null?"":mVO.getUser_addr1() %></td>
@@ -324,7 +244,7 @@ return indexList;	//페이지 이동폼을 담은 변수를 반환
             <%}//end for%>
             </table>
         </div>
-        <div id="result_paging" style="height: 20px; text-align: center;">
+        <div id="result_paging" class="section_pagination">
         <%= indexList(currentPage, totalPage, "admin_user_mgr.jsp?"+selectQuery.toString()) %>
         </div>
             <%
@@ -332,6 +252,6 @@ return indexList;	//페이지 이동폼을 담은 변수를 반환
             	se.printStackTrace();
             }//end catch
             %>
-    </div>
+    </section>
 </body>
 </html>

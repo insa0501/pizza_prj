@@ -167,7 +167,7 @@ return indexList;	//페이지 이동폼을 담은 변수를 반환
 		</c:if>
 	<!--******************************* 팝업창 열기 **********************************  -->
         <div class="header_nav" id="header_nav">
-            <div style="float: left">
+            <div>
                 <a href="admin_order_mgr.jsp">주문관리</a>
                 <a href="admin_menu_mgr.jsp">메뉴관리</a>
                 <a href="admin_user_mgr.jsp">유저관리</a>
@@ -191,7 +191,9 @@ return indexList;	//페이지 이동폼을 담은 변수를 반환
             </div>
 			<div id="search_input"><input type="text" id="selectData" class="input_selectData" name="selectData" placeholder="검색어를 입력하세요"/></div>
             <div id="search_btn"><input type="submit"value="검색" class="btn_submit"/></div>
-            <div id="searched_text"> ${ param.selectData } </div>
+            <c:if test="${not empty param.selectData }">
+	            <div id="searched_text" class="searched_text"> [ ${ param.selectData } ] 로 검색한 결과입니다.</div>
+            </c:if>
         </div>
         </form>
         
