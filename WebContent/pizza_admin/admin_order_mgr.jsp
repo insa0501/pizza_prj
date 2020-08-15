@@ -64,13 +64,13 @@ if (total_page <= endPage){	//총페이지가 페이지 이동을 위한 폼의 
 
 if (current_page > pageNumber) {	//현재페이지가 폼에 표시된 번호보다 크다면
 	curPage = startPage - 1; 		//[<<]눌렀을 때 이동할 페이지 번호를 변수에 담고
-	indexList = indexList + "<a href='"+list_url+"&current_page="+curPage+"'>[<<]</a>";		//[<<]를 a태그에 담아서 페이지이동 폼을 표현할 변수에 저장
+	indexList = indexList + "<a href='"+list_url+"&current_page="+curPage+"' class='pagination_page'>[<<]</a>";		//[<<]를 a태그에 담아서 페이지이동 폼을 표현할 변수에 저장
 	indexList = indexList + " ... ";	//폼 형태를 담은 변수에 ' ... '을 추가
 }//end if
 
 curPage = startPage;	//폼의 시작번호를 페이지 이동용 임시 변수에 저장
 while (curPage <= endPage){		//페이지 이동용 임시 변수가 폼의 마지막 번호보다 작거나 같다면
-	indexList = indexList +"<a href='"+list_url+"&current_page="+curPage+"'>["+curPage+"]</a>";		//[번호]를 a태그에 담아서 폼 형태를 담은 변수에 추가
+	indexList = indexList +"<a href='"+list_url+"&current_page="+curPage+"' class='pagination_num'> "+curPage+" </a>";		//[번호]를 a태그에 담아서 폼 형태를 담은 변수에 추가
 		
 	curPage++;	//페이지 이동용 임시 변수를 증가시켜서 페이지이동 폼의 번호가 for문처럼 만들어지게 한다.
 }//end while
@@ -79,7 +79,7 @@ while (curPage <= endPage){		//페이지 이동용 임시 변수가 폼의 마�
 if (total_page > endPage) {	//폼의 마지막 번호가 총페이지보다  작다면
 	indexList = indexList + " ... ";	//'[<<]...[번호][][][]'이 저장된 변수에 ' ... '을 추가
 	curPage = endPage + 1;		//[>>]눌렀을 때 이동할 페이지 번호를 변수에 담고
-	indexList = indexList + "<a href='"+list_url+"&current_page="+curPage+"'>[>>]</a>";		//[>>]를 a태그에 담아서 폼 형태를 담은 변수에 추가
+	indexList = indexList + "<a href='"+list_url+"&current_page="+curPage+"' class='pagination_page'>[>>]</a>";		//[>>]를 a태그에 담아서 폼 형태를 담은 변수에 추가
 }//end if
 	
 return indexList;	//페이지 이동폼을 담은 변수를 반환
@@ -95,118 +95,27 @@ return indexList;	//페이지 이동폼을 담은 변수를 반환
 	<meta http-equiv="Pragma" content="no-cache"/>
     <title>Document</title>
     <style type="text/css">
-        #container{
-            width: 100vw;
-            border: 1px solid;
-            position: absolute;
-        }
-        #page_title{
-            font-size: x-large;
-        }
-        table{
-            clear: both;
-            margin:0 auto;
-            border-collapse: collapse;
-        }
-        tr,td,th{
-            border-collapse: collapse;
-            border:1px solid;
-        }
-        th{
-            background-color: bisque;
-        }
-        #search > div{
-            float: left;
-            text-align: center;
-        }
-        #search{
-            left:50%;
-
-            /* 디자인 적용되면 꼬일듯 */
-            width: 330px;
-            margin-left: -165px;
-            /*  */
-
-            position: relative;
-            text-align: center;
-        }
-        #result{
-            height: 400px;
-        }
-        #result_paging{
-            margin:0 auto;
-        }
-
-        ul{
-            list-style: none;
-            margin:0;
-            padding:0;
-            text-align: center;
-        }
-        li{
-            margin: 0 auto;
-            padding: 0 0 0 0;
-            border:0;
-            display: inline;
-        }
-        * {
-    box-sizing: border-box;
-}
-
-html, body {
-    margin: 0px;
-    padding: 0px;
-}
-
-/* header nav */
-.header > a:link, a:visited {
-}
-.header_top {
-    width: 100vw;
-    height: 40px;
-    background-color: white;
-    position: relative;
-}
-.header_nav {
-    width: 100vw;
-    height: 70px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: rgb(197, 0, 0);
-    color: white;
-    font-size: 1em;
-}
-.header_nav > div {
-    width: 200px;
-    display: flex;
-    justify-content: space-between;
-}
-.header_nav > div:first-child {
-    margin-left: 15vw;
-}
-.header_nav > div:last-child {
-    margin-right: 15vw;
-}
-.header_nav > span {
-    padding: 0 10px;
-}
-/******************************* 팝업창 관련 CSS **********************************/
-	#popupWrap{ width: 700px; min-height: 600px; border: 1px solid #BFBFBF; background-color: #FFFFFF}
-	#popupHeader{ height: 30px; background-color: #C10A28; margin-top: 20px}
-	#popupBody{ min-height: 568px; margin-top: 25px; margin-left: 40px }
-	#buttonGrop{ margin-top: 35px; margin-left: 245px; margin-bottom: 20px; clear: both}
-	.orderData{ margin-top: 25px}
-	.orderDetailTab{ width: 620px; border: 1px solid #CFCFCF; border-spacing: 0px; }
-	.colTh{width: 100px; height: 35px; text-align: center;}
-	.colTd{width: 210px; height: 35px;}
-	.rowTh{text-align: center;}
-	th{vertical-align: middle; border: 1px solid #CFCFCF; background-color: #EAEAEA}
-	td{text-align: center; vertical-align: middle; border: 1px solid #CFCFCF}
-/******************************* 팝업창 관련 CSS **********************************/
+		/******************************* 팝업창 관련 CSS **********************************/
+		#popupWrap{ width: 700px; min-height: 600px; border: 1px solid #BFBFBF; background-color: #FFFFFF}
+		#popupHeader{ height: 30px; background-color: #C10A28; margin-top: 20px}
+		#popupBody{ min-height: 568px; margin-top: 25px; margin-left: 40px }
+		#buttonGrop{ margin-top: 35px; margin-left: 245px; margin-bottom: 20px; clear: both}
+		.orderData{ margin-top: 25px}
+		.orderDetailTab{ width: 620px; border: 1px solid #CFCFCF; border-spacing: 0px; }
+		.colTh{width: 100px; height: 35px; text-align: center;}
+		.colTd{width: 210px; height: 35px;}
+		.rowTh{text-align: center;}
+		th{vertical-align: middle; border: 1px solid #CFCFCF; background-color: #EAEAEA}
+		td{text-align: center; vertical-align: middle; border: 1px solid #CFCFCF}
+		/******************************* 팝업창 관련 CSS **********************************/
     </style>
+    
 <!-- Google CDN -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="../common/css/common_header_footer.css">
+<link rel="stylesheet" href="../common/css/commom_admin_tables.css">
+ 
 <script type="text/javascript">
 
 	/************************* 팝업창이 열린 페이지면 뒤로가기로 다시 접근 막기 ****************************/
@@ -242,6 +151,9 @@ html, body {
 <body>
     <section class="header">
         <div class="header_top"></div>
+        <div class="header_logoImg">
+			<img src="http://localhost/pizza_prj/common/images/logo.png">
+		</div>
 	<!--******************************* 팝업창 열기 **********************************  -->
 		<c:if test="${ not empty param.page_flag }">
 		<div style="position:absolute; z-index:9999; left: 650px; top: 70px">
@@ -258,33 +170,35 @@ html, body {
             <div style="float: right"><a href="#void" onclick="logout()">로그아웃</a></div>
         </div>
     </section>
-    <div id="container">
-        <div id="page_title">주문관리</div>
+    <section class="main_container">
+        <div class="page_title">주문관리</div>
     	
-        <form action="admin_order_mgr.jsp">
-        <div id="search">
-            <div id="search_item">
-                <select name="selectType">
+ 		<form id="orderMgrFrm" action="admin_order_mgr.jsp">
+        <div class="section_search">
+            <div id="search_item" class="selectbox">
+                <select name="selectType" id="item_select" class="item_select">
+                	<option value="order_all"${ param.selectType=="order_all"?" selected='selected'":"" }>전체보기</option>
                     <option value="order_no"${ param.selectType=="order_no"?" selected='selected'":"" }>주문번호</option>
                     <option value="user_id"${ param.selectType=="user_id"?" selected='selected'":"" }>주문id</option>
                     <option value="menu_name"${ param.selectType=="menu_name"?" selected='selected'":"" }>메뉴</option>
                     <option value="order_status"${ param.selectType=="order_status"?" selected='selected'":"" }>배달현황</option>
                 </select>
             </div>
-            <div id="search_input"><input type="text" value="${ param.selectData }" name="selectData"/></div>
-            <div id="search_btn"><input type="submit"value="검색"/></div>
+			<div id="search_input"><input type="text" id="selectData" class="input_selectData" name="selectData" placeholder="검색어를 입력하세요"/></div>
+            <div id="search_btn"><input type="submit"value="검색" class="btn_submit"/></div>
+            <div id="searched_text"> ${ param.selectData } </div>
         </div>
         </form>
         
         <div id="result">
-            <table id="order_tab">
-                <tr>
-                    <th style="width: 70px;">주문번호</th>
-                    <th style="width: 200px;">주문id</th>
-                    <th style="width: 250px;">메뉴</th>
-                    <th style="width: 100px;">가격</th>
-                    <th style="width: 80px;">배달현황</th>
-                    <th style="width: 150px;">주문일자</th>
+            <table id="order_tab" class="table">
+                <tr class="table-danger">
+                    <th style="text-align: center">주문번호</th>
+                    <th style="text-align: center">주문id</th>
+                    <th style="text-align: center">메뉴</th>
+                    <th style="text-align: center">가격</th>
+                    <th style="text-align: center">배달현황</th>
+                    <th style="text-align: center">주문일자</th>
                 </tr>
             <%
             try{
@@ -325,7 +239,7 @@ html, body {
                 <tr>
                     <td>
                     	<a href="admin_order_mgr.jsp?<%= selectQuery.toString() %>&current_page=<%= currentPage 
-                    	%>&page_flag=admin_order_detail&param_order_no=<%= aoVO.getOrder_no() %>"><%= aoVO.getOrder_no() %></a>
+                    	%>&page_flag=admin_order_detail&param_order_no=<%= aoVO.getOrder_no() %>" class="table_a"><%= aoVO.getOrder_no() %></a>
                     </td>
                     <td><%= aoVO.getUser_id() %></td>
                     <td><%= aoVO.getMenu_name()+ count %></td>
@@ -344,6 +258,6 @@ html, body {
             	se.printStackTrace();
             }//end catch
             %>
-    </div>
+    </section>
 </body>
 </html>

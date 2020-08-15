@@ -100,100 +100,7 @@ return indexList;	//페이지 이동폼을 담은 변수를 반환
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style type="text/css">
-        #container{
-            width: 100vw;
-            border: 1px solid;
-            position: absolute;
-        }
-        #page_title{
-            font-size: x-large;
-        }
-        table{
-            clear: both;
-            margin:0 auto;
-            border-collapse: collapse;
-        }
-        tr,td,th{
-            border-collapse: collapse;
-            border:1px solid;
-        }
-        th{
-            background-color: bisque;
-        }
-        #search > div{
-            text-align: center;
-        }
-        #search{
-
-            /* 디자인 적용되면 꼬일듯 */
-            margin-left: -165px;
-            /*  */
-
-            position: relative;
-            text-align: center;
-        }
-        #result{
-            height: 400px;
-        }
-        #result_paging{
-            margin:0 auto;
-        }
-
-        ul{
-            list-style: none;
-            margin:0;
-            padding:0;
-            text-align: center;
-        }
-        li{
-            margin: 0 auto;
-            padding: 0 0 0 0;
-            border:0;
-            display: inline;
-        }
-        * {
-    box-sizing: border-box;
-}
-
-html, body {
-    margin: 0px;
-    padding: 0px;
-}
-
-/* header nav */
-.header > a:link, a:visited {
-}
-.header_top {
-    width: 100vw;
-    height: 40px;
-    background-color: white;
-    position: relative;
-}
-.header_nav {
-    width: 100vw;
-    height: 70px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: rgb(197, 0, 0);
-    color: white;
-    font-size: 1em;
-}
-.header_nav > div {
-    width: 200px;
-    display: flex;
-    justify-content: space-between;
-}
-.header_nav > div:first-child {
-    margin-left: 15vw;
-}
-.header_nav > div:last-child {
-    margin-right: 15vw;
-}
-.header_nav > span {
-    padding: 0 10px;
-}
-/******************************* 팝업창 관련 CSS **********************************/
+	/******************************* 팝업창 관련 CSS **********************************/
 	#popupWrap{width: 700px; min-height: 400px; border: 1px solid #BFBFBF; background-color: #FFFFFF}
 	#popupHeader{height: 30px; background-color: #C10A28; margin-top: 20px}
 	#popupBody{min-height: 325px; margin-top: 25px; margin-left: 30px; margin-right: 30px}
@@ -207,11 +114,14 @@ html, body {
 	.colTd2{width: 120px; height: 35px;}
 	th{vertical-align: middle; border: 1px solid #CFCFCF; background-color: #EAEAEA}
 	td{text-align: center; vertical-align: middle; border: 1px solid #CFCFCF}
-/******************************* 팝업창 관련 CSS **********************************/
-
+	/******************************* 팝업창 관련 CSS **********************************/
     </style>
+    
 <!-- Google CDN -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="../common/css/common_header_footer.css">
+<link rel="stylesheet" href="../common/css/commom_admin_tables.css">
 
 <script type="text/javascript">
 
@@ -302,6 +212,9 @@ html, body {
 <body>
     <section class="header">
         <div class="header_top"></div>
+        <div class="header_logoImg">
+			<img src="http://localhost/pizza_prj/common/images/logo.png">
+		</div>
     <!--******************************* 팝업창 열기 **********************************  -->
 			<c:if test="${ not empty param.page_flag }">
 			<div style="position:absolute; z-index:9999; left: 650px; top: 70px">
@@ -318,29 +231,29 @@ html, body {
             <div style="float: right"><a href="#void" onclick="logout()">로그아웃</a></div>
         </div>
     </section>
-    <div id="container">
-        <div id="page_title">메뉴관리</div>
+    <section class="main_container">
+        <div class="page_title">메뉴관리</div>
         <form action="admin_menu_mgr.jsp">
-        <div id="search">
-                <select name="selectType">
+        <div id="search" class="selectbox">
+                <select name="selectType"  class="item_select">
                     <option value="menu_name"${ param.selectType=="menu_name"?" selected='selected'":"" }>메뉴명</option>
                     <option value="menu_price"${ param.selectType=="menu_price"?" selected='selected'":"" }>판매가</option>
                     <option value="menu_type"${ param.selectType=="menu_type"?" selected='selected'":"" }>메뉴분류</option>
                     <option value="menu_activity"${ param.selectType=="menu_activity"?" selected='selected'":"" }>상태</option>
                 </select>
-            <input type="text" name="selectData" value="${ param.selectData }"/>
-            <input type="submit" id="search_btn" value="검색"/>
-            <a href="admin_menu_mgr.jsp?page_flag=admin_menu_add"><input type="button" value="메뉴추가"/></a>
+            <input type="text" name="selectData" class="input_selectData" value="${ param.selectData }"/>
+            <input type="submit" id="search_btn" value="검색" class="btn_submit"/>
+            <a href="admin_menu_mgr.jsp?page_flag=admin_menu_add"><input type="button" value="메뉴추가" class="btn_submit"/></a>
         </div>
         </form>
     
         <div id="result">
-            <table id="menu_tab">
-                <tr>
-                    <th style="width: 250px;">메뉴명</th>
-                    <th style="width: 120px;">판매가</th>
-                    <th style="width: 100px;">메뉴분류</th>
-                    <th style="width: 100px;">상태</th>
+            <table id="menu_tab" class="table">
+                <tr class="table-danger">
+                    <th style="text-align: center">메뉴명</th>
+                    <th style="text-align: center">판매가</th>
+                    <th style="text-align: center">메뉴분류</th>
+                    <th style="text-align: center">상태</th>
                 </tr>
             <%
             try{
@@ -392,7 +305,7 @@ html, body {
             	se.printStackTrace();
             }//end catch
             %>
-    </div>
+    </section>
 
 </body>
 </html>
