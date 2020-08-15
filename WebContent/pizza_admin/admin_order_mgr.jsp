@@ -70,7 +70,12 @@ if (current_page > pageNumber) {	//현재페이지가 폼에 표시된 번호보
 
 curPage = startPage;	//폼의 시작번호를 페이지 이동용 임시 변수에 저장
 while (curPage <= endPage){		//페이지 이동용 임시 변수가 폼의 마지막 번호보다 작거나 같다면
-	indexList = indexList +"<a href='"+list_url+"&current_page="+curPage+"' class='pagination_num'> "+curPage+" </a>";		//[번호]를 a태그에 담아서 폼 형태를 담은 변수에 추가
+	//[번호]를 a태그에 담아서 폼 형태를 담은 변수에 추가
+	if(current_page==curPage){
+		indexList = indexList +"<a href='"+list_url+"&current_page="+curPage+"' class='pagination_num active'> "+curPage+" </a>";		
+	} else {
+		indexList = indexList +"<a href='"+list_url+"&current_page="+curPage+"' class='pagination_num'> "+curPage+" </a>";		
+	}
 		
 	curPage++;	//페이지 이동용 임시 변수를 증가시켜서 페이지이동 폼의 번호가 for문처럼 만들어지게 한다.
 }//end while
@@ -207,7 +212,7 @@ return indexList;	//페이지 이동폼을 담은 변수를 반환
             List<AdminOrderVO> orderList = oDao.selectOrderList(soVO);
             
     		//1. 한 화면에 보여줄 게시물의 수
-    		int pageScale = 10;
+    		int pageScale = 1;
     		
     		//2. 총 페이지 수
     		int totalPage = (int) Math.ceil((double)(orderList.size())/pageScale);
@@ -250,8 +255,8 @@ return indexList;	//페이지 이동폼을 담은 변수를 반환
             <%}//end for%>
             </table>
         </div>
-        <div id="result_paging" style="height: 20px; text-align: center;">
-        <%= indexList(currentPage, totalPage, "admin_order_mgr.jsp?"+selectQuery.toString()) %>
+        <div id="result_paging" class="section_pagination">
+        	<%= indexList(currentPage, totalPage, "admin_order_mgr.jsp?"+selectQuery.toString()) %>
         </div>
             <%
             } catch(SQLException se) {
