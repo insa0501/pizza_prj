@@ -31,7 +31,7 @@ body {
 }
 
 .input_selectData {
-	width: 300px;
+	width: 220px;
 	height: 45px;
 	font-family: inherit;
 	border: 1px solid #999;
@@ -50,18 +50,33 @@ body {
 	transition-timing-function: ease-in;
 	box-shadow: none;
 	border: none;
+	border-radius: 3px;
 }
 
 .btn_submit:hover {
 	transition: all .1s;
 	transition-timing-function: ease-in;
 	font-size: 1.05em;
+	font-weight: 800;
 }
 
-.table {
-	margin-bottom: 50px;
+.searched_text {
+	height: 45px;
+	line-height: 45px;
+	padding: 0 15px;
 }
 
+.add_menu_btn {
+	margin-left: auto;
+}
+
+.add_menu_btn .add {
+	width: 100px;
+	height: 45px;
+}
+
+
+/* table */
 .table>th {
 	text-align: center;
 }
@@ -89,6 +104,7 @@ body {
 /* pagination */
 .section_pagination {
 	/*pagination div*/
+	margin-top: 50px;
 	width: 300px;
 	text-align: center;
 	margin: 0 auto;
