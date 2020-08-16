@@ -20,16 +20,30 @@ body {
 }
 
 .menu_content {
-	background-color: white;
+    font-size: 16px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 15px;
 }
-
 .main_content {
 	width: 6000px;
 }
 
+
+.menu_item > a{
+    display: block;
+    height: 45px;
+    padding: 0 15px;
+    font-size: 15px;
+    color: #313131;
+    line-height: 45px;
+    background: #fff;
+}
 .page_title, .my_page_title {
 	font-size: 2em;
-	font-weight: 500;
+    font-weight: 600;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .container {
@@ -38,4 +52,11 @@ body {
 	flex-direction: row;
 	width: 60vw;
 	min-height: 600px;
+}
+.btn_day{
+    display: inline-block;
+    margin-right: 20px;
+    vertical-align: top;
+    font-size: 18px;
+    /* float: left; */
 }

@@ -207,8 +207,8 @@ function searchZipcode(){//다음 API를 사용한 우편번호 찾기
 		<div class="my_page_menu">
 			<div class="my_page_title">마이페이지</div>
 			<div class="menu_content">
-				<div><a href="user_order_list.jsp">주문내역</a></div>
-				<div><a href="user_info_check.jsp">회원정보변경</a></div>
+				<div class="menu_item"><a href="user_order_list.jsp">주문내역</a></div>
+				<div class="menu_item"><a href="user_info_check.jsp">회원정보변경</a></div>
 			</div>
 		</div>
 		<div class="main_content">

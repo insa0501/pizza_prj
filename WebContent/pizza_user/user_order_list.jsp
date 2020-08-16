@@ -83,8 +83,8 @@
 		<div class="my_page_menu">
 			<div class="my_page_title">마이페이지</div>
 			<div class="menu_content">
-				<div><a href="user_order_list.jsp">주문내역</a></div>
-				<div><a href="user_info_check.jsp">회원정보변경</a></div>
+				<div class="menu_item"><a href="user_order_list.jsp">주문내역</a></div>
+				<div class="menu_item"><a href="user_info_check.jsp">회원정보변경</a></div>
 			</div>
 		</div>
 		<div id="main_content" class="main_content">
@@ -93,10 +93,10 @@
 			</div>   
 			 
 			<div >
-		   		<a href="user_order_list.jsp?tempDate=today" id="today" onclick="today()">  오늘</a>&nbsp; &nbsp;     
-		   		<a href="user_order_list.jsp?tempDate=a_month" id="a_month" onclick="a_month()">  1개월</a>&nbsp; &nbsp; 
-		   		<a href="user_order_list.jsp?tempDate=three_month" id="three_month" onclick="three_month()">  3개월</a> &nbsp;&nbsp; 
-		   		<a href="user_order_list.jsp?tempDate=all" id="all">  전체</a> 
+		   		<a href="user_order_list.jsp?tempDate=today" id="today" class="btn_day" onclick="today()">오늘</a>    
+		   		<a href="user_order_list.jsp?tempDate=a_month" id="a_month" class="btn_day" onclick="a_month()">1개월</a>
+		   		<a href="user_order_list.jsp?tempDate=three_month" id="three_month" class="btn_day" onclick="three_month()">3개월</a>
+		   		<a href="user_order_list.jsp?tempDate=all" id="all" class="btn_day">전체</a> 
 		    </div>
 	
 	
