@@ -70,7 +70,11 @@ pageContext.setAttribute("mdVO", mdVO);
 					<tr>
 						<th class="colTh">메뉴분류</th>
 						<td class="colTd">
-							<input type="text" id="menuType" name="menuType" value="${mdVO.menu_type}" class="colTd1" />
+						<select id="menuType" name="menuType" class="colTd1">
+							<option value="피자"${"피자".equals(mdVO.menu_type)?" selected='selected'":""}>피자</option>
+							<option value="사이드"${"사이드".equals(mdVO.menu_type)?" selected='selected'":""}>사이드</option>
+						</select>
+							<%-- <input type="text" id="menuType" name="menuType" value="${mdVO.menu_type}" class="colTd1" /> --%>
 						</td>
 						<th class="colTh">판매가</th>
 						<td class="colTd">
