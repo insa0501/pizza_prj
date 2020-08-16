@@ -26,16 +26,17 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<link rel="stylesheet" type="text/css" href="http://localhost/pizza_prj/pizza_user/css/common_footer.css">
+
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    
+<link rel="stylesheet" type="text/css" href="http://localhost/pizza_prj/common/css/common_footer.css">
 <link rel="stylesheet" type="text/css" href="http://localhost/pizza_prj/pizza_user/css/main_css1.css">
-<link rel="stylesheet" type="text/css" href="http://localhost/pizza_prj/pizza_user/css/my_page_menu.css">
-
-
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" href="http://localhost/pizza_prj/common/css/my_page_menu.css">
 <script type="text/javascript">
 	$(function(){
 
@@ -50,28 +51,10 @@
 
 </script>
 
-<style type="text/css">
-.my_page_menu{
-    border: 1px solid #333333;
-    background-color: red;
-    width: 2000px;
-}
 
-.main_content{
-    background-color: royalblue;
-    width: 6000px;
-    
-}
-
-.container{
-	display: flex;
-	width: 60vw;
-	height: 
-	
-}
-</style>
 </head>
 <body>
+<div class="header">
 	<section class="header">
 		<div class="header_top"></div>
 		<div class="header_logoImg">
@@ -95,23 +78,28 @@
 			</div>
 		</div>
 	</section>
-
-<div id="container" class="container" >
+</div>	
+<div class="container">
+		<div class="my_page_menu">
+			<div class="my_page_title">마이페이지</div>
+			<div class="menu_content">
+				<div><a href="user_order_list.jsp">주문내역</a></div>
+				<div><a href="user_info_check.jsp">회원정보변경</a></div>
+			</div>
+		</div>
+		<div id="main_content" class="main_content">
+			<div class="page_title">
+			     주문 내역
+			</div>   
+			 
+			<div >
+		   		<a href="user_order_list.jsp?tempDate=today" id="today" onclick="today()">  오늘</a>&nbsp; &nbsp;     
+		   		<a href="user_order_list.jsp?tempDate=a_month" id="a_month" onclick="a_month()">  1개월</a>&nbsp; &nbsp; 
+		   		<a href="user_order_list.jsp?tempDate=three_month" id="three_month" onclick="three_month()">  3개월</a> &nbsp;&nbsp; 
+		   		<a href="user_order_list.jsp?tempDate=all" id="all">  전체</a> 
+		    </div>
 	
-	<div id="my_page_menu" class="my_page_menu">
-		
-	</div>
-	<div id="main_content" class="main_content">
-		<div id="page_title">
-		     주문 내역<br/><br/>
-		</div>   
-		 
-		<div >
-	   		<a href="user_order_list.jsp?tempDate=today" id="today" onclick="today()">  오늘</a>&nbsp; &nbsp;     
-	   		<a href="user_order_list.jsp?tempDate=a_month" id="a_month" onclick="a_month()">  1개월</a>&nbsp; &nbsp; 
-	   		<a href="user_order_list.jsp?tempDate=three_month" id="three_month" onclick="three_month()">  3개월</a> &nbsp;&nbsp; 
-	   		<a href="user_order_list.jsp?tempDate=all" id="all">  전체</a> 
-	    </div>
+	
 	<% 
 	
 	String tempDate = request.getParameter("tempDate");
@@ -168,11 +156,11 @@
 		pageContext.setAttribute("orderList", list);
 	%>
 		
-	   <div style="background-color:#F01EF0;">
+	   <div>
 	   
 	   
 	   <c:forEach var="order" items="${orderList}">
-			<div style="left:50px; position: relative;background-color: #fdfdfd;">
+			<div>
 			<c:set var="i" value="${0}"/>
 		   <c:forEach var="order_menu" items="${order.menuListVO}">
 			   <c:set var="i" value="${i+1}"/>
@@ -191,13 +179,13 @@
 	  <%
 	}//end else
 	  %>
-  </div>
-    
+  	</div>
 </div>
-    
-    
-        <section class="footer">
-        어쩌고저쩌고 카피라이트 @copyright 3조 어쩌고저쩌고 카피라이트 @copyright 3조 어쩌고저쩌고 카피라이트 @copyright 3조 내용수정 내용변경해야함 내용내용내용 채워넣어야함 
+<div class="footer">
+    <section class="footer">
+    	 어쩌고저쩌고 카피라이트 @copyright 3조 어쩌고저쩌고 카피라이트 @copyright 3조 어쩌고저쩌고 카피라이트 @copyright 3조 내용수정 내용변경해야함 내용내용내용 채워넣어야함 
     </section>
+</div> 
+    
 </body>
 </html>

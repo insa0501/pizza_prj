@@ -1,15 +1,41 @@
-.my_page_menu{
-    border: 1px solid #333333;
-    background-color: red;
-    width: 200px;
+@charset "UTF-8";
+* {
+	box-sizing: border-box
 }
 
-.main_content{
-    background-color: royalblue;
-    width: 300px;
+body, html {
+	margin: 0;
+	padding: 0;
+	background-color: #ddd
 }
 
-.container{
+body {
+    display: flex;
+    flex-direction: column;
+	align-items: center
+}
+
+.my_page_menu {
+	width: 2000px;
+}
+
+.menu_content {
+	background-color: white;
+}
+
+.main_content {
+	width: 6000px;
+}
+
+.page_title, .my_page_title {
+	font-size: 2em;
+	font-weight: 500;
+}
+
+.container {
+	background-color: #ddd;
 	display: flex;
-	
+	flex-direction: row;
+	width: 60vw;
+	min-height: 600px;
 }

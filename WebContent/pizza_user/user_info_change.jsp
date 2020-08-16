@@ -11,7 +11,7 @@
 <%
 	request.setCharacterEncoding("UTF-8");
 String user_id = (String)session.getAttribute("user_id");
-if(user_id == null || request.getParameter("user_pass")==null ){//세션에서 꺼내온 아이디가 없다.
+if(user_id == null){//세션에서 꺼내온 아이디가 없다.
 	System.out.println("적용");
 	response.sendRedirect("http://localhost/pizza_prj/pizza_user/main.jsp");
 	return;
@@ -21,14 +21,10 @@ if(user_id == null || request.getParameter("user_pass")==null ){//세션에서 �
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="http://localhost/pizza_prj/common/css/main.css">
-<link rel="stylesheet" type="text/css" href="http://localhost/pizza_prj/common/css/common_header.css">
-<link rel="stylesheet" type="text/css" href="http://localhost/pizza_prj/common/css/common_footer.css">
 
 <title>회원정보수정</title>
-<style type="text/css">
-#container{ min-height:600px; width:80vw; margin:25px auto; }
-<%-- 회원정보수정 부분 --%>
+<%-- <style type="text/css">
+회원정보수정 부분
 #user_info { margin-left: 30px; width:470px; }
 label { width: 140px; height: 30px; font-weight: bold;}
 .searchBtn{background-color: #3597DE; color:#FFFFFF; font-weight: bold; border-radius: 5px; border: none; padding:3px 10px 3px 10px;}
@@ -36,11 +32,11 @@ label { width: 140px; height: 30px; font-weight: bold;}
 			font-weight: bold; border-radius: 5px; 
 			border: none; padding:3px 10px 3px 10px; margin-right:15px;}
 			
-<%-- 회원탈퇴사유부분 --%>	
+회원탈퇴사유부분	
 #user_resign { margin-left: 30px; width:550px; }
 .chkBox{ margin-bottom: 6px; margin-right:5px;}
 
-</style>
+</style> --%>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 <!-- 다음 api 우편번호 검색 -->
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -49,6 +45,9 @@ label { width: 140px; height: 30px; font-weight: bold;}
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 
+<link rel="stylesheet" type="text/css" href="http://localhost/pizza_prj/common/css/common_footer.css">
+<link rel="stylesheet" type="text/css" href="http://localhost/pizza_prj/pizza_user/css/main_css1.css">
+<link rel="stylesheet" type="text/css" href="http://localhost/pizza_prj/common/css/my_page_menu.css">
 
 <script type="text/javascript">
 $(function(){
@@ -201,82 +200,91 @@ function searchZipcode(){//다음 API를 사용한 우편번호 찾기
 </script>
 </head>
 <body>
-<div id="wrap">
-	<c:import url="../common/jsp/common_header.jsp"></c:import>
-	
-	<div id="container">
-	<form action="user_info_change.jsp" name="frm" id="frm" method="post"><!-- form 태그  -->
-	<input type="hidden" id="page_flag" name="page_flag" />
-	<h3>회원정보수정</h3><br/>
-	<ul id="user_info">
-		<li>
-			<label>아이디</label>
-			<label><%=user_id %></label>
-		</li>
-		<li>
-			<label>비밀번호</label>
-			<input type="password" name="user_pass" class="user_text" value="${pageScope.user_pass }"/>
-		</li>
-		<li>
-			<label>비밀번호 확인</label>
-			<input type="password"  class="user_text" value="${pageScope.user_pass }"/>
-		</li>
-		<li>
-			<label>전화번호</label>
-			<input type="text" name="user_phone" class="user_text" value="${pageScope.user_phone }"/>
-		</li>
-		<li>
-			<label>우편번호</label>
-			<input type="text" name="user_zipcode" class="user_text"readonly="readonly" id="zipcode" value="${pageScope.user_zipcode }"/>
-			<input type="button" value="검색" class="searchBtn" id="searchZip"/>
-		</li>
-		<li>
-			<label>주소</label>
-			<input type="text" name="user_addr1" class="user_text" readonly="readonly" id="addr1" value="${pageScope.user_addr1 }"/>
-		</li>
-		<li>
-			<label>상세주소</label>
-			<input type="text" name="user_addr2" class="user_text" value="${pageScope.user_addr2 }"/>
-		</li>
-	</ul>
-	<div style="text-align: right; margin-right:50px;">
-		<input type="button" value="탈퇴" class="resignBtn"/>
-		<input type="button" value="변경" id="searchBtn" class="searchBtn" style="width:80px;"/>
+<div class="header">
+	<c:import url="../common/jsp/common_header.jsp"/>
 	</div>
-	
-	<div id="resign_section">
-	<h3>회원탈퇴</h3>
-	<ul id="user_resign">
-		<li>
-			회원 탈퇴 시 사이트 내의 모든 정보가 삭제되며, 이후 복구가 불가능합니다.
-		</li>
-		<li>
-			추후 서비스 향상을 위해 탈퇴 이유를 선택해주세요
-		</li>
-		<li>
-			<input type="checkbox" name="resign_data" class="chkBox" value="원하는 메뉴가 없어서"/>원하는 메뉴가 없어서
-		</li>
-		<li>
-			<input type="checkbox" name="resign_data" class="chkBox" value="가격이 비싸서"/>가격이 비싸서
-		</li>
-		<li>
-			<input type="checkbox" name="resign_data" class="chkBox" value="홈페이지 이용이 어려워서"/>홈페이지 이용이 어려워서
-		</li>
-		<li>
-			<input type="checkbox" name="resign_data" class="chkBox" value="사이트를 이용하지 않아서"/>사이트를 이용하지 않아서
-		</li>
-	</ul>
+	<div class="container">
+		<div class="my_page_menu">
+			<div class="my_page_title">마이페이지</div>
+			<div class="menu_content">
+				<div><a href="user_order_list.jsp">주문내역</a></div>
+				<div><a href="user_info_check.jsp">회원정보변경</a></div>
+			</div>
+		</div>
+		<div class="main_content">
+			<form action="user_info_change.jsp" name="frm" id="frm" method="post"><!-- form 태그  -->
+				<input type="hidden" id="page_flag" name="page_flag" />
+				<h3>회원정보수정</h3><br/>
+				<ul id="user_info">
+					<li>
+						<label>아이디</label>
+						<label><%=user_id %></label>
+					</li>
+					<li>
+						<label>비밀번호</label>
+						<input type="password" name="user_pass" class="user_text" value="${pageScope.user_pass }"/>
+					</li>
+					<li>
+						<label>비밀번호 확인</label>
+						<input type="password"  class="user_text" value="${pageScope.user_pass }"/>
+					</li>
+					<li>
+						<label>전화번호</label>
+						<input type="text" name="user_phone" class="user_text" value="${pageScope.user_phone }"/>
+					</li>
+					<li>
+						<label>우편번호</label>
+						<input type="text" name="user_zipcode" class="user_text"readonly="readonly" id="zipcode" value="${pageScope.user_zipcode }"/>
+						<input type="button" value="검색" class="searchBtn" id="searchZip"/>
+					</li>
+					<li>
+						<label>주소</label>
+						<input type="text" name="user_addr1" class="user_text" readonly="readonly" id="addr1" value="${pageScope.user_addr1 }"/>
+					</li>
+					<li>
+						<label>상세주소</label>
+						<input type="text" name="user_addr2" class="user_text" value="${pageScope.user_addr2 }"/>
+					</li>
+				</ul>
+				<div style="text-align: right; margin-right:50px;">
+					<input type="button" value="탈퇴" class="resignBtn"/>
+					<input type="button" value="변경" id="searchBtn" class="searchBtn" style="width:80px;"/>
+				</div>
+				
+				<div id="resign_section">
+					<h3>회원탈퇴</h3>
+					<ul id="user_resign">
+						<li>
+							회원 탈퇴 시 사이트 내의 모든 정보가 삭제되며, 이후 복구가 불가능합니다.
+						</li>
+						<li>
+							추후 서비스 향상을 위해 탈퇴 이유를 선택해주세요
+						</li>
+						<li>
+							<input type="checkbox" name="resign_data" class="chkBox" value="원하는 메뉴가 없어서"/>원하는 메뉴가 없어서
+						</li>
+						<li>
+							<input type="checkbox" name="resign_data" class="chkBox" value="가격이 비싸서"/>가격이 비싸서
+						</li>
+						<li>
+							<input type="checkbox" name="resign_data" class="chkBox" value="홈페이지 이용이 어려워서"/>홈페이지 이용이 어려워서
+						</li>
+						<li>
+							<input type="checkbox" name="resign_data" class="chkBox" value="사이트를 이용하지 않아서"/>사이트를 이용하지 않아서
+						</li>
+					</ul>
+				</div>
+			
+			</form><!-- form 태그 -->
+			
+			<div style="text-align: center;">
+				<input type="button" value="탈퇴" class="resignBtn"/>
+			</div>
+		</div>
+	</div>	
+	<div class="footer">
+		<c:import url="../common/jsp/common_footer.jsp"/>
 	</div>
-	
-	</form><!-- form 태그 -->
-	
-	<div style="text-align: center; ">
-		<input type="button" value="탈퇴" class="resignBtn"/>
-	</div>
-	</div>
-	
-	<c:import url="../common/jsp/common_footer.jsp"></c:import>
-</div>
 
 </body>
 </html>
