@@ -80,6 +80,11 @@
 </head>
 <body>
 	<jsp:include page="../common/jsp/common_header.jsp"/>
+		<style type="text/css">
+		body,html{
+			background-color: white;
+		}
+		</style>   
 <!--     <section class="header">
         <div class="header_top"></div>
         <div class="header_nav" id="header_nav">
@@ -152,13 +157,13 @@
 	  		 <td>비밀번호 변경</td> 
 	   </tr>
 	   <tr>
-	   		<td>새 비밀번호</td><td><input type="text" id="user_pass" name="user_pass" placeholder="새 비밀번호 입력">
+	   		<td>새 비밀번호</td><td><input type="password" id="user_pass" name="user_pass" placeholder="새 비밀번호 입력">
 <%-- 	   		<input type="hidden" name="user_id" id="user_id" value="${user_id}"> --%>
 	   		</td>
 	   </tr>
 	   
 	   <tr>
-	  		 <td>비밀번호 확인</td><td> <input type="text" id="user_pass_chk" name="user_pass_chk" placeholder="비밀번호 확인"></td>
+	  		 <td>비밀번호 확인</td><td> <input type="password" id="user_pass_chk" name="user_pass_chk" placeholder="비밀번호 확인"></td>
 	   </tr>
 	   <tr>
 	   		<td colspan="2"> <input type="button" value="비밀번호 변경" name="userChangePw" id="userChangePw"></td>
