@@ -201,7 +201,29 @@ function searchZipcode(){//다음 API를 사용한 우편번호 찾기
 </head>
 <body>
 <div class="header">
-	<c:import url="../common/jsp/common_header.jsp"/>
+	<section class="header">
+		<div class="header_top"></div>
+		<div class="header_logoImg">
+			<img src="http://localhost/pizza_prj/common/images/logo.png">
+		</div>
+		<div class="header_nav" id="header_nav">
+			<div>
+				<a href="#pizza_divider">피자</a> <a href="#side_divider">사이드</a>
+			</div>
+			<div>
+				<c:choose>
+					<c:when test="${not empty user_name}">
+						<a href="http://localhost/pizza_prj/pizza_user/user_order_list.jsp"><strong><c:out value="${user_name}"/>님</strong></a>
+						<a href="#void" onclick="logout()">로그아웃</a>
+					</c:when>
+					<c:otherwise>
+						<a href="#void">회원가입</a>
+						<a href="http://localhost/pizza_prj/pizza_user/user_login.jsp">로그인</a>
+					</c:otherwise>
+				</c:choose>
+			</div>
+		</div>
+	</section>
 	</div>
 	<div class="container">
 		<div class="my_page_menu">
@@ -214,7 +236,7 @@ function searchZipcode(){//다음 API를 사용한 우편번호 찾기
 		<div class="main_content">
 			<form action="user_info_change.jsp" name="frm" id="frm" method="post"><!-- form 태그  -->
 				<input type="hidden" id="page_flag" name="page_flag" />
-				<h3>회원정보수정</h3><br/>
+				<div class="page_title">회원정보수정</div>
 				<ul id="user_info">
 					<li>
 						<label>아이디</label>
@@ -246,7 +268,7 @@ function searchZipcode(){//다음 API를 사용한 우편번호 찾기
 						<input type="text" name="user_addr2" class="user_text" value="${pageScope.user_addr2 }"/>
 					</li>
 				</ul>
-				<div style="text-align: right; margin-right:50px;">
+				<div>
 					<input type="button" value="탈퇴" class="resignBtn"/>
 					<input type="button" value="변경" id="searchBtn" class="searchBtn" style="width:80px;"/>
 				</div>
@@ -277,7 +299,7 @@ function searchZipcode(){//다음 API를 사용한 우편번호 찾기
 			
 			</form><!-- form 태그 -->
 			
-			<div style="text-align: center;">
+			<div>
 				<input type="button" value="탈퇴" class="resignBtn"/>
 			</div>
 		</div>

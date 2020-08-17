@@ -99,7 +99,7 @@
 		   		<a href="user_order_list.jsp?tempDate=all" id="all" class="btn_day">전체</a> 
 		    </div>
 	
-	
+	<div>
 	<% 
 	
 	String tempDate = request.getParameter("tempDate");
@@ -108,7 +108,7 @@
 	
 	if(tempDate == null){
 		%>
-		<div>조회를 원하시는 기간을 선택해주세요</div>
+		<div class="order_box">조회를 원하시는 기간을 선택해주세요</div>
 		<%
 	}else{
 	
@@ -155,30 +155,26 @@
 		System.out.println("endDate "+endDate);
 		pageContext.setAttribute("orderList", list);
 	%>
-		
-	   <div>
-	   
-	   
-	   <c:forEach var="order" items="${orderList}">
-			<div>
+	<c:forEach var="order" items="${orderList}">
+		<div class="order_box"> 
 			<c:set var="i" value="${0}"/>
-		   <c:forEach var="order_menu" items="${order.menuListVO}">
-			   <c:set var="i" value="${i+1}"/>
-			   
-				   <c:if test="${i eq 1 }">
-					 		<div id="order_no"><c:out value="${order_menu.order_no}"/></div>
-					 		<div id="order_date"><c:out value="${order.order_date}"/></div><%--value="${해당 vo.input_date}" --%> 
-							<div><c:out value="${order.order_status}"/></div><%--status value="${해당 vo.status}"--%>
-					   		<div><c:out value="${order.menu_order_price}"/></div><%-- price value="${해당 vo.price}" --%>
-			 		</c:if> 
-					        <div><c:out value="${order_menu.menu_name}"/> * <c:out value="${order_menu.order_menu_cnt }"/></div><%--value="{해당 vo.menu}" 메뉴는 리스트에 들어있음 --%> 
-		   </c:forEach>
-			    </div>    
-	   </c:forEach>
-	  </div>
+				<c:forEach var="order_menu" items="${order.menuListVO}">
+					<c:set var="i" value="${i+1}"/>
+								   
+					<c:if test="${i eq 1 }">
+						<div class="order no">NO.<c:out value="${order_menu.order_no}"/></div>
+						<div class="order date"><c:out value="${order.order_date.substring(0,(order.order_date.length())-5)}"/></div><%--value="${해당 vo.input_date}" --%> 
+						<div class="order status"><c:out value="${order.order_status}"/></div><%--status value="${해당 vo.status}"--%>
+						<div class="order price"><c:out value="${order.menu_order_price}"/>원</div><%-- price value="${해당 vo.price}" --%>
+					</c:if> 
+					<div class="order menu"><c:out value="${order_menu.menu_name}"/> * <c:out value="${order_menu.order_menu_cnt }"/></div><%--value="{해당 vo.menu}" 메뉴는 리스트에 들어있음 --%> 
+				</c:forEach>
+		</div>
+	</c:forEach>
 	  <%
 	}//end else
 	  %>
+  	</div>
   	</div>
 </div>
 <div class="footer">
