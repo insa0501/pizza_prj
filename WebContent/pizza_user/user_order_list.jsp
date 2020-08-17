@@ -25,20 +25,23 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
-
-
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     
-<link rel="stylesheet" type="text/css" href="http://localhost/pizza_prj/common/css/common_footer.css">
 <link rel="stylesheet" type="text/css" href="http://localhost/pizza_prj/common/css/my_page_menu.css">
 <script type="text/javascript">
 	$(function(){
-
+		
+		$('.btn_day').click(function(){
+/* 			if($('.btn_day').hasClass("active")){
+				$('.btn_day').removeClass("active");
+			} */
+			$(this).addClass('active');
+		});
+		
 	})//ready
 	
 	<%
@@ -64,95 +67,97 @@
 				<div class="menu_item"><a href="user_info_check.jsp">회원정보변경</a></div>
 			</div>
 		</div>
+		
 		<div id="main_content" class="main_content">
-			<div class="page_title">
-			     주문 내역
-			</div>   
-			 
-			<div >
-		   		<a href="user_order_list.jsp?tempDate=today" id="today" class="btn_day" onclick="today()">오늘</a>    
+			<div class="page_title">주문 내역</div>   
+			<div>
+<!-- 		   		<a href="user_order_list.jsp?tempDate=today" id="today" class="btn_day" onclick="today()">오늘</a>    
 		   		<a href="user_order_list.jsp?tempDate=a_month" id="a_month" class="btn_day" onclick="a_month()">1개월</a>
 		   		<a href="user_order_list.jsp?tempDate=three_month" id="three_month" class="btn_day" onclick="three_month()">3개월</a>
+		   		<a href="user_order_list.jsp?tempDate=all" id="all" class="btn_day">전체</a>  -->
+		   		<a href="user_order_list.jsp?tempDate=today" id="today" class="btn_day">오늘</a>    
+		   		<a href="user_order_list.jsp?tempDate=a_month" id="a_month" class="btn_day">1개월</a>
+		   		<a href="user_order_list.jsp?tempDate=three_month" id="three_month" class="btn_day">3개월</a>
 		   		<a href="user_order_list.jsp?tempDate=all" id="all" class="btn_day">전체</a> 
 		    </div>
 	
-	<div>
-	<% 
-	
-	String tempDate = request.getParameter("tempDate");
-	
-	//System.out.println("tempDate "+tempDate);
-	
-	if(tempDate == null){
-		%>
-		<div class="order_box">조회를 원하시는 기간을 선택해주세요</div>
-		<%
-	}else{
-	
-		if("today".equals(tempDate)){
-			cal = Calendar.getInstance();
-			cal.setTime(new Date());
-			strDate = format.format(cal.getTime());
-			
-			cal.add(Calendar.DATE,1);
-			endDate = format.format(cal.getTime());
-			
-		}//end if
-		
-		if("a_month".equals(tempDate)){
-			cal = Calendar.getInstance();
-		
-			cal.setTime(new Date());
-			cal.add(Calendar.DATE, 1);//오늘까지로 하면 오늘 00시 00분까지여서 당일의 결과를 얻을 수 없음
-			endDate = format.format(cal.getTime());
-			
-			cal.setTime(new Date());
-			cal.add(Calendar.MONTH,-1);
-			strDate = format.format(cal.getTime());
-		}//end if
-		
-		if("three_month".equals(tempDate)){
-			cal = Calendar.getInstance();
-			cal.setTime(new Date());
-			cal.add(Calendar.DATE, 1);//오늘까지로 하면 오늘 00시 00분까지여서 당일의 결과를 얻을 수 없음
-			
-			endDate = format.format(cal.getTime());
-			
-			cal.setTime(new Date());
-			cal.add(Calendar.MONTH,-3);
-			strDate = format.format(cal.getTime());
-		}//end if
-		/* 
-		pageContext.setAttribute("strDate", strDate);
-		pageContext.setAttribute("endDate", endDate); */	
-			
-		SelectOrderListVO solVO = new SelectOrderListVO("test1", strDate, endDate);
-		List<UserOrderVO> list = mDAO.selectOrderList(solVO);
-		System.out.println("strDate "+strDate);
-		System.out.println("endDate "+endDate);
-		pageContext.setAttribute("orderList", list);
-	%>
-	<c:forEach var="order" items="${orderList}">
-		<div class="order_box"> 
-			<c:set var="i" value="${0}"/>
-				<c:forEach var="order_menu" items="${order.menuListVO}">
-					<c:set var="i" value="${i+1}"/>
-								   
-					<c:if test="${i eq 1 }">
-						<div class="order no">NO.<c:out value="${order_menu.order_no}"/></div>
-						<div class="order date"><c:out value="${order.order_date.substring(0,(order.order_date.length())-5)}"/></div><%--value="${해당 vo.input_date}" --%> 
-						<div class="order status"><c:out value="${order.order_status}"/></div><%--status value="${해당 vo.status}"--%>
-						<div class="order price"><c:out value="${order.menu_order_price}"/>원</div><%-- price value="${해당 vo.price}" --%>
-					</c:if> 
-					<div class="order menu"><c:out value="${order_menu.menu_name}"/> * <c:out value="${order_menu.order_menu_cnt }"/></div><%--value="{해당 vo.menu}" 메뉴는 리스트에 들어있음 --%> 
+			<div>
+				<% 
+				
+				String tempDate = request.getParameter("tempDate");
+				
+				//System.out.println("tempDate "+tempDate);
+				
+				if(tempDate == null){
+					%>
+					<div class="order_box">조회를 원하시는 기간을 선택해주세요</div>
+					<%
+				}else{
+				
+					if("today".equals(tempDate)){
+						cal = Calendar.getInstance();
+						cal.setTime(new Date());
+						strDate = format.format(cal.getTime());
+						
+						cal.add(Calendar.DATE,1);
+						endDate = format.format(cal.getTime());
+						
+					}//end if
+					
+					if("a_month".equals(tempDate)){
+						cal = Calendar.getInstance();
+					
+						cal.setTime(new Date());
+						cal.add(Calendar.DATE, 1);//오늘까지로 하면 오늘 00시 00분까지여서 당일의 결과를 얻을 수 없음
+						endDate = format.format(cal.getTime());
+						
+						cal.setTime(new Date());
+						cal.add(Calendar.MONTH,-1);
+						strDate = format.format(cal.getTime());
+					}//end if
+					
+					if("three_month".equals(tempDate)){
+						cal = Calendar.getInstance();
+						cal.setTime(new Date());
+						cal.add(Calendar.DATE, 1);//오늘까지로 하면 오늘 00시 00분까지여서 당일의 결과를 얻을 수 없음
+						
+						endDate = format.format(cal.getTime());
+						
+						cal.setTime(new Date());
+						cal.add(Calendar.MONTH,-3);
+						strDate = format.format(cal.getTime());
+					}//end if
+					/* 
+					pageContext.setAttribute("strDate", strDate);
+					pageContext.setAttribute("endDate", endDate); */	
+						
+					SelectOrderListVO solVO = new SelectOrderListVO("test1", strDate, endDate);
+					List<UserOrderVO> list = mDAO.selectOrderList(solVO);
+					System.out.println("strDate "+strDate);
+					System.out.println("endDate "+endDate);
+					pageContext.setAttribute("orderList", list);
+				%>
+				<c:forEach var="order" items="${orderList}">
+					<div class="order_box"> 
+						<c:set var="i" value="${0}"/>
+							<c:forEach var="order_menu" items="${order.menuListVO}">
+								<c:set var="i" value="${i+1}"/>
+											   
+								<c:if test="${i eq 1 }">
+									<div class="order no">NO.<c:out value="${order_menu.order_no}"/> (<c:out value="${order.order_status}"/>)</div>
+									<div class="order date"><c:out value="${order.order_date.substring(0,(order.order_date.length())-5)}"/></div><%--value="${해당 vo.input_date}" --%> 
+									<!-- <div class="order status"></div> --><%--status value="${해당 vo.status}"--%>
+									<div class="order price"><c:out value="${order.menu_order_price}"/>원</div><%-- price value="${해당 vo.price}" --%>
+								</c:if> 
+								<div class="order menu"><c:out value="${order_menu.menu_name}"/> * <c:out value="${order_menu.order_menu_cnt }"/></div><%--value="{해당 vo.menu}" 메뉴는 리스트에 들어있음 --%> 
+							</c:forEach>
+					</div>
 				</c:forEach>
-		</div>
-	</c:forEach>
-	  <%
-	}//end else
-	  %>
-  	</div>
-  	</div>
+			  <%
+				}//end else
+			  %>
+	  	</div>
+	</div>
 </div>
 <div class="footer">
     <section class="footer">
