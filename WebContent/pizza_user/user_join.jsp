@@ -209,7 +209,13 @@ try{
 
 </head>
 <body>
-    <section class="header">
+		<jsp:include page="../common/jsp/common_header.jsp"/>
+		<style type="text/css">
+			body,html{
+				background-color: white;
+			}
+		</style>  
+<%--     <section class="header">
       <div class="header_top"></div>
 	  <div class="header_logoImg">
 		<img src="../common/images/logo.png">
@@ -233,7 +239,7 @@ try{
 			</c:choose>
           </div>
       </div>
-  </section>
+  </section> --%>
 	
 	<div id="container" class="form_container">
 	   <!-- <div class="main_title">회원가입</div> -->
