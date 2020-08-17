@@ -74,7 +74,7 @@
     <section class="header">
       <div class="header_top"></div>
 	  <div class="header_logoImg">
-		<img src="http://localhost/pizza_prj/images/logo.png">
+		<img src="http://localhost/pizza_prj/common/images/logo.png">
 	  </div>
       <div class="header_nav" id="header_nav">
           <div>
