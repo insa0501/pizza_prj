@@ -1,0 +1,117 @@
+@charset "UTF-8";
+
+.form_container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	min-height: 600px;
+	width: 80vw;
+	min-height: 600px;
+	width: 80vw;
+	margin: 50px auto;
+}
+
+.main_title {
+	font-size: 3em;
+	padding: 30px 0 50px
+}
+
+.join_form {
+	margin-top: 20px;
+}
+
+.searchBtn {
+	width: 85px;
+	height: 40px;
+	background-color: #C50000;
+	color: #FFFFFF;
+	border-radius: 5px;
+	border: none;
+	margin-left: 20px;
+}
+
+.join_btn {
+	width: 350px;
+	height: 100px;
+	border-radius: 15px;
+	background-color: #c10a28;
+	margin-top: 50px;
+	color: #fff;
+	border: 0;
+	box-shadow: none;
+	font-size: 2em;
+}
+
+.join_btn, .join_btn:hover, .searchBtn, .searchBtn:hover {
+	transition: all .2s;
+	transition-timing-function: ease-in
+}
+
+.join_btn:hover {
+	font-size: 2.1em;
+	font-weight: 700;
+}
+
+.searchBtn:hover {
+	font-weight: 700;
+}
+
+ul {
+	margin: 0px auto;
+	padding: 0;
+}
+
+ul li {
+	display: flex;
+	align-items: center;
+	list-style: none;
+	margin: 10px 0 15px;
+}
+
+ul li span {
+	height: 45px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 350px;
+	border-bottom: 1px solid gray;
+}
+
+.user_text {
+	width: 200px;
+	border: none;
+/* 	border-bottom: 1.5px solid gray; */
+}
+
+.user_text:focus {
+	outline: none;
+/* 	border-bottom: 1.6px solid red; */
+}
+
+label {
+	width: 140px;
+	font-weight: bold;
+	margin: 0;
+}
+
+/* 약관 */
+#agreement {
+	width: 590px;
+	margin: 30px auto;
+}
+
+.content {
+	margin-left: 13px;
+	margin-right: 10px;
+	width: 585px;
+	border: 1px solid #333;
+	padding: 20px;
+}
+
+.agree_array {
+	margin: 5px 13px 20px;
+}
+
+.chkBox {
+	margin-bottom: 3px;
+}
