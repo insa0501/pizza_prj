@@ -27,7 +27,7 @@
 <link rel="stylesheet" href="css/user_find_id.css">
 <link rel="stylesheet" href="../common/css/common_header_footer.css">
    
-   
+
 <script type="text/javascript">
 	$(function(){
 
@@ -69,7 +69,13 @@
 </script>
 </head>
 <body>
-	<section class="header">
+	<jsp:include page="../common/jsp/common_header.jsp"/>
+	<style type="text/css">
+		body,html{
+			background-color: white;
+		}
+	</style>   
+<%-- 	<section class="header">
 		<div class="header_top"></div>
 		<div class="header_logoImg">
 			<img src="http://localhost/pizza_prj/common/images/logo.png">
@@ -93,9 +99,13 @@
 				</c:choose>
 			</div>
 		</div>
-	</section>
+	</section> --%>
  
- 
+<!-- <style type="text/css">
+body{
+	background-color: white;
+}
+</style>     -->
 <section id="container" class="section_main">
 	<jsp:useBean id="siVO" class="pizza.user.vo.SelectIdVO" scope="page"/>
 	<jsp:setProperty property="*" name="siVO"/>

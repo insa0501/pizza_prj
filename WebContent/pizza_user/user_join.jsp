@@ -49,6 +49,7 @@ label { width: 140px; height: 30px; font-weight: bold;}
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 
+
 <script type="text/javascript">
 
 
@@ -231,10 +232,12 @@ try{
 <body>
 
 <div id="wrap">
+<div class="header">
 	<c:import url="../common/jsp/common_header.jsp"></c:import>
-	
+</div>	
 	<div id="container">
 	<form name="frm" id="frm" method="post" action="user_join.jsp">
+	<div class="page_title">회원가입</div>
 	<ul>
 		<li>
 			<label>아이디</label>

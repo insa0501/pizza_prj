@@ -53,8 +53,13 @@
     </script>
  </head>
 <body>
-
-    <section class="header">
+	<jsp:include page="../common/jsp/common_header.jsp"/>
+		<style type="text/css">
+			body,html{
+				background-color: white;
+			}
+		</style>   
+<!--     <section class="header">
         <div class="header_top"></div>
         <div class="header_logoImg">
             <img src="http://localhost/pizza_prj/common/images/logo.png">
@@ -69,7 +74,7 @@
                 <a href="#void">로그인</a>
             </div>
         </div>
-    </section>
+    </section> -->
 
   <section class="section_main">
    <div class="main_title">Welcome!</div>

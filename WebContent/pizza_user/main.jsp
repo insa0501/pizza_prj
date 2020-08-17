@@ -71,7 +71,8 @@
     
 </head>
 <body>
-    <section class="header">
+	<jsp:include page="../common/jsp/common_header.jsp"/>
+<%--     <section class="header">
       <div class="header_top"></div>
 	  <div class="header_logoImg">
 		<img src="http://localhost/pizza_prj/common/images/logo.png">
@@ -95,7 +96,7 @@
 			</c:choose>
           </div>
       </div>
-  </section>
+  </section> --%>
 
        <form name="mainFrm" id="mainFrm" action="order_menu_cnt.jsp">
         <section class="articles">

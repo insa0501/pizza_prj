@@ -74,7 +74,13 @@
 </head>
 
 <body>
-	<section class="header">
+	<jsp:include page="../common/jsp/common_header.jsp"/>
+		<style type="text/css">
+			body,html{
+				background-color: white;
+			}
+		</style>   
+<%-- 	<section class="header">
 		<div class="header_top"></div>
 		<div class="header_logoImg">
 			<img src="http://localhost/pizza_prj/common/images/logo.png">
@@ -97,7 +103,7 @@
 				</c:choose>
 			</div>
 		</div>
-	</section>
+	</section> --%>
  
 	<section id="container" class="section_main">
 	<jsp:useBean id="spVO" class="pizza.user.vo.SelectPassVO" scope="session"/><!--request: forward로 이동한 jsp에서도 사용가능 -->

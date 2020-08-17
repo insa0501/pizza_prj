@@ -46,7 +46,6 @@ label { width: 140px; height: 30px; font-weight: bold;}
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 
 <link rel="stylesheet" type="text/css" href="http://localhost/pizza_prj/common/css/common_footer.css">
-<link rel="stylesheet" type="text/css" href="http://localhost/pizza_prj/pizza_user/css/main_css1.css">
 <link rel="stylesheet" type="text/css" href="http://localhost/pizza_prj/common/css/my_page_menu.css">
 
 <script type="text/javascript">
@@ -201,30 +200,8 @@ function searchZipcode(){//다음 API를 사용한 우편번호 찾기
 </head>
 <body>
 <div class="header">
-	<section class="header">
-		<div class="header_top"></div>
-		<div class="header_logoImg">
-			<img src="http://localhost/pizza_prj/common/images/logo.png">
-		</div>
-		<div class="header_nav" id="header_nav">
-			<div>
-				<a href="#pizza_divider">피자</a> <a href="#side_divider">사이드</a>
-			</div>
-			<div>
-				<c:choose>
-					<c:when test="${not empty user_name}">
-						<a href="http://localhost/pizza_prj/pizza_user/user_order_list.jsp"><strong><c:out value="${user_name}"/>님</strong></a>
-						<a href="#void" onclick="logout()">로그아웃</a>
-					</c:when>
-					<c:otherwise>
-						<a href="#void">회원가입</a>
-						<a href="http://localhost/pizza_prj/pizza_user/user_login.jsp">로그인</a>
-					</c:otherwise>
-				</c:choose>
-			</div>
-		</div>
-	</section>
-	</div>
+	<jsp:include page="../common/jsp/common_header.jsp"/>
+</div>
 	<div class="container">
 		<div class="my_page_menu">
 			<div class="my_page_title">마이페이지</div>

@@ -63,8 +63,8 @@
 	} // order_price()
 </script>
 <body>
-	
-    <section class="header">
+	<jsp:include page="../common/jsp/common_header.jsp"/>
+<!--     <section class="header">
         <div class="header_top"></div>
         <div class="header_nav" id="header_nav">
             <div>
@@ -76,7 +76,7 @@
                 <span>로그인</span>
             </div>
         </div>
-    </section>
+    </section> -->
     <form action="order_payment.jsp" name="orderMenuCntFrm">
         <section class="menu_section pizza">
             <div class="menu_title">피자</div>
