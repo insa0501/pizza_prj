@@ -12,32 +12,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="http://localhost/pizza_prj/common/css/main.css">
-<link rel="stylesheet" type="text/css" href="http://localhost/pizza_prj/common/css/common_header.css">
-<link rel="stylesheet" type="text/css" href="http://localhost/pizza_prj/common/css/common_footer.css">
+
 
 <title>회원가입</title>
-<style type="text/css">
-#container{ min-height:600px; width:80vw; 
-		margin:25px auto; 
-		position:relative;
-		}
-
-.searchBtn{background-color: #C50000; color:#FFFFFF; font-weight: bold; border-radius: 5px; border: none; padding:3px 10px 3px 10px;}
-#joinBtn{background-color: #C50000; color:#FFFFFF; font-weight: bold; border-radius: 5px; border: none; padding:3px 10px 3px 10px;
-		width:240px; height:50px; font-size:18px;}
-ul { margin:0px auto; width:470px; }
-ul li { list-style:none;}
-label { width: 140px; height: 30px; font-weight: bold;}
-#agreement{ width:590px; margin:0px auto;}
-.content{ 		margin-left:13px;
-		margin-right:10px;
-		width:585px;
-		border:1px solid #333;
-		}
-.agree_array{ margin-left:13px;}
-.chkBox{ margin-bottom: 3px;}
-</style>
 <!-- 부트스트랩 CSS -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
@@ -48,6 +25,9 @@ label { width: 140px; height: 30px; font-weight: bold;}
 <!-- 부트스트랩 -->
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="../common/css/common_header_footer.css">
+<link rel="stylesheet" href="css/user_join.css">
 
 <script type="text/javascript">
 
@@ -229,84 +209,122 @@ try{
 
 </head>
 <body>
-
-<div id="wrap">
-	<c:import url="../common/jsp/common_header.jsp"></c:import>
+    <section class="header">
+      <div class="header_top"></div>
+	  <div class="header_logoImg">
+		<img src="../common/images/logo.png">
+	  </div>
+      <div class="header_nav" id="header_nav">
+          <div>
+              <a href="main.jsp#pizza_divider">피자</a>
+              <a href="main.jsp#side_divider">사이드</a>
+          </div>
+          <div>
+			<c:choose>
+				<c:when test="${not empty user_name}">
+					<a href="http://localhost/pizza_prj/pizza_user/user_order_list.jsp">
+						<strong><c:out value="${user_name}" />님</strong></a>
+					<a href="#void" onclick="logout()">로그아웃</a>
+				</c:when>
+				<c:otherwise>
+					<a href="user_join.jsp">회원가입</a>
+					<a href="http://localhost/pizza_prj/pizza_user/user_login.jsp">로그인</a>
+				</c:otherwise>
+			</c:choose>
+          </div>
+      </div>
+  </section>
 	
-	<div id="container">
-	<form name="frm" id="frm" method="post" action="user_join.jsp">
-	<ul>
-		<li>
-			<label>아이디</label>
-			<input type="text" class="user_text" readonly="readonly"  id="id" name="user_id"/>
-			<input type="button" value="중복확인" class="searchBtn" id="searchId"/>
-		</li>
-		<li>
-			<label>비밀번호</label>
-			<input type="password" id="pass" class="user_text" name="user_pass"/>
-		</li>
-		<li>
-			<label>비밀번호 확인</label>
-			<input type="password" id="pass2" class="user_text"/>
-		</li>
-		<li>
-			<label>이름</label>
-			<input type="text" id="name" class="user_text" name="user_name"/>
-		</li>
-		<li>
-			<label>전화번호</label>
-			<input type="text" id="phone" class="user_text" name="user_phone"/>
-		</li>
-		<li>
-			<label>우편번호</label>
-			<input type="text" class="user_text"readonly="readonly" id="zipcode" name="user_zipcode"/>
-			<input type="button" value="검색" class="searchBtn" id="searchZip"/>
-		</li>
-		<li>
-			<label>주소</label>
-			<input type="text" class="user_text" readonly="readonly" id="addr1" name="user_addr1"/>
-		</li>
-		<li>
-			<label>상세주소</label>
-			<input type="text" class="user_text" id="addr2" name="user_addr2"/>
-		</li>
-	</ul>
-	</form>
+	<div id="container" class="form_container">
+	   <!-- <div class="main_title">회원가입</div> -->
 	
-	<div id="agreement">
-	<h3>약관</h3><span style="float:right;"><input type="checkbox" class="chkBox" id="agreeAll"/>전체 동의</span>
-	
-		<div class="content" style="clear: both;">
-		<h5>수집하는 개인정보</h5>
-		<p>수집하는 개인정보의 항목<p>
-		<p>수집하는 목적/방법에 따라 수집하는 개인정보 항목은 다음과 같습니다.<br/>
-		-기본 개인정보 정보<br/>
-		-로그인 ID, 비밀번호<br/>
-		-전화번호, 자택주소</p>
-		</div>
-		<div class="agree_array"><input type="checkbox" class="chkBox" id="chk1" name="chk"/>동의</div>
+		<form name="frm" class="join_form" id="frm" method="post" action="user_join.jsp">
+			<ul>
+				<li>
+					<label>아이디</label>
+					<span>
+						<input type="text" class="user_text" readonly="readonly"  id="id" name="user_id"
+						placeholder="중복확인 버튼 클릭"/>
+						<input type="button" value="중복확인" class="searchBtn" id="searchId"/>
+					</span>
+				</li>
+				<li>
+					<label>비밀번호</label>
+					<span>
+						<input type="password" id="pass" class="user_text" name="user_pass"/>
+					</span>
+				</li>
+				<li>
+					<label>비밀번호 확인</label>
+					<span>
+						<input type="password" id="pass2" class="user_text"/>
+					</span>
+				</li>
+				<li>
+					<label>이름</label>
+					<span>
+						<input type="text" id="name" class="user_text" name="user_name"/>
+					</span>
+				</li>
+				<li>
+					<label>전화번호</label>
+					<span>
+						<input type="text" id="phone" class="user_text" name="user_phone"/>
+					</span>
+				</li>
+				<li>
+					<label>우편번호</label>
+					<span>
+						<input type="text" class="user_text"readonly="readonly" id="zipcode" name="user_zipcode" 
+						placeholder="검색 버튼 클릭"/>
+						<input type="button" value="검색" class="searchBtn" id="searchZip"/>
+					</span>
+				</li>
+				<li>
+					<label>주소</label>
+					<span>
+						<input type="text" class="user_text" readonly="readonly" id="addr1" name="user_addr1"/>
+					</span>
+				</li>
+				<li>
+					<label>상세주소</label>
+					<span>
+						<input type="text" class="user_text" id="addr2" name="user_addr2"/>
+					</span>
+				</li>
+			</ul>
+		</form>
 		
-		<div class="content">
-		<h5>약관</h5>
-		<p>개인정보 수집 및 이용 목적</p>
-		<p>이 사이트는 수집한 개인정보를 다음의 목적을 위해 활용합니다.<br/>
-		- 서비스 제공에 관한 계약 이행 및 서비스 제공에 따른 요금정산 목적<br/>
-		-학습진행, 컨텐츠 제공, 구매 및 요금 결제, 물품배송 또는 청구지 등 발송<br/>
-		- 회원 관리
-		 회원제 서비스 이용에 따른 본인 확인, 개인 식별, 불량 회원의 부정 이용 방지와
-		 비인가사용 방지, 가입 의사 확인, 연령 확인, 불만 처리 등 민원 처리, 고지사항 전달
+		<div id="agreement">
+		<h3>약관</h3><span style="float:right;"><input type="checkbox" class="chkBox" id="agreeAll"/>전체 동의</span>
+		
+			<div class="content" style="clear: both;">
+				<h5>수집하는 개인정보</h5>
+				<p>수집하는 개인정보의 항목<p>
+				<p>수집하는 목적/방법에 따라 수집하는 개인정보 항목은 다음과 같습니다.<br/>
+				-기본 개인정보 정보<br/>
+				-로그인 ID, 비밀번호<br/>
+				-전화번호, 자택주소</p>
+			</div>
+			<div class="agree_array"><input type="checkbox" class="chkBox" id="chk1" name="chk"/>동의</div>
+			
+			<div class="content">
+				<h5>약관</h5>
+				<p>개인정보 수집 및 이용 목적</p>
+				<p>이 사이트는 수집한 개인정보를 다음의 목적을 위해 활용합니다.<br/>
+				- 서비스 제공에 관한 계약 이행 및 서비스 제공에 따른 요금정산 목적<br/>
+				-학습진행, 컨텐츠 제공, 구매 및 요금 결제, 물품배송 또는 청구지 등 발송<br/>
+				- 회원 관리
+				 회원제 서비스 이용에 따른 본인 확인, 개인 식별, 불량 회원의 부정 이용 방지와
+				 비인가사용 방지, 가입 의사 확인, 연령 확인, 불만 처리 등 민원 처리, 고지사항 전달
+			</div>
+			<div class="agree_array"><input type="checkbox" class="chkBox" id="chk2" name="chk"/>동의</div>
+		</div><!-- agreement -->
+		<div style="text-align: center;">
+			<a href="#void"><input type="button"  value="회원가입" id="joinBtn" class="join_btn"></a>
 		</div>
-		<div class="agree_array"><input type="checkbox" class="chkBox" id="chk2" name="chk"/>동의</div>
-	</div><!-- agreement -->
-	<div style="text-align: center;">
-		<a href="#void"><input type="button"  value="회원가입" id="joinBtn" ></a>
-	</div>
-	
-	
 	</div><!-- container -->
 	
 	<c:import url="../common/jsp/common_footer.jsp"></c:import>
-</div>
-
 </body>
 </html>
