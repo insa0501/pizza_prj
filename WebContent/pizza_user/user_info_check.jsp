@@ -35,7 +35,6 @@ table{ margin:0px auto;}
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     
-<link rel="stylesheet" href="css/main_css1.css">
 <link rel="stylesheet" type="text/css" href="http://localhost/pizza_prj/common/css/common_footer.css">
 <link rel="stylesheet" type="text/css" href="http://localhost/pizza_prj/common/css/my_page_menu.css">
 <script type="text/javascript">
@@ -60,18 +59,18 @@ $(function(){
 			<div class="my_page_title">마이페이지</div>
 			<div class="menu_content">
 				<div class="menu_item"><a href="user_order_list.jsp">주문내역</a></div>
-				<div class="menu_item"><a href="user_info_check.jsp">회원정보변경</a></div>
+				<div class="menu_item"><a href="user_info_check.jsp">회원정보 수정</a></div>
 			</div>
 		</div>
 		<div class="main_content">
 			<div class="page_title">회원정보수정</div>
 			<div id="input_area">
-				<form action="user_info_change.jsp" method="post" name="frm" id="frm"  >
+				<form action="user_info_change.jsp" method="post" name="frm" id="frm" class="input_pw_form" >
 					<table>
 						<tr>
 							<th colspan="2" style="font-size:16px;">비밀번호를 입력해주세요.</th>
 						</tr>
-						<tr>
+						<tr class="user_input">
 							<td style="width: 160px;"><input type="password" class="user_text" name="user_pass"/></td>
 							<td><input type="button" value="확인" class="searchBtn" id="chk"/></td>
 						</tr>

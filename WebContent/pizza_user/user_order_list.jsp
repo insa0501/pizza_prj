@@ -35,12 +35,6 @@
 <script type="text/javascript">
 	$(function(){
 		
-		$('.btn_day').click(function(){
-/* 			if($('.btn_day').hasClass("active")){
-				$('.btn_day').removeClass("active");
-			} */
-			$(this).addClass('active');
-		});
 		
 	})//ready
 	
@@ -60,25 +54,25 @@
 	<jsp:include page="../common/jsp/common_header.jsp"/>
 </div>	
 <div class="container">
-		<div class="my_page_menu">
+		<div class.="my_page_menu">
 			<div class="my_page_title">마이페이지</div>
 			<div class="menu_content">
 				<div class="menu_item"><a href="user_order_list.jsp">주문내역</a></div>
-				<div class="menu_item"><a href="user_info_check.jsp">회원정보변경</a></div>
+				<div class="menu_item"><a href="user_info_check.jsp">회원정보 수정</a></div>
 			</div>
 		</div>
 		
 		<div id="main_content" class="main_content">
 			<div class="page_title">주문 내역</div>   
-			<div>
+			<div class="select_day">
 <!-- 		   		<a href="user_order_list.jsp?tempDate=today" id="today" class="btn_day" onclick="today()">오늘</a>    
 		   		<a href="user_order_list.jsp?tempDate=a_month" id="a_month" class="btn_day" onclick="a_month()">1개월</a>
 		   		<a href="user_order_list.jsp?tempDate=three_month" id="three_month" class="btn_day" onclick="three_month()">3개월</a>
 		   		<a href="user_order_list.jsp?tempDate=all" id="all" class="btn_day">전체</a>  -->
-		   		<a href="user_order_list.jsp?tempDate=today" id="today" class="btn_day">오늘</a>    
-		   		<a href="user_order_list.jsp?tempDate=a_month" id="a_month" class="btn_day">1개월</a>
-		   		<a href="user_order_list.jsp?tempDate=three_month" id="three_month" class="btn_day">3개월</a>
-		   		<a href="user_order_list.jsp?tempDate=all" id="all" class="btn_day">전체</a> 
+		   		<a href="user_order_list.jsp?tempDate=today" id="today" class="btn_day ${ param.tempDate=='today'?' active':''}" >오늘</a>    
+		   		<a href="user_order_list.jsp?tempDate=a_month" id="a_month" class="btn_day ${ param.tempDate=='a_month'?' active':''}">1개월</a>
+		   		<a href="user_order_list.jsp?tempDate=three_month" id="three_month" class="btn_day ${ param.tempDate=='three_month'?' active':''}">3개월</a>
+		   		<a href="user_order_list.jsp?tempDate=all" id="all" class="btn_day ${ param.tempDate=='all'?' active':''}">전체</a> 
 		    </div>
 	
 			<div>
