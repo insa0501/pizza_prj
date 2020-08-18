@@ -93,12 +93,6 @@ public class MenuDAO {
 	         //pstmt.setString(5,amVO.getMenu_activity() );
 	         pstmt.setString(6,amVO.getAdmin_id());
 	            
-	         System.out.print(amVO.getMenu_name()); //null
-	         System.out.print(amVO.getMenu_type()); //null
-	         System.out.print(amVO.getMenu_price()); //0
-	         System.out.print(amVO.getMenu_img());
-	         System.out.print(amVO.getMenu_activity());//null
-	         System.out.print(amVO.getAdmin_id());
 	         pstmt.executeUpdate();
 	            
 	         }finally {
@@ -257,13 +251,6 @@ public class MenuDAO {
 				.append("	where menu_name=? ");
 				
 				pstmt = con.prepareStatement(updateMenu.toString());
-				
-				System.out.println(mVO.getMenu_type());
-				System.out.println(mVO.getMenu_price());
-				System.out.println(mVO.getMenu_img());
-				System.out.println(mVO.getMenu_activity());
-				System.out.println(mVO.getAdmin_id());
-				System.out.println(mVO.getMenu_name());
 				
 				pstmt.setString(1, mVO.getMenu_type());
 				pstmt.setInt(2, mVO.getMenu_price());

@@ -83,7 +83,6 @@ private static OrderDAO order_dao;
 			if (rs.next()) { // 검색결과가 있다면
 				// 로그인한 유저의 전화번호, 우편번호, 주소, 상세주소를 ouiVO에 넣는다.
 				ouiVO = new OrderUserInfoVO(rs.getString("user_phone"), rs.getString("user_zipcode"), rs.getString("user_addr1"), rs.getString("user_addr2"));
-				System.out.println(ouiVO.toString());
 			} // end if
 			
 		} finally {
@@ -96,14 +95,95 @@ private static OrderDAO order_dao;
 	} // selectUserInfo()
 	
 	/**
-	 * @param oVO
+	 * 주문내역(order_list 테이블)을 추가하고 주문번호를 반환하는 일
+	 * @param orderVO
+	 * 
 	 */
-	public void insertOrder(OrderVO oVO) {
+	//2020-08-14 김홍석 - 코드 추가
+	//2020-08-17 김홍석 - 반환형 void -> String 변경
+	public String insertOrder(OrderVO oVO) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		OrderUserInfoVO ouiVO = oVO.getOuiVO();
+		String user_phone = ouiVO.getUser_phone();
+		user_phone = user_phone.replace("-","");
+		String orderNo = "";
+		try {
+			// connection 얻기
+			con = getConn();
+			// 쿼리문 작성
+			StringBuilder insertOrder = new StringBuilder();
+			insertOrder.append("	insert into order_list(order_no, order_date, user_id, user_zipcode, user_addr1, user_addr2, ")
+						.append("	user_phone, order_price, order_status, order_pay, user_ip)	")
+						.append("	values(seq_order_no.nextval, sysdate, ?, ?, ?, ?, ?, ?, '주문접수', ?, ? )	");
+			// 쿼리문 수행객체 얻기
+			pstmt = con.prepareStatement(insertOrder.toString());
+			// bind변수 넣기
+			pstmt.setString(1, oVO.getUser_id());
+			pstmt.setString(2, ouiVO.getUser_zipcode());
+			pstmt.setString(3, ouiVO.getUser_addr1());
+			pstmt.setString(4, ouiVO.getUser_addr2());
+			// 전화번호 하이픈 제거 필요
+			pstmt.setString(5, user_phone);
+			pstmt.setInt(6, oVO.getOrder_price());
+			pstmt.setString(7, oVO.getOrder_pay());
+			pstmt.setString(8, oVO.getUser_ip());
+			
+			pstmt.execute();
+			pstmt.close();
+			
+			// order_no를 받아오기위해 현재시퀀스의 번호를 가져온다.
+			pstmt = con.prepareStatement("	select seq_order_no.currval order_no from dual	");
+			rs = pstmt.executeQuery();
+						
+			if (rs.next()) {
+				// 현재 시퀀스 번호를 저장
+				orderNo = String.valueOf(rs.getInt("order_no"));
+				System.out.println(orderNo);
+			}// end if
+			
+		} finally {
+			if (pstmt != null) { pstmt.close();	} // end if
+			if (con != null) { con.close();	} // end if
+		} // end finally
 		
+		return orderNo;
 	} // insertOrder()
 	
-	public void insertOrderMenu(OrderMenuVO omVO) {
+	/**
+	 * 2020-08-14 김홍석 - 코드 추가
+	 * 주문메뉴(order_menu)를 추가하는 일
+	 * @param OrderMenuVO
+	 * @throws SQLException
+	 */
+	public void insertOrderMenu(OrderMenuVO omVO) throws SQLException{
+		Connection con = null;
+		PreparedStatement pstmt = null;
 		
+		try {
+			// connection 얻기
+			con = getConn();
+			// 쿼리문 생성
+			StringBuilder insertOrderMenu = new StringBuilder();
+			insertOrderMenu.append("	insert into order_menu (menu_name, order_no, order_menu_price, order_menu_cnt)"	)
+							.append("	values(?, ?, ?, ?)	");
+			
+			pstmt = con.prepareStatement(insertOrderMenu.toString());
+			
+			// bind 변수 넣기
+			pstmt.setString(1, omVO.getMenu_name());
+			pstmt.setString(2, omVO.getOrder_no());
+			pstmt.setInt(3, (omVO.getOrder_menu_price() * omVO.getOrder_menu_cnt()));
+			pstmt.setInt(4, omVO.getOrder_menu_cnt());
+			
+			pstmt.execute();
+			
+		} finally {
+			if (pstmt != null) { pstmt.close(); }
+			if (con != null) { con.close(); }
+		} // end finally
 	} // insertOrderMenu()
 	
 	public List<AdminOrderVO> selectOrderList(SelectOrderVO soVO) throws SQLException{
@@ -153,7 +233,8 @@ private static OrderDAO order_dao;
 			.append("		order by ol.order_no desc, om.menu_type, om.menu_name)	");
 			
 			// 검색 조건 입력시 쿼리문 추가
-			if(!"".equals(soVO.getSelectData()) && !(soVO.getSelectData() == null)) {
+			if(!"none".equals(soVO.getSelectType()) && !"".equals(soVO.getSelectData())
+					&& !(soVO.getSelectData() == null)) {
 				if ("order_no".equals(soVO.getSelectType())) {//검색조건이 주문번호일 경우
 					selectOrder
 					.append("	where order_no = ?	");
@@ -172,7 +253,8 @@ private static OrderDAO order_dao;
 			pstmt = con.prepareStatement(selectOrder.toString());
 			
 			//바인드 변수에 값 넣기
-			if(!"".equals(soVO.getSelectData()) && !(soVO.getSelectData() == null)) {
+			if(!"none".equals(soVO.getSelectType()) && !"".equals(soVO.getSelectData())
+					&& !(soVO.getSelectData() == null)) {
 				pstmt.setString(1, soVO.getSelectData());
 			}//end if
 			

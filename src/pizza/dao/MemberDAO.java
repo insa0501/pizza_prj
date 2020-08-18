@@ -138,7 +138,6 @@ private static MemberDAO member_dao;
 			
 			if(rs.next()) {
 				id=rs.getString("user_id");
-				System.out.println(id);
 			}//end if
 		}finally {
 			if(rs!=null) { rs.close(); }//end if
@@ -179,7 +178,6 @@ private static MemberDAO member_dao;
 			//5.�뜎�눖�봺 占쎈땾占쎈뻬 占쎌뜎 野껉퀗�궢 占쎈섯疫뀐옙
 			rs=pstmt.executeQuery();
 			
-			//System.out.println(spVO.getUser_id());
 			if(rs.next()) { //�뜎�눖�봺�눧紐꾨퓠占쎄퐣 user_pass揶쏉옙 占쎄퐜占쎈선占쎌궎筌롳옙
 				
 				selectPassFlag = true;
@@ -222,8 +220,6 @@ private static MemberDAO member_dao;
 		 
 			//5.�뜎�눖�봺 占쎈땾占쎈뻬 占쎌뜎 野껉퀗�궢 占쎈섯疫뀐옙
 			updatePassFlag =  pstmt.executeUpdate();
-			
-			System.out.println(updatePassFlag);
 			
 		}finally {
 			if(pstmt!=null) { pstmt.close(); }//end if
@@ -302,7 +298,7 @@ private static MemberDAO member_dao;
 		try {
 			// connection 占쎈섯疫뀐옙
 			con = getConn();
-			System.out.println(con);
+			
 			// �뜎�눖�봺�눧占� 占쎄문占쎄쉐占쎈릭疫뀐옙
 			StringBuilder selectOrder = new StringBuilder();
 			selectOrder
@@ -314,11 +310,6 @@ private static MemberDAO member_dao;
 				selectOrder.append("and order_date between ? and ? "); 				
 			}
 		
-			System.out.println(selectOrder);
-			System.out.println(solVO.getUser_id());
-			System.out.println(solVO.getStrDate());
-			System.out.println(solVO.getEndDate());
-						
 			pstmt = con.prepareStatement(selectOrder.toString());
 			// 獄쏅뗄�뵥占쎈굡 癰귨옙占쎈땾 揶쏉옙 占쎄퐫疫뀐옙
 			pstmt.setString(1, solVO.getUser_id());

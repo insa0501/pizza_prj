@@ -12,7 +12,6 @@
 	request.setCharacterEncoding("UTF-8");
 String user_id = (String)session.getAttribute("user_id");
 if(user_id == null){//세션에서 꺼내온 아이디가 없다.
-	System.out.println("적용");
 	response.sendRedirect("http://localhost/pizza_prj/pizza_user/main.jsp");
 	return;
 }//end if

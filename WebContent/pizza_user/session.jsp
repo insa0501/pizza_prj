@@ -9,7 +9,6 @@
 <%
 	session.setAttribute("user_id", "test5");
 String user_id = (String)session.getAttribute("user_id");
-System.out.println(user_id);
 	response.sendRedirect("user_info_check.jsp");
 	
 %>

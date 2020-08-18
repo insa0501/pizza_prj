@@ -6,7 +6,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script type="text/javascript">
 <%
-System.out.println("update 데이터 처리 페이지 "+request.getParameter("menuActivity"));
 String admin_id = (String)session.getAttribute("admin_id") == null ? "admin1":(String)session.getAttribute("admin_id");
 String menu_name = request.getParameter("menuName");
 String menu_type = request.getParameter("menuType");

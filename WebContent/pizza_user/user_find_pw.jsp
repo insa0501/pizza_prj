@@ -27,9 +27,9 @@
    
 <script type="text/javascript">
 	$(function(){
-
 	})//ready
 	
+		
 	window.onload = function() {
 		document.getElementById("user_id").addEventListener("keydown",chkEnter);
 		document.getElementById("user_name").addEventListener("keydown",chkEnter);

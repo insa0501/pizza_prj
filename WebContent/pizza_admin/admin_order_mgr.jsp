@@ -182,7 +182,7 @@ return indexList;	//페이지 이동폼을 담은 변수를 반환
         <div class="section_search">
             <div id="search_item" class="selectbox">
                 <select name="selectType" id="item_select" class="item_select">
-                	<option value="order_all"${ param.selectType=="order_all"?" selected='selected'":"" }>전체보기</option>
+                	<option value="none">전체보기</option>
                     <option value="order_no"${ param.selectType=="order_no"?" selected='selected'":"" }>주문번호</option>
                     <option value="user_id"${ param.selectType=="user_id"?" selected='selected'":"" }>주문id</option>
                     <option value="menu_name"${ param.selectType=="menu_name"?" selected='selected'":"" }>메뉴</option>
@@ -214,7 +214,7 @@ return indexList;	//페이지 이동폼을 담은 변수를 반환
             List<AdminOrderVO> orderList = oDao.selectOrderList(soVO);
             
     		//1. 한 화면에 보여줄 게시물의 수
-    		int pageScale = 1;
+    		int pageScale = 10;
     		
     		//2. 총 페이지 수
     		int totalPage = (int) Math.ceil((double)(orderList.size())/pageScale);
