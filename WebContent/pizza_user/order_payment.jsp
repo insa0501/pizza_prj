@@ -14,6 +14,18 @@
     
 </head>
 <%
+	// 세션에 있는 유저 아이디 확인
+	String user_id = "";
+	user_id = (String) session.getAttribute("user_id");
+	System.out.println("user_id : " + user_id);
+	// 세션이 없거나 세션만료 시 메인화면으로
+	if (user_id == null) {
+		response.sendRedirect("main.jsp");
+		return;
+	} // end if
+	
+	response.setHeader( "Cache-Control", "no-store, no-cache, must-revalidate");  //HTTP 1.1
+	response.setDateHeader ("Expires", -1); //prevents caching at the proxy server
 	
 	int totalPrice = 0; // 총액을 받을 변수
 	OrderUserInfoVO ouiVO = null;
@@ -29,7 +41,7 @@
 		session.setAttribute("total_price", totalPrice);
 		
 		OrderDAO oDAO = OrderDAO.getInstance();
-		ouiVO = oDAO.selectUserInfo("test1");
+		ouiVO = oDAO.selectUserInfo(user_id);
 		
 		// session 에 ouiVO를 넣는다.
 		session.setAttribute("ouiVO", ouiVO);
@@ -58,14 +70,22 @@
 %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script type="text/javascript">
+	
 	$(function() {
+		// 결제버튼
 		$("#divPay").click(function() {
-			
-			
+			if( !$("[name='order_payment']").is(":checked")) {
+				alert("결제수단을 선택해주세요");
+				return;
+			}// end if
 			orderPaymentFrm.submit();
 		}); //click 
 	});
-		
+	
+	function logout(){
+	    alert("로그아웃 하셨습니다.");	
+		location.href = "http://localhost/pizza_prj/pizza_user/user_logout.jsp"; 
+    }//logout()	
 	
 </script>
 <body>
@@ -77,8 +97,10 @@
               <a href="#side_divider">사이드</a>
           </div>
           <div>
-              <span>회원가입</span>
-              <span>로그인</span>
+          <c:if test="${ not empty user_name }">
+              <span><a href="http://localhost/pizza_prj/pizza_user/user_order_list.jsp"><c:out value="${ user_name }"/></a>님</span>
+              <span><a href="#void" onclick="logout()">로그아웃</a></span>
+          </c:if>
           </div>
       </div>
   </section>
