@@ -126,7 +126,9 @@ body{
 	        		
 	        
 	        if(!"".equals(user_id)){ //name, phone이 일치하면 user_id 반환
-	        	session.setAttribute("userfind_id", user_id);
+	        	//2020-08-18 김도연
+	        	//아이디 찾기를 할 때만 검색된 아이디를 사용할 수 있게 session -> pageContext로 수정
+	        	pageContext.setAttribute("userfind_id", user_id);
 	        }else{
 	        	%>
 	        	<script type="text/javascript">
