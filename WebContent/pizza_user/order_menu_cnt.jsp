@@ -2,8 +2,12 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
-
-	int sessionTotalPrice = (Integer) session.getAttribute("total_price");
+	// 세션에 있는 총액 확인
+	//int sessionTotalPrice = 0;
+	//sessionTotalPrice = (Integer) session.getAttribute("total_price");
+	// 세션에 있는 유저 아이디 확인
+	String user_id = "";
+	user_id = (String) session.getAttribute("user_id");
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,6 +19,7 @@
 </head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script type="text/javascript">
+
 	$(function(){
 		var priceArr = new Array();
 		var cntArr = new Array();
@@ -59,12 +64,16 @@
 			orderMenuCntFrm.submit();
 		}); // click
 	});
-	function order_price() {
-	} // order_price()
+	
+	function logout(){
+	    alert("로그아웃 하셨습니다.");	
+		location.href = "http://localhost/pizza_prj/pizza_user/user_logout.jsp"; 
+    }//logout()
+	
 </script>
 <body>
-	<jsp:include page="../common/jsp/common_header.jsp"/>
-<!--     <section class="header">
+	
+    <section class="header">
         <div class="header_top"></div>
         <div class="header_nav" id="header_nav">
             <div>
@@ -72,11 +81,13 @@
                 <span>신제품 / 이벤트</span>
             </div>
             <div>
-                <span>회원가입</span>
-                <span>로그인</span>
+            <c:if test="${ not empty user_id }">
+                <span><a href="http://localhost/pizza_prj/pizza_user/user_order_list.jsp"><c:out value="${ user_name }"/></a>님</span>
+                <span><a href="#void" onclick="logout()"><c:out value="로그아웃"/></a></span>
+            </c:if>
             </div>
         </div>
-    </section> -->
+    </section>
     <form action="order_payment.jsp" name="orderMenuCntFrm">
         <section class="menu_section pizza">
             <div class="menu_title">피자</div>
