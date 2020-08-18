@@ -63,8 +63,12 @@
 			orderMenuCntFrm.submit();
 		}); // click
 	});
-	function order_price() {
-	} // order_price()
+	
+	function logout(){
+	    alert("로그아웃 하셨습니다.");	
+		location.href = "http://localhost/pizza_prj/pizza_user/user_logout.jsp"; 
+    }//logout()
+	
 </script>
 <body>
 	
@@ -76,8 +80,10 @@
                 <span>신제품 / 이벤트</span>
             </div>
             <div>
-                <span>회원가입</span>
-                <span>로그인</span>
+            <c:if test="${ not empty user_id }">
+                <span><a href="http://localhost/pizza_prj/pizza_user/user_order_list.jsp"><c:out value="${ user_name }"/></a>님</span>
+                <span><a href="#void" onclick="logout()"><c:out value="로그아웃"/></a></span>
+            </c:if>
             </div>
         </div>
     </section>
