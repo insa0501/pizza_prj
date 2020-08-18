@@ -2,8 +2,12 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
-
-	int sessionTotalPrice = (Integer) session.getAttribute("total_price");
+	// 세션에 있는 총액 확인
+	//int sessionTotalPrice = 0;
+	//sessionTotalPrice = (Integer) session.getAttribute("total_price");
+	// 세션에 있는 유저 아이디 확인
+	String user_id = "";
+	user_id = (String) session.getAttribute("user_id");
 %>
 <!DOCTYPE html>
 <html lang="en">

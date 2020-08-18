@@ -10,10 +10,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>3조</title>
-    <link rel="stylesheet" href="css\order_payment_css.css">
+    <link rel="stylesheet" href="css/order_payment_css.css">
     
 </head>
 <%
+	// 세션에 있는 유저 아이디 확인
+	String user_id = "";
+	user_id = (String) session.getAttribute("user_id");
+	System.out.println("user_id : " + user_id);
+	// 세션이 없거나 세션만료 시 메인화면으로
+	//if (user_id == null) {
+	//	response.sendRedirect("main.jsp");
+	//	return;
+	//} // end if
 	
 	int totalPrice = 0; // 총액을 받을 변수
 	OrderUserInfoVO ouiVO = null;
@@ -29,7 +38,11 @@
 		session.setAttribute("total_price", totalPrice);
 		
 		OrderDAO oDAO = OrderDAO.getInstance();
-		ouiVO = oDAO.selectUserInfo("test1");
+		ouiVO = oDAO.selectUserInfo(user_id);
+		
+		// session 에 ouiVO를 넣는다.
+		session.setAttribute("ouiVO", ouiVO);
+		
 		user_phone = ouiVO.getUser_phone();
 		user_zipcode = ouiVO.getUser_zipcode();
 		user_addr1 = ouiVO.getUser_addr1();
@@ -37,7 +50,9 @@
 		user_addr.append(user_zipcode).append("	")
 				.append(user_addr1).append(" ")
 				.append(user_addr2);
-		if (totalPrice == 0) {
+		
+		// 2020-08-17 김홍석 조건 변경 totalPrice == 0 -> menuName length == 0
+		if (request.getParameterValues("menuName").length == 0) { // 파라미터로 받은 메뉴 갯수가 0개 일 경우
 			response.sendRedirect("order_menu_cnt.jsp");
 			return;
 		} // end if
@@ -50,6 +65,18 @@
 		return;
 	} // end catch
 %>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$("#divPay").click(function() {
+			
+			
+			orderPaymentFrm.submit();
+		}); //click 
+	});
+		
+	
+</script>
 <body>
    <section class="header">
       <div class="header_top"></div>
@@ -65,7 +92,7 @@
       </div>
   </section>
 	
-    <form action="order_payment_process.jsp">
+    <form action="order_payment_process.jsp" name="orderPaymentFrm">
       <section class="main_section">
          <div class="section_title">1. 고객정보</div>
          <div class="section_details">
@@ -101,9 +128,12 @@
                <li class="menu_lists">
                   <p>
                      <span class="list_title"><%=menuName[i] %></span>
+                     <input type="hidden" name="menuName" id="menuName" value="<%=menuName[i]%>"/>
                      <span class="list_menu_cnt">(수량 <%=menuCnt[i] %>)</span>
+                     <input type="hidden" name="menuCnt" id="menuCnt" value="<%=menuCnt[i]%>"/>
                   </p>
                   <span class="list_menu_price"><%=Integer.parseInt(menuCnt[i]) * Integer.parseInt(menuPrice[i]) %>원</span>
+                     <input type="hidden" name="menuPrice" id="menuPrice" value="<%=Integer.parseInt(menuCnt[i]) * Integer.parseInt(menuPrice[i])%>"/>
                </li>
             <%
             } // end for
@@ -125,10 +155,10 @@
                   결제완료 후 결제수단 변경은 불가합니다.
                </span>
 
-               <span class="pay_radio"><input type="radio" name="order_payment"> 카드결제</span>
-               <span class="pay_radio"><input type="radio" name="order_payment"> 카드결제</span>
-               <span class="pay_radio"><input type="radio" name="order_payment"> 카드결제</span>
-               <span class="pay_radio"><input type="radio" name="order_payment"> 카드결제</span>
+               <span class="pay_radio"><input type="radio" name="order_payment" value="카드결제"> 카드결제</span>
+               <span class="pay_radio"><input type="radio" name="order_payment" value="휴대폰 결제"> 휴대폰 결제</span>
+               <span class="pay_radio"><input type="radio" name="order_payment" value="카카오 페이"> 카카오 페이</span>
+               <span class="pay_radio"><input type="radio" name="order_payment" value="네이버 페이"> 네이버 페이</span>
             </div>
          </section>
          <section class="half_section">
@@ -149,8 +179,9 @@
                <div class="total_payment">
                   <span>총 주문 금액</span>
                   <span class="total_payment_price"><%=totalPrice%> 원</span>
+                  <input type="hidden" name="order_price" id="order_price" value="<%=totalPrice %>"/>
                </div>
-               <div class="payment_btn">결제하기</div>
+               <div class="payment_btn" style="cursor:pointer;" id="divPay">결제하기</div>
             </div>
          </section>
       </section>

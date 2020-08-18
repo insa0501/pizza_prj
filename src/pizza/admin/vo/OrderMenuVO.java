@@ -11,9 +11,11 @@ public class OrderMenuVO {
 	private int order_menu_price, order_menu_cnt;
 	// 2020-08-08 ±èÈ«¼® - º¯¼ö¸í¼öÁ¤
 	// menu_price -> order_menu_price / cnt -> order_menu_cnt
-	
+	// 2020-08-14 ±èÈ«¼® - º¯¼ö»èÁ¦
+	// order_no 
 	public OrderMenuVO() {
 	}
+	
 	public OrderMenuVO(String order_no, String menu_name, int order_menu_price, int order_menu_cnt) {
 		super();
 		this.order_no = order_no;
@@ -45,6 +47,11 @@ public class OrderMenuVO {
 	public void setOrder_menu_cnt(int order_menu_cnt) {
 		this.order_menu_cnt = order_menu_cnt;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "OrderMenuVO [order_no=" + order_no + ", menu_name=" + menu_name + ", order_menu_price="
+				+ order_menu_price + ", order_menu_cnt=" + order_menu_cnt + "]";
+	}
 	
 } // class
