@@ -67,15 +67,30 @@ body {
 }
 
 /* 기간 선택 부분 */
+.select_day{
+	margin-top: 30px;
+}
+
 .btn_day{
     margin-right: 20px;
     vertical-align: top;
+	width: 80px;
     font-size: 1.2em;
-    /* float: left; */
+    padding: 10px 15px;
+    border-radius: 10px;
+    color : gray;
+}
+
+.btn_day:hover{
+	background-color: #c10a28;
+	color:white;
+	font-weight: 600;
+	text-decoration: none;
 }
 
 .active {
-	background-color: red;
+	background-color: #c10a28;
+	color: white;
 }
 
 .order_box{
@@ -99,4 +114,37 @@ body {
 
 .order_box > .order {
 	padding: 5px 0;
+}
+
+
+
+
+/* user_info_check.jsp에서 사용 */
+/* 비밀번호 입력  및 버튼*/
+.input_pw_form {
+	margin: 30px 0;
+}
+
+.input_pw_form > th {
+	padding-top: 30px;
+}
+
+.user_text{
+	border: 1px solid #CBCBCB;
+	height: 40px;
+	background-color: #FFFFFF;
+}
+
+.searchBtn {
+	height: 40px;
+	background-color: #c10a28;
+	width: 80px;
+	color: white;
+	box-shadow: none;
+	border: none;
+	border-radius: 5px;
+}
+
+.searchBtn:hover {
+	font-weight: 600;
 }
