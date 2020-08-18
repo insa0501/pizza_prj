@@ -6,6 +6,7 @@
     pageEncoding="EUC-KR"
     info="결제처리 (DB insert) 를 하는 페이지"%>
 <%
+	// test 주석
 	String user_id = (String) session.getAttribute("user_id");
 	//System.out.println("user_id : " + user_id);
 	// 세션이 없거나 세션만료 시 메인화면으로
