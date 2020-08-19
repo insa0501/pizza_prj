@@ -62,15 +62,15 @@ private static MemberDAO member_dao;
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try {
-			//占쎈슔�걞�땻戮녹삕占쏙옙 �뜝�럥�꽢�뼨�먯삕
+			//�뜝�럥�뒗占쎄콪占쎈빝筌믩끃�굲�뜝�룞�삕 占쎈쐻占쎈윥占쎄숱占쎈섀占쎈Ŋ�굲
 			con = getConn();
 			StringBuilder sb = new StringBuilder();
 			sb
 			.append("	insert into member (user_id, user_pass, user_name, user_phone, user_zipcode, user_addr1, user_addr2, user_ip )	")
 			.append("	values ( ?, ?, ?, ?, ?, ?, ?, ? )	");
-			//占쎈쐩占쎈닑占쎈뉴占쎈닱�뜝占� �뜝�럡臾멨뜝�럡�뎽 �뤆�룇鍮섊뙼占� �뜝�럥�꽢�뼨�먯삕
+			//�뜝�럥�맗�뜝�럥�땻�뜝�럥�돱�뜝�럥�떛占쎈쐻�뜝占� 占쎈쐻占쎈윞�눧硫⑤쐻占쎈윞占쎈렰 占쎈쨬占쎈즵�뜮�꼯�쇊�뜝占� 占쎈쐻占쎈윥占쎄숱占쎈섀占쎈Ŋ�굲
 			pstmt = con.prepareStatement(sb.toString());
-			//�뛾�룆�뾼占쎈데�뜝�럥援� �솻洹⑥삕�뜝�럥�빢�뜝�럥�뱺 �뤆�룊�삕 �뜝�럡�맜�뼨�먯삕
+			//占쎈쎗占쎈즴占쎈씔�뜝�럥�뜲占쎈쐻占쎈윥�뤃占� 占쎌녃域밟뫁�굲占쎈쐻占쎈윥占쎈묄占쎈쐻占쎈윥占쎈군 占쎈쨬占쎈즸占쎌굲 占쎈쐻占쎈윞占쎈쭨占쎈섀占쎈Ŋ�굲
 			pstmt.setString(1, imVO.getUser_id());
 			pstmt.setString(2, imVO.getUser_pass());
 			pstmt.setString(3, imVO.getUser_name());
@@ -79,7 +79,7 @@ private static MemberDAO member_dao;
 			pstmt.setString(6, imVO.getUser_addr1());
 			pstmt.setString(7, imVO.getUser_addr2());
 			pstmt.setString(8, imVO.getUser_ip());
-			//占쎈쐩占쎈닑占쎈뉴 嶺뚯쉶�쐠占쎈꺄 �뜝�럥�빢�뜝�럥六�
+			//�뜝�럥�맗�뜝�럥�땻�뜝�럥�돱 癲ル슣�돳占쎌맆�뜝�럥爰� 占쎈쐻占쎈윥占쎈묄占쎈쐻占쎈윥筌묕옙
 			pstmt.execute();
 		} finally {
 			if( pstmt != null ) { pstmt.close(); }//end if
@@ -109,7 +109,7 @@ private static MemberDAO member_dao;
 	} // selectDupId
 	
 	/**
-	 * 占쎈툡占쎌뵠占쎈탵 筌≪뼐由�
+	 * �뜝�럥�닡�뜝�럩逾졾뜝�럥�꺏 嶺뚢돦堉먪뵳占�
 	 * @param siVO
 	 * @return
 	 * @throws SQLException
@@ -122,18 +122,18 @@ private static MemberDAO member_dao;
 		ResultSet rs=null;
 		
 		try {
-			//3.Conntection 占쎈섯疫뀐옙
+			//3.Conntection �뜝�럥�꽢�뼨�먯삕
 			con=getConn();
 			
-			//4.�뜎�눖�봺�눧占� 占쎄문占쎄쉐 揶쏆빘猿� 占쎈섯疫뀐옙
+			//4.占쎈쐩占쎈닑占쎈뉴占쎈닱�뜝占� �뜝�럡臾멨뜝�럡�뎽 �뤆�룇鍮섊뙼占� �뜝�럥�꽢�뼨�먯삕
 			String selectId="select user_id from member where user_name=? and user_phone=?";
 			pstmt=con.prepareStatement(selectId);
 			
-			//獄쏅뗄�뵥占쎈굡 癰귨옙占쎈땾 揶쏉옙 占쎄퐫疫뀐옙
+			//�뛾�룆�뾼占쎈데�뜝�럥援� �솻洹⑥삕�뜝�럥�빢 �뤆�룊�삕 �뜝�럡�맜�뼨�먯삕
 			pstmt.setString(1, siVO.getUser_name());
 			pstmt.setString(2, siVO.getUser_phone());
 			
-			//5.�뜎�눖�봺 占쎈땾占쎈뻬 占쎌뜎 野껉퀗�궢 占쎈섯疫뀐옙
+			//5.占쎈쐩占쎈닑占쎈뉴 �뜝�럥�빢�뜝�럥六� �뜝�럩�쐩 �뇦猿됲�쀯옙沅� �뜝�럥�꽢�뼨�먯삕
 			rs=pstmt.executeQuery();
 			
 			if(rs.next()) {
@@ -149,8 +149,8 @@ private static MemberDAO member_dao;
 	} // selectId()
 	
 	/**
-	 * �뜮袁⑨옙甕곕뜇�깈 筌≪뼐由�
-	 * 0808- 占쎌삢占쏙옙占쎌굺 SelectPassVO soVO占쎈퓠占쎄퐣 spVO嚥∽옙 癰귨옙野껓옙 
+	 * 占쎈쑏熬곣뫅�삕�뵓怨뺣쐡占쎄퉰 嶺뚢돦堉먪뵳占�
+	 * 0808- �뜝�럩�궋�뜝�룞�삕�뜝�럩援� SelectPassVO soVO�뜝�럥�뱺�뜝�럡�맋 spVO�슖�댙�삕 �솻洹⑥삕�뇦猿볦삕 
 	 * @param soVO
 	 * @return
 	 * @throws SQLException
@@ -163,22 +163,22 @@ private static MemberDAO member_dao;
 		ResultSet rs = null;
 		
 		try {
-			//3.Conntection 占쎈섯疫뀐옙
+			//3.Conntection �뜝�럥�꽢�뼨�먯삕
 			con=getConn();
 			
-			//4.�뜎�눖�봺�눧占� 占쎄문占쎄쉐 揶쏆빘猿� 占쎈섯疫뀐옙 user_id, user_name, user_phone;
+			//4.占쎈쐩占쎈닑占쎈뉴占쎈닱�뜝占� �뜝�럡臾멨뜝�럡�뎽 �뤆�룇鍮섊뙼占� �뜝�럥�꽢�뼨�먯삕 user_id, user_name, user_phone;
 			String selectPass="select user_pass from member where user_id=? and user_name=? and user_phone=?";
 			pstmt=con.prepareStatement(selectPass);
 			
-			//獄쏅뗄�뵥占쎈굡 癰귨옙占쎈땾 揶쏉옙 占쎄퐫疫뀐옙
+			//�뛾�룆�뾼占쎈데�뜝�럥援� �솻洹⑥삕�뜝�럥�빢 �뤆�룊�삕 �뜝�럡�맜�뼨�먯삕
 			pstmt.setString(1, spVO.getUser_id());
 			pstmt.setString(2, spVO.getUser_name());
 			pstmt.setString(3, spVO.getUser_phone());
 			
-			//5.�뜎�눖�봺 占쎈땾占쎈뻬 占쎌뜎 野껉퀗�궢 占쎈섯疫뀐옙
+			//5.占쎈쐩占쎈닑占쎈뉴 �뜝�럥�빢�뜝�럥六� �뜝�럩�쐩 �뇦猿됲�쀯옙沅� �뜝�럥�꽢�뼨�먯삕
 			rs=pstmt.executeQuery();
 			
-			if(rs.next()) { //�뜎�눖�봺�눧紐꾨퓠占쎄퐣 user_pass揶쏉옙 占쎄퐜占쎈선占쎌궎筌롳옙
+			if(rs.next()) { //占쎈쐩占쎈닑占쎈뉴占쎈닱筌뤾쑬�뱺�뜝�럡�맋 user_pass�뤆�룊�삕 �뜝�럡�맂�뜝�럥�꽑�뜝�럩沅롧춯濡녹삕
 				
 				selectPassFlag = true;
 	 
@@ -193,8 +193,6 @@ private static MemberDAO member_dao;
 	} // selectPass()
 	
 	/**
-	 * �뜮袁⑨옙甕곕뜇�깈 癰귨옙野껓옙
-	 * 0808 筌띲끆而삭퉪占쏙옙�땾 String pass占쎈퓠占쎄퐣 UpdatePassVO upVO嚥∽옙 癰귨옙野껓옙
 	 * @param upVO
 	 * @return
 	 * @throws SQLException
@@ -206,27 +204,30 @@ private static MemberDAO member_dao;
 		PreparedStatement pstmt = null;
 	 
 		try {
-			//3.Conntection 占쎈섯疫뀐옙
 			con=getConn();
 			
-			//4.�뜎�눖�봺�눧占� 占쎄문占쎄쉐 揶쏆빘猿� 占쎈섯疫뀐옙 user_id, user_name, user_phone;
-			String updatePass="update member set user_pass=? where user_id=?";
+			String updatePass="update member set user_pass = 1234 where user_id = 'test1'";
 			//update member set user_pass='0000' where user_id='grace';
 			pstmt=con.prepareStatement(updatePass);
 			
-			//獄쏅뗄�뵥占쎈굡 癰귨옙占쎈땾 揶쏉옙 占쎄퐫疫뀐옙
-			pstmt.setString(1, upVO.getUser_pass());
-			pstmt.setString(2, upVO.getUser_id());
+			
+			System.out.println("DAO "+upVO.getUser_pass());
+			System.out.println("DAO "+upVO.getUser_id());
+			
+			//pstmt.setString(1, upVO.getUser_pass());
+			//pstmt.setString(2, upVO.getUser_id());
 		 
-			//5.�뜎�눖�봺 占쎈땾占쎈뻬 占쎌뜎 野껉퀗�궢 占쎈섯疫뀐옙
+			System.out.println("updatePassFlag �븵");
 			updatePassFlag =  pstmt.executeUpdate();
+			System.out.println("updatePassFlag �뮘");
 			
 		}finally {
 			if(pstmt!=null) { pstmt.close(); }//end if
 			if(con!=null) { con.close(); }//end if
+			System.out.println("DAO �걹");
 		}//end finally
 		
-		return updatePassFlag; //獄쏆꼹�넎揶쏅�れ뵠 1占쎌뵠筌롳옙 癰귨옙野껓옙 占쎌끏�뙴占� , 0占쎌뵠筌롳옙 占쎈뼄占쎈솭
+		return updatePassFlag; 
 	} // updatePass()
 	
 	
@@ -296,10 +297,10 @@ private static MemberDAO member_dao;
 		ResultSet rs = null;
 
 		try {
-			// connection 占쎈섯疫뀐옙
+			// connection �뜝�럥�꽢�뼨�먯삕
 			con = getConn();
 			
-			// �뜎�눖�봺�눧占� 占쎄문占쎄쉐占쎈릭疫뀐옙
+			// 占쎈쐩占쎈닑占쎈뉴占쎈닱�뜝占� �뜝�럡臾멨뜝�럡�뎽�뜝�럥由��뼨�먯삕
 			StringBuilder selectOrder = new StringBuilder();
 			selectOrder
 			.append("	select ORDER_NO, ORDER_DATE, ORDER_PRICE, ORDER_STATUS ")
@@ -309,17 +310,21 @@ private static MemberDAO member_dao;
 			if(solVO.getStrDate() != null) {
 				selectOrder.append("and order_date between ? and ? "); 				
 			}
+			selectOrder.append("	order by order_date desc");
 		
 			pstmt = con.prepareStatement(selectOrder.toString());
-			// 獄쏅뗄�뵥占쎈굡 癰귨옙占쎈땾 揶쏉옙 占쎄퐫疫뀐옙
+			// �뛾�룆�뾼占쎈데�뜝�럥援� �솻洹⑥삕�뜝�럥�빢 �뤆�룊�삕 �뜝�럡�맜�뼨�먯삕
 			pstmt.setString(1, solVO.getUser_id());
 			
 			if(solVO.getStrDate() != null) {
+				//System.out.println(solVO.getStrDate()+"부터");
+				//System.out.println(solVO.getEndDate()+"까지 조회");
+				
 				pstmt.setString(2, solVO.getStrDate());
 				pstmt.setString(3, solVO.getEndDate());
 			}
 
-			// �뜎�눖�봺�눧占� 占쎈땾占쎈뻬 占쎌뜎 野껉퀗�궢 占쎈섯疫뀐옙
+			// 占쎈쐩占쎈닑占쎈뉴占쎈닱�뜝占� �뜝�럥�빢�뜝�럥六� �뜝�럩�쐩 �뇦猿됲�쀯옙沅� �뜝�럥�꽢�뼨�먯삕
 			rs = pstmt.executeQuery();
 
 			UserOrderVO uoVO = null;
@@ -348,7 +353,7 @@ private static MemberDAO member_dao;
 	} // selectOrderList
 	
 	/**
-	 * 雅뚯눖揆 占쎄땀占쎈열占쎌벥 筌롫뗀�뤀 �겫占썽겫袁⑹뱽 List嚥∽옙 獄쏆꼹�넎占쎈릭占쎈뮉 Method
+	 * �썒�슣�닑�룇 �뜝�럡���뜝�럥�뿴�뜝�럩踰� 嶺뚮∥��占쎈� 占쎄껀�뜝�띂寃ヨ쥈�뫗諭� List�슖�댙�삕 �뛾�룇瑗뱄옙�꼶�뜝�럥由��뜝�럥裕� Method
 	 * 
 	 * @param orderNo
 	 * @return
@@ -362,9 +367,9 @@ private static MemberDAO member_dao;
 		ResultSet rs = null;
 
 		try {
-			// �뚣끇苑뽳옙�� 占쎈섯疫뀐옙
+			// 占쎈슔�걞�땻戮녹삕占쏙옙 �뜝�럥�꽢�뼨�먯삕
 			con = getConn();
-			// �뜎�눖�봺�눧占� 占쎄문占쎄쉐揶쏆빘猿� 占쎈섯疫뀐옙
+			// 占쎈쐩占쎈닑占쎈뉴占쎈닱�뜝占� �뜝�럡臾멨뜝�럡�뎽�뤆�룇鍮섊뙼占� �뜝�럥�꽢�뼨�먯삕
 			StringBuilder selectOrderMenu = new StringBuilder();
 			selectOrderMenu
 			.append("	select menu_name, order_no, order_menu_price, order_menu_cnt ")
@@ -372,10 +377,10 @@ private static MemberDAO member_dao;
 			.append("	where order_no = ?");
 
 			pstmt = con.prepareStatement(selectOrderMenu.toString());
-			// 獄쏅뗄�뵥占쎈굡 癰귨옙占쎈땾 占쎈섯疫뀐옙
+			// �뛾�룆�뾼占쎈데�뜝�럥援� �솻洹⑥삕�뜝�럥�빢 �뜝�럥�꽢�뼨�먯삕
 			pstmt.setString(1, orderNo);
 
-			// �뜎�눖�봺占쎈땾占쎈뻬 占쎌뜎 野껉퀗�궢 占쎈섯疫뀐옙
+			// 占쎈쐩占쎈닑占쎈뉴�뜝�럥�빢�뜝�럥六� �뜝�럩�쐩 �뇦猿됲�쀯옙沅� �뜝�럥�꽢�뼨�먯삕
 			rs = pstmt.executeQuery();
 
 			OrderMenuVO omVO = null;
@@ -408,16 +413,16 @@ private static MemberDAO member_dao;
 		ResultSet rs = null;
 		
 		try {
-			// Connection 揶쏆빘猿� 占쎈섯疫뀐옙
+			// Connection �뤆�룇鍮섊뙼占� �뜝�럥�꽢�뼨�먯삕
 			con = getConn();
 			
-			// �뜎�눖�봺�눧占� 占쎌삂占쎄쉐
+			// 占쎈쐩占쎈닑占쎈뉴占쎈닱�뜝占� �뜝�럩�굚�뜝�럡�뎽
 			StringBuilder selectOrder = new StringBuilder();
 			selectOrder
 			.append("	select user_id, user_name, user_addr1, user_phone, user_status")
 			.append("	from member	");
 			
-			// 野껓옙占쎄퉳 鈺곌퀗援� 占쎌뿯占쎌젾占쎈뻻 �뜎�눖�봺�눧占� �빊遺쏙옙
+			// �뇦猿볦삕�뜝�럡�돰 �댖怨뚰�쀦뤃占� �뜝�럩肉��뜝�럩�졑�뜝�럥六� 占쎈쐩占쎈닑占쎈뉴占쎈닱�뜝占� 占쎈퉲�겫�룞�삕
 			if(!"".equals(smVO.getSelectData()) && smVO.getSelectData() != null) {
 				selectOrder
 				.append(" where ")
@@ -429,15 +434,15 @@ private static MemberDAO member_dao;
 			selectOrder
 			.append("	order by user_status desc	");
 			
-			//�뜎�눖�봺�눧占� 占쎈땾占쎈뻬 揶쏆빘猿� 占쎈섯疫뀐옙
+			//占쎈쐩占쎈닑占쎈뉴占쎈닱�뜝占� �뜝�럥�빢�뜝�럥六� �뤆�룇鍮섊뙼占� �뜝�럥�꽢�뼨�먯삕
 			pstmt = con.prepareStatement(selectOrder.toString());
 			
-			//獄쏅뗄�뵥占쎈굡 癰귨옙占쎈땾占쎈퓠 揶쏉옙 占쎄퐫疫뀐옙
+			//�뛾�룆�뾼占쎈데�뜝�럥援� �솻洹⑥삕�뜝�럥�빢�뜝�럥�뱺 �뤆�룊�삕 �뜝�럡�맜�뼨�먯삕
 			if(!"".equals(smVO.getSelectData()) && smVO.getSelectData() != null) {
 				pstmt.setString(1, smVO.getSelectData());
 			}//end if
 			
-			//�뜎�눖�봺 占쎈땾占쎈뻬 占쎌뜎 野껉퀗�궢 占쎈섯疫뀐옙
+			//占쎈쐩占쎈닑占쎈뉴 �뜝�럥�빢�뜝�럥六� �뜝�럩�쐩 �뇦猿됲�쀯옙沅� �뜝�럥�꽢�뼨�먯삕
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
@@ -463,23 +468,23 @@ private static MemberDAO member_dao;
 		ResultSet rs = null;
 		
 		try {
-			// Connection 媛앹껜 �뼸湲�
+			// Connection 揶쏆빘猿� 占쎈섯疫뀐옙
 			con = getConn();
 			
-			// 荑쇰━臾� �옉�꽦
+			// �뜎�눖�봺�눧占� 占쎌삂占쎄쉐
 			StringBuilder selectMeber = new StringBuilder();
 			selectMeber
 			.append("	select user_name, user_phone, user_zipcode, user_addr1, user_addr2, user_hiredate, user_ip	")
 			.append("	from member	")
 			.append("	where user_id = ?	");
 			
-			//荑쇰━臾� �닔�뻾 媛앹껜 �뼸湲�
+			//�뜎�눖�봺�눧占� 占쎈땾占쎈뻬 揶쏆빘猿� 占쎈섯疫뀐옙
 			pstmt = con.prepareStatement(selectMeber.toString());
 			
-			//諛붿씤�뱶 蹂��닔�뿉 媛� �꽔湲�
+			//獄쏅뗄�뵥占쎈굡 癰귨옙占쎈땾占쎈퓠 揶쏉옙 占쎄퐫疫뀐옙
 			pstmt.setString(1, user_id);
 			
-			//荑쇰━ �닔�뻾 �썑 寃곌낵 �뼸湲�
+			//�뜎�눖�봺 占쎈땾占쎈뻬 占쎌뜎 野껉퀗�궢 占쎈섯疫뀐옙
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
@@ -509,7 +514,7 @@ private static MemberDAO member_dao;
 			.append("	update member	")
 			.append("	set user_pass='', user_name='', user_phone='', user_zipcode=''	")
 			.append("	, user_addr1='', user_addr2='', user_hiredate='', user_ip=''	")
-			.append("	, user_status='�깉�눜', user_resdata=?, user_resign_date=sysdate	")
+			.append("	, user_status='占쎄퉱占쎈닚', user_resdata=?, user_resign_date=sysdate	")
 			.append("	where user_id = ?	");
 			pstmt = con.prepareStatement(sb.toString());
 			pstmt.setString(1, urVO.getUser_resdata());
@@ -533,23 +538,23 @@ private static MemberDAO member_dao;
 		ResultSet rs = null;
 		
 		try {
-			// Connection 媛앹껜 �뼸湲�
+			// Connection 揶쏆빘猿� 占쎈섯疫뀐옙
 			con = getConn();
 			
-			// 荑쇰━臾� �옉�꽦
+			// �뜎�눖�봺�눧占� 占쎌삂占쎄쉐
 			StringBuilder selectMeber = new StringBuilder();
 			selectMeber
 			.append("	select user_resdata, user_resign_date	")
 			.append("	from member	")
 			.append("	where user_id = ?	");
 			
-			//荑쇰━臾� �닔�뻾 媛앹껜 �뼸湲�
+			//�뜎�눖�봺�눧占� 占쎈땾占쎈뻬 揶쏆빘猿� 占쎈섯疫뀐옙
 			pstmt = con.prepareStatement(selectMeber.toString());
 			
-			//諛붿씤�뱶 蹂��닔�뿉 媛� �꽔湲�
+			//獄쏅뗄�뵥占쎈굡 癰귨옙占쎈땾占쎈퓠 揶쏉옙 占쎄퐫疫뀐옙
 			pstmt.setString(1, user_id);
 			
-			//荑쇰━ �닔�뻾 �썑 寃곌낵 �뼸湲�
+			//�뜎�눖�봺 占쎈땾占쎈뻬 占쎌뜎 野껉퀗�궢 占쎈섯疫뀐옙
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
