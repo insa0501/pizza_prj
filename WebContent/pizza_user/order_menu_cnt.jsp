@@ -1,14 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%
-	// 세션에 있는 총액 확인
-	//int sessionTotalPrice = 0;
-	//sessionTotalPrice = (Integer) session.getAttribute("total_price");
-	// 세션에 있는 유저 아이디 확인
-	String user_id = "";
-	user_id = (String) session.getAttribute("user_id");
-%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,6 +11,21 @@
 </head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script type="text/javascript">
+<%
+	// 세션에 있는 총액 확인
+	//int sessionTotalPrice = 0;
+	//sessionTotalPrice = (Integer) session.getAttribute("total_price");
+	// 세션에 있는 유저 아이디 확인
+	// 2020-08-19 김홍석 - 로그인이 되지 않았을 경우 메인화면으로 돌아오도록 변경
+	String user_id = "";
+	user_id = (String) session.getAttribute("user_id");
+	if (user_id == null) {
+%>
+		alert("로그인이 필요합니다.");
+		location.replace("http://localhost/pizza_prj/pizza_user/main.jsp");
+<%		
+	} // end if
+%>
 
 	$(function(){
 		var priceArr = new Array();
