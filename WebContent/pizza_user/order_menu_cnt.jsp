@@ -3,6 +3,11 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
+<%
+	if ("POST".equals(request.getMethod())) {
+		request.setCharacterEncoding("UTF-8");
+	} // end if
+%>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -87,7 +92,7 @@
 	<!-- 헤더 -->
 	<jsp:include page="../common/jsp/common_header.jsp"/>
     
-    <form action="order_payment.jsp" name="orderMenuCntFrm">
+    <form action="order_payment.jsp" name="orderMenuCntFrm" method="post">
     	<!-- 선택한 메뉴 -->
         <section class="menu_section pizza">
             <div class="menu_title">선택한 메뉴</div>

@@ -6,6 +6,11 @@
     pageEncoding="EUC-KR"
     info=""%>
 <%
+
+	if ("POST".equals(request.getMethod())) {
+		request.setCharacterEncoding("UTF-8");
+	} // end if
+
 	String user_id = (String) session.getAttribute("user_id");
 	if (user_id == null) {
 		response.sendRedirect("main.jsp");

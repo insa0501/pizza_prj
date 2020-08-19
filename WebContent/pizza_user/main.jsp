@@ -93,7 +93,7 @@
         </div>
     </section>
 
-       <form name="mainFrm" id="mainFrm" action="order_menu_cnt.jsp">
+       <form name="mainFrm" id="mainFrm" action="order_menu_cnt.jsp" method="post">
         <section class="articles">
             <div class="menu_top_img" style="background-image: url(../common/images/pizza_main_top2.jpg);">
                 <!-- <img src="https://akamai.pizzahut.co.kr/banner/pdlist/premium_list_o.jpg"/> -->
