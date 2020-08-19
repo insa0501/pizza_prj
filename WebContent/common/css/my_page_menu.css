@@ -1,6 +1,7 @@
 @charset "UTF-8";
+
 * {
-	box-sizing: border-box
+	box-sizing: border-box;
 }
 
 body, html {
@@ -25,15 +26,16 @@ body {
 
 
 /* 좌측 메뉴 */
+.my_page_menu {
+	width: 20vw;
+	border-right: 1px solid gray;
+}
+
 .my_page_title {
 	font-size: 2em;
     font-weight: 600;
     padding-top: 10px;
     padding-bottom: 10px;
-}
-.my_page_menu {
-	width: 15vw;
-	border-right: 1px solid gray;
 }
 
 .menu_content {
@@ -45,7 +47,7 @@ body {
 
 /* 우측 내용 */
 .main_content {
-	width: 60vw;
+	width: 55vw;
 	padding: 30px 0 0 40px;
 }
 .page_title {
@@ -79,6 +81,7 @@ body {
     padding: 10px 15px;
     border-radius: 10px;
     color : gray;
+    transition:all .2s;transition-timing-function:ease-in
 }
 
 .btn_day:hover{
@@ -86,11 +89,13 @@ body {
 	color:white;
 	font-weight: 600;
 	text-decoration: none;
+	transition:all .2s;transition-timing-function:ease-in;
 }
 
 .active {
 	background-color: #c10a28;
 	color: white;
+	font-weight: 600;
 }
 
 .order_box{
