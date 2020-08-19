@@ -11,6 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>3조</title>
     <link rel="stylesheet" href="css/order_payment_css.css">
+    <link rel="stylesheet" href="../common/css/common_header_footer.css">
     
 </head>
 <%
@@ -88,21 +89,8 @@
 	
 </script>
 <body>
-   <section class="header">
-      <div class="header_top"></div>
-      <div class="header_nav" id="header_nav">
-          <div>
-              <a href="#pizza_divider">피자</a>
-              <a href="#side_divider">사이드</a>
-          </div>
-          <div>
-          <c:if test="${ not empty user_name }">
-              <span><a href="http://localhost/pizza_prj/pizza_user/user_order_list.jsp"><c:out value="${ user_name }"/></a>님</span>
-              <span><a href="#void" onclick="logout()">로그아웃</a></span>
-          </c:if>
-          </div>
-      </div>
-  </section>
+	<!-- 헤더 -->
+	<jsp:include page="../common/jsp/common_header.jsp"/>
 	
     <form action="order_payment_process.jsp" name="orderPaymentFrm">
       <section class="main_section">
@@ -193,16 +181,16 @@
                   <span class="total_payment_price"><%=totalPrice%> 원</span>
                   <input type="hidden" name="order_price" id="order_price" value="<%=totalPrice %>"/>
                </div>
-               <div class="payment_btn" style="cursor:pointer;" id="divPay">결제하기</div>
+               <div style="cursor:pointer;" id="divPay">
+               		<span class="payment_btn">결제하기</span>
+               </div>
             </div>
          </section>
       </section>
    </form>
    
-    <section class="footer">
-        어쩌고저쩌고 카피라이트 @copyright 3조 어쩌고저쩌고 카피라이트 @copyright 3조<br>
-        어쩌고저쩌고 카피라이트 @copyright 3조 어쩌고저쩌고 카피라이트 @copyright 3조
-    </section>
+	<!-- 푸터 -->
+	<jsp:include page="../common/jsp/common_footer.jsp"/>
 
     <div class="go_to_top">
         <a href="#header_nav">TOP</a>

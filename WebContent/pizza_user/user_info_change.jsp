@@ -21,21 +21,7 @@ if(user_id == null){//세션에서 꺼내온 아이디가 없다.
 <head>
 <meta charset="UTF-8">
 
-<title>회원정보수정</title>
-<%-- <style type="text/css">
-회원정보수정 부분
-#user_info { margin-left: 30px; width:470px; }
-label { width: 140px; height: 30px; font-weight: bold;}
-.searchBtn{background-color: #3597DE; color:#FFFFFF; font-weight: bold; border-radius: 5px; border: none; padding:3px 10px 3px 10px;}
-.resignBtn{background-color: #E84C3D; color:#FFFFFF; width:80px;
-			font-weight: bold; border-radius: 5px; 
-			border: none; padding:3px 10px 3px 10px; margin-right:15px;}
-			
-회원탈퇴사유부분	
-#user_resign { margin-left: 30px; width:550px; }
-.chkBox{ margin-bottom: 6px; margin-right:5px;}
-
-</style> --%>
+<title>✍회원정보수정</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 <!-- 다음 api 우편번호 검색 -->
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -44,11 +30,19 @@ label { width: 140px; height: 30px; font-weight: bold;}
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 
-<link rel="stylesheet" type="text/css" href="http://localhost/pizza_prj/common/css/common_footer.css">
-<link rel="stylesheet" type="text/css" href="http://localhost/pizza_prj/common/css/my_page_menu.css">
+<link rel="stylesheet" type="text/css" href="../common/css/common_header_footer.css">
+<link rel="stylesheet" type="text/css" href="../common/css/my_page_menu.css">
+<link rel="stylesheet" type="text/css" href="css/user_info_change.css">
 
 <script type="text/javascript">
 $(function(){
+	
+	//탈퇴버튼 위에거 눌렀을 경우
+	$(".showResign").click(function(){
+		$('#resign_section').removeClass('resign_gone');
+		return;
+	});//click
+
 	
 	//탈퇴 버튼이 클릭 된 경우
 	$(".resignBtn").click(function(){
@@ -56,6 +50,7 @@ $(function(){
 		
 		$("#frm").submit();
 	});//click
+	
 	//변경 버튼이 클릭된 경우
 	$("#searchBtn").click(function(){
 		$("#page_flag").val("update");
@@ -193,14 +188,12 @@ function searchZipcode(){//다음 API를 사용한 우편번호 찾기
 	pageContext.setAttribute("user_addr2", uiVO.getUser_addr2());
 	
 %>
-
-
 </script>
 </head>
 <body>
-<div class="header">
+	<!-- 헤더 -->
 	<jsp:include page="../common/jsp/common_header.jsp"/>
-</div>
+	
 	<div class="container">
 		<div class="my_page_menu">
 			<div class="my_page_title">마이페이지</div>
@@ -213,7 +206,7 @@ function searchZipcode(){//다음 API를 사용한 우편번호 찾기
 			<form action="user_info_change.jsp" name="frm" id="frm" method="post"><!-- form 태그  -->
 				<input type="hidden" id="page_flag" name="page_flag" />
 				<div class="page_title">회원정보수정</div>
-				<ul id="user_info">
+				<ul id="user_info" class="user_info_wrap">
 					<li>
 						<label>아이디</label>
 						<label><%=user_id %></label>
@@ -244,14 +237,14 @@ function searchZipcode(){//다음 API를 사용한 우편번호 찾기
 						<input type="text" name="user_addr2" class="user_text" value="${pageScope.user_addr2 }"/>
 					</li>
 				</ul>
-				<div>
-					<input type="button" value="탈퇴" class="resignBtn"/>
-					<input type="button" value="변경" id="searchBtn" class="searchBtn" style="width:80px;"/>
+				<div class="btns_wrap">
+					<input type="button" value="탈퇴" class="showResign"/>
+					<input type="button" value="변경" id="searchBtn" class="submitBtn"/>
 				</div>
 				
-				<div id="resign_section">
+				<div id="resign_section" class="resign_section resign_gone">
 					<h3>회원탈퇴</h3>
-					<ul id="user_resign">
+					<ul id="user_resign" class="user_resign">
 						<li>
 							회원 탈퇴 시 사이트 내의 모든 정보가 삭제되며, 이후 복구가 불가능합니다.
 						</li>
@@ -271,13 +264,13 @@ function searchZipcode(){//다음 API를 사용한 우편번호 찾기
 							<input type="checkbox" name="resign_data" class="chkBox" value="사이트를 이용하지 않아서"/>사이트를 이용하지 않아서
 						</li>
 					</ul>
+					<div>
+						<input type="button" value="탈퇴" class="resignBtn"/>
+					</div>
 				</div>
 			
 			</form><!-- form 태그 -->
 			
-			<div>
-				<input type="button" value="탈퇴" class="resignBtn"/>
-			</div>
 		</div>
 	</div>	
 	<div class="footer">

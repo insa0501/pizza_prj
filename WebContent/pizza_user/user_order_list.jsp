@@ -24,14 +24,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>🙋‍♀️my pa‍ge</title>
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     
-<link rel="stylesheet" type="text/css" href="http://localhost/pizza_prj/common/css/my_page_menu.css">
+	<link rel="stylesheet" type="text/css" href="../common/css/my_page_menu.css">
+    <link rel="stylesheet" href="../common/css/common_header_footer.css">
+	
 <script type="text/javascript">
 	$(function(){
 		
@@ -50,11 +52,10 @@
 
 </head>
 <body>
-<div class="header">
+	<!-- 헤더 -->
 	<jsp:include page="../common/jsp/common_header.jsp"/>
-</div>	
-<div class="container">
-		<div class.="my_page_menu">
+	<div class="container">
+		<div class="my_page_menu">
 			<div class="my_page_title">마이페이지</div>
 			<div class="menu_content">
 				<div class="menu_item"><a href="user_order_list.jsp">주문내역</a></div>
@@ -128,8 +129,8 @@
 						
 					SelectOrderListVO solVO = new SelectOrderListVO(user_id, strDate, endDate);
 					List<UserOrderVO> list = mDAO.selectOrderList(solVO);
-					System.out.println("strDate "+strDate);
-					System.out.println("endDate "+endDate);
+/* 					System.out.println("strDate "+strDate);
+					System.out.println("endDate "+endDate); */
 					pageContext.setAttribute("orderList", list);
 				%>
 				<c:forEach var="order" items="${orderList}">
@@ -154,11 +155,8 @@
 	  	</div>
 	</div>
 </div>
-<div class="footer">
-    <section class="footer">
-    	 어쩌고저쩌고 카피라이트 @copyright 3조 어쩌고저쩌고 카피라이트 @copyright 3조 어쩌고저쩌고 카피라이트 @copyright 3조 내용수정 내용변경해야함 내용내용내용 채워넣어야함 
-    </section>
-</div> 
+	<!-- 푸터 -->
+	<jsp:include page="../common/jsp/common_footer.jsp"/>
     
 </body>
 </html>

@@ -35,8 +35,8 @@ table{ margin:0px auto;}
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     
-<link rel="stylesheet" type="text/css" href="http://localhost/pizza_prj/common/css/common_footer.css">
-<link rel="stylesheet" type="text/css" href="http://localhost/pizza_prj/common/css/my_page_menu.css">
+<link rel="stylesheet" type="text/css" href="../common/css/common_header_footer.css">
+<link rel="stylesheet" type="text/css" href="../common/css/my_page_menu.css">
 <script type="text/javascript">
 $(function(){
 	$("#chk").click(function(){
@@ -51,9 +51,9 @@ $(function(){
 </script>
 </head>
 <body>
-<div class="hearder">
+	<!-- 헤더 -->
 	<jsp:include page="../common/jsp/common_header.jsp"/>
-</div>
+
 	<div class="container">
 		<div class="my_page_menu">
 			<div class="my_page_title">마이페이지</div>

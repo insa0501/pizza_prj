@@ -7,8 +7,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>3조</title>
+
     <link rel="stylesheet" href="css/order_stage_css.css">
+    <link rel="stylesheet" href="../common/css/common_header_footer.css">
+    
 </head>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script type="text/javascript">
 <%
@@ -80,24 +84,13 @@
 </script>
 <body>
 	
-    <section class="header">
-        <div class="header_top"></div>
-        <div class="header_nav" id="header_nav">
-            <div>
-                <span> <a href="main.html/#pizza_divider">피자</a> / <a href="main.html/#side_divider">사이드</a> </span>
-                <span>신제품 / 이벤트</span>
-            </div>
-            <div>
-            <c:if test="${ not empty user_id }">
-                <span><a href="http://localhost/pizza_prj/pizza_user/user_order_list.jsp"><c:out value="${ user_name }"/></a>님</span>
-                <span><a href="#void" onclick="logout()"><c:out value="로그아웃"/></a></span>
-            </c:if>
-            </div>
-        </div>
-    </section>
+	<!-- 헤더 -->
+	<jsp:include page="../common/jsp/common_header.jsp"/>
+    
     <form action="order_payment.jsp" name="orderMenuCntFrm">
+    	<!-- 선택한 메뉴 -->
         <section class="menu_section pizza">
-            <div class="menu_title">피자</div>
+            <div class="menu_title">선택한 메뉴</div>
             <div class="menu_detail">
                 <ul>
                     <%
@@ -133,37 +126,7 @@
                 </ul>
             </div>
         </section>
-        <section class="menu_section side">
-            <div class="menu_title">사이드</div>
-            <div class="menu_detail">
-                <ul>
-                    <%
-                    	int sideLength = 0;
-                    	if (selectside != null) {
-							sideLength = selectside.length;							
-                    	} // end if
-                    	String[] sideInfo = new String[2];
-                      	for (int i=0; i<sideLength; i++) {
-                      		sideInfo = selectside[i].split("/");
-                    		totalPrice += Integer.parseInt(sideInfo[1]);
-                    %>
-                    <li class="menu_line">
-                        <div>
-                            <span class="menu_name"><%=sideInfo[0] %></span>
-                            <input type="hidden" name="menuName" id="menuName" value="<%=sideInfo[0] %>"/>
-                            <input type="number" min="1" max="10" value="1" name="menuCnt" id="menuCnt" class="menuCnt" required/>
-                        </div>
-                        <div>
-                            <span class="menu_price" id="menu_price<%=index++%>"><%=sideInfo[1] %>원</span>
-                            <input type="hidden" name="menuPrice" id="menuPrice" value="<%=sideInfo[1] %>"/>
-                        </div>
-                    </li>
-                   	<%
-                      	}// end for
-                   	%>
-                </ul>
-            </div>
-        </section>
+
         <section class="menu_section">
             <div class="price_calc">
                 <div>
@@ -172,16 +135,14 @@
                     <input type="hidden" name="totalPrice" id="totalPrice" value="<%=totalPrice%>"/>
                 </div>
                 <div>
-                    <a href="#void" id="order_payment">결제 창으로 이동하기</a>
+                    <a href="#void" id="order_payment" class="btn_submit">결제 창으로 이동하기</a>
                 </div>
             </div>
         </section>
     </form>
    
-    <section class="footer">
-        어쩌고저쩌고 카피라이트 @copyright 3조 어쩌고저쩌고 카피라이트 @copyright 3조<br>
-        어쩌고저쩌고 카피라이트 @copyright 3조 어쩌고저쩌고 카피라이트 @copyright 3조
-    </section>
+	<!-- 푸터 -->
+	<jsp:include page="../common/jsp/common_footer.jsp"/>
 
     <div class="go_to_top">
         <a href="#header_nav">TOP</a>
