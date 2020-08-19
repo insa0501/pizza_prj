@@ -7,10 +7,10 @@
     info=""%>
 <%
 	String user_id = (String) session.getAttribute("user_id");
-	//if (user_id == null) {
-	//	response.sendRedirect("main.jsp");
-	//	return;
-	//} // end if
+	if (user_id == null) {
+		response.sendRedirect("main.jsp");
+		return;
+	} // end if
 	
 	
 	String orderNo = ""; 
