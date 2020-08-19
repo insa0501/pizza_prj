@@ -1,0 +1,113 @@
+@charset "UTF-8";
+
+* {
+	box-sizing: border-box;
+}
+
+body, html {
+	margin: 0;
+	padding: 0;
+}
+
+ul, li {
+	margin: 0;
+	padding : 0;
+	text-decoration: none;
+	list-style: none;
+}
+
+form {
+	width: 500px;
+}
+
+.user_info_wrap {
+	/* ul부분 */
+	margin: 50px 30px;
+}
+
+label {
+	width: 140px;
+	height: 30px;
+	font-weight: bold;
+}
+
+.searchBtn {
+/*우편번호 검색용 버튼*/
+	width: 80px;
+	color: #FFFFFF;
+	font-weight: bold;
+	border-radius: 5px;
+	border: none;
+}
+
+.btns_wrap {
+	display: flex;
+	justify-content: center;
+}
+
+.btns_wrap > input {
+	margin: 0 15px;
+}
+
+.showResign {
+	width: 100px;
+	height: 40px;
+	background-color: lightgray;
+	color: #FFFFFF;
+	font-weight: bold;
+	border-radius: 5px;
+	border: none;
+}
+
+.submitBtn,
+.resignBtn {
+	width: 100px;
+	height: 40px;
+	background-color: #c10a28;
+	color: #FFFFFF;
+	font-weight: bold;
+	border-radius: 5px;
+	border: none;
+}
+
+/* 회원탈퇴사유부분 */
+.resign_section {
+	margin: 60px 30px;
+}
+
+.resign_section > h3 {
+	padding-bottom: 30px;
+}
+
+.resign_gone {
+	/* 평소엔 안보이다가 탈퇴버튼을 누르면 보임 */
+	display: none;
+}
+
+.user_resign {
+	width: 550px;
+}
+
+.user_resign > li {
+	padding: 3px 0;
+}
+
+.user_resign > li:first-child,
+.user_resign > li:nth-child(2) {
+	color: red;
+	font-weight: 600;
+}
+
+.user_resign > li:nth-child(2) {
+	margin-bottom: 20px;
+}
+
+.chkBox {
+	margin-bottom: 6px;
+	margin-right: 5px;
+}
+
+.resignBtn{
+	margin: 50px;
+	
+}
