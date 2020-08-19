@@ -3,5 +3,10 @@
 	info="푸터부분 입니다"%>
 
     <section class="footer">
-        어쩌고저쩌고 카피라이트 @copyright 3조 어쩌고저쩌고 카피라이트 @copyright 3조 어쩌고저쩌고 카피라이트 @copyright 3조 내용수정 내용변경해야함 내용내용내용 채워넣어야함 
+    	<div><img src="http://localhost/pizza_prj/common/images/logo.png"></div>
+    	<div>
+	       	서울특별시 마포구 서교동447-5 풍성빌딩 2층 A반 <br>
+	      	3조였던2조 조장 : 김홍석<br>
+	      	Copyright © BY Group 2 ALL RIGHT RESERVED
+    	</div>
     </section>
