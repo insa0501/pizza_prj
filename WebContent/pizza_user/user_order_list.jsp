@@ -92,9 +92,10 @@
 						cal = Calendar.getInstance();
 						cal.setTime(new Date());
 						strDate = format.format(cal.getTime());
-						
+						//System.out.println("시작 시간"+strDate);
 						cal.add(Calendar.DATE,1);
 						endDate = format.format(cal.getTime());
+						//System.out.println("끝 시간"+endDate);
 						
 					}//end if
 					
@@ -125,7 +126,7 @@
 					pageContext.setAttribute("strDate", strDate);
 					pageContext.setAttribute("endDate", endDate); */	
 						
-					SelectOrderListVO solVO = new SelectOrderListVO("test1", strDate, endDate);
+					SelectOrderListVO solVO = new SelectOrderListVO(user_id, strDate, endDate);
 					List<UserOrderVO> list = mDAO.selectOrderList(solVO);
 					System.out.println("strDate "+strDate);
 					System.out.println("endDate "+endDate);
