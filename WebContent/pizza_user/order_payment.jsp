@@ -19,7 +19,7 @@
 	user_id = (String) session.getAttribute("user_id");
 	// 세션이 없거나 세션만료 시 메인화면으로
 	if (user_id == null) {
-		response.sendRedirect("main.jsp");
+		response.sendRedirect("http://localhost/pizza_prj/pizza_user/main.jsp");
 		return;
 	} // end if
 	
@@ -55,7 +55,7 @@
 		
 		// 2020-08-17 김홍석 조건 변경 totalPrice == 0 -> menuName length == 0
 		if (request.getParameterValues("menuName").length == 0) { // 파라미터로 받은 메뉴 갯수가 0개 일 경우
-			response.sendRedirect("order_menu_cnt.jsp");
+			response.sendRedirect("http://localhost/pizza_prj/pizza_user/order_menu_cnt.jsp");
 			return;
 		} // end if
 	} catch (SQLException se) {
@@ -63,7 +63,7 @@
 		
 	} catch(NumberFormatException nfe) {
 		nfe.printStackTrace();
-		response.sendRedirect("order_menu_cnt.jsp");
+		response.sendRedirect("http://localhost/pizza_prj/pizza_user/order_menu_cnt.jsp");
 		return;
 	} // end catch
 %>
