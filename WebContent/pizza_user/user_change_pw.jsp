@@ -1,19 +1,14 @@
+<%@page import="pizza.user.vo.SelectPassVO"%>
 <%@page import="pizza.user.vo.UpdatePassVO"%>
 <%@page import="pizza.dao.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     info="비번변경"
     %>
-<%
-  //로그인 한 사용자만 볼 수 있게 session 체크
-  String id = (String)session.getAttribute("user_id");
-  if(id == null){
-     response.sendRedirect("http://211.238.142.32/index.html");
-  }
-%>  
+ 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <% 
-	request.setCharacterEncoding("UTF-8");
+   request.setCharacterEncoding("UTF-8");
 %>
 <!DOCTYPE html>
 <html>
@@ -32,59 +27,59 @@
 
 
 <script type="text/javascript">
-	$(function(){
+   $(function(){
 
-	})//ready
-	
-	window.onload = function() {
-		document.getElementById("user_pass").addEventListener("keydown",chkEnter);
-		document.getElementById("user_pass_chk").addEventListener("keydown",chkEnter);
-		document.getElementById("userChangePw").addEventListener("click",chkNull);
-	}
-	
-	function chkEnter() {
-		//enter key = 13
-		if(window.event.which == 13){
-			chkNull();
-		}//end if
-	}//chkEnter
-	
-	function chkNull() {
-		var obj = document.userChangePwFrm; //아이디 찾기 폼
-		
-		if(obj.user_pass.value == ""){
-			alert("새 비밀번호 필수 입력");
-			obj.user_pass.focus();
-			return;
-		}//end if
-		
-		if(obj.user_pass_chk.value == ""){
-			alert("비밀번호 확인 필수 입력");
-			obj.user_pass_chk.focus();
-			return;
-		}//end if
-		
-		if(obj.user_pass.value != obj.user_pass_chk.value){
-			
-			alert("새 비밀번호와 비밀번호 확인이 일치하지 않습니다.");
-			
-			obj.user_pass.value="";
-			obj.user_pass_chk.value="";
-			obj.user_pass.focus();
-		    return; 
-		}
-		obj.submit(); //정보 전송
-	}//chkNull
-	
+   })//ready
+   
+   window.onload = function() {
+      document.getElementById("user_pass").addEventListener("keydown",chkEnter);
+      document.getElementById("user_pass_chk").addEventListener("keydown",chkEnter);
+      document.getElementById("userChangePw").addEventListener("click",chkNull);
+   }
+   
+   function chkEnter() {
+      //enter key = 13
+      if(window.event.which == 13){
+         chkNull();
+      }//end if
+   }//chkEnter
+   
+   function chkNull() {
+      var obj = document.userChangePwFrm; //아이디 찾기 폼
+      
+      if(obj.user_pass.value == ""){
+         alert("새 비밀번호 필수 입력");
+         obj.user_pass.focus();
+         return;
+      }//end if
+      
+      if(obj.user_pass_chk.value == ""){
+         alert("비밀번호 확인 필수 입력");
+         obj.user_pass_chk.focus();
+         return;
+      }//end if
+      
+      if(obj.user_pass.value != obj.user_pass_chk.value){
+         
+         alert("새 비밀번호와 비밀번호 확인이 일치하지 않습니다.");
+         
+         obj.user_pass.value="";
+         obj.user_pass_chk.value="";
+         obj.user_pass.focus();
+          return; 
+      }
+      obj.submit(); //정보 전송
+   }//chkNull
+   
 </script>
 </head>
 <body>
-	<jsp:include page="../common/jsp/common_header.jsp"/>
-		<style type="text/css">
-		body,html{
-			background-color: white;
-		}
-		</style>   
+   <jsp:include page="../common/jsp/common_header.jsp"/>
+      <style type="text/css">
+      body,html{
+         background-color: white;
+      }
+      </style>   
 <!--     <section class="header">
         <div class="header_top"></div>
         <div class="header_nav" id="header_nav">
@@ -101,84 +96,88 @@
 
  
 <div id="container" style="width:80vw; margin: 0px auto; min-height: 500px;background-color:#C6C6C6; "  >
-<jsp:useBean id="upVO" class="pizza.user.vo.UpdatePassVO" scope="page"/>
-<jsp:setProperty property="*" name="upVO"/>
- 
-	<%
-	   String user_id = session.getAttribute("user_id").toString(); //세션에서 user_id가져와서 
-	
-	   upVO.setUser_id(user_id); //upVP에 값 넣기
-	   
-	   int updatePassFlag = 0;
-	
-	   if(upVO.getUser_pass() != null){
-		   
-		   MemberDAO member_dao =  MemberDAO.getInstance();
-		   
-		   updatePassFlag = member_dao.updatePass(upVO);
-		   
-		   System.out.print(updatePassFlag);
-		   
-		   if(updatePassFlag == 1){
-			   session.setAttribute("user_pass", upVO.getUser_pass());
-			   
-			   session.setAttribute("user_id", user_id);
-			   
-		   //    System.out.print(updatePassFlag);
-			   
-		   }else{
-			   %>
-	      	    <script type="text/javascript">
-	      	      alert("비밀번호 변경을 실패했습니다.");
-	      	      location.href="http://localhost/pizza_prj/pizza_user/user_find_pw.jsp";
-	      	    </script>
 
-	       	  <%
-			   
-		   }//end else
-		   
-	   }//end if
  
-	%>
-
-<c:choose>
-   <c:when test="${ user_pass ne '' && user_pass ne null}">
-     <script type="text/javascript">
-          alert("비밀번호가 변경되었습니다.");
-          location.href="http://localhost/pizza_prj/pizza_user/main.jsp";
-     </script>
-   </c:when>
+   <%
+        String user_pass = request.getParameter("user_pass");
+        
+        UpdatePassVO upVO = new UpdatePassVO();  
+        
+        String user_id_passCh =  session.getAttribute("user_id_passCh").toString();
+        System.out.println("user_change_pw에서 세션 받아 user_id : "+user_id_passCh);
+        
+           upVO.setUser_id(user_id_passCh);
+           
+          upVO.setUser_pass(user_pass);//upVO에 값 넣기
+          
+          System.out.print("upVO에서 user_id: "+upVO.getUser_id());
+          System.out.print("upVO에서 user_pass : "+upVO.getUser_pass());
+      
+      int updatePassFlag = 0;
    
-  <c:otherwise>
+      if(upVO.getUser_pass() != null){
+         System.out.print("여기까지 탐"); //여기까지됨,,, 느림,,,?
+         
+         MemberDAO member_dao =  MemberDAO.getInstance();
+         
+         updatePassFlag = member_dao.updatePass(upVO);
+         
+         System.out.print("여기까지 탐2222"); //여기까지됨,,, 느림,,,?
+         
+         System.out.print("패스워드 변경 flag"+updatePassFlag);
+         
+         if(updatePassFlag == 1){
+            %>
+                <script type="text/javascript">
+                  alert("비밀번호 변경되었습니다.");
+                 location.href="http://localhost/pizza_prj/pizza_user/main.jsp";
+                </script>
+
+               <%
+            
+         }else{
+            %>
+                <script type="text/javascript">
+                  alert("비밀번호 변경을 실패했습니다.");
+                  location.href="http://localhost/pizza_prj/pizza_user/user_find_pw.jsp";
+                </script>
+
+               <%
+            
+         }//end else
+         
+      }//end if
+ 
+   %>
+
+ 
   <form  name="userChangePwFrm" id="userChangePwFrm" action="user_change_pw.jsp" method="post">
-	<div>
-	<table>
-	   <tr>
-	  		 <td>비밀번호 변경</td> 
-	   </tr>
-	   <tr>
-	   		<td>새 비밀번호</td><td><input type="password" id="user_pass" name="user_pass" placeholder="새 비밀번호 입력">
-<%-- 	   		<input type="hidden" name="user_id" id="user_id" value="${user_id}"> --%>
-	   		</td>
-	   </tr>
-	   
-	   <tr>
-	  		 <td>비밀번호 확인</td><td> <input type="password" id="user_pass_chk" name="user_pass_chk" placeholder="비밀번호 확인"></td>
-	   </tr>
-	   <tr>
-	   		<td colspan="2"> <input type="button" value="비밀번호 변경" name="userChangePw" id="userChangePw"></td>
-	   </tr>
-	   
-	</table>
-	<br/><br/><br/>
-	<br/>
-	 <br/>
+   <div>
+   <table>
+      <tr>
+            <td>비밀번호 변경</td> 
+      </tr>
+      <tr>
+            <td>새 비밀번호</td><td><input type="password" id="user_pass" name="user_pass" placeholder="새 비밀번호 입력">
+            </td>
+      </tr>
+      
+      <tr>
+            <td>비밀번호 확인</td><td> <input type="password" id="user_pass_chk" name="user_pass_chk" placeholder="비밀번호 확인"></td>
+      </tr>
+      <tr>
+            <td colspan="2"> <input type="button" value="비밀번호 변경" name="userChangePw" id="userChangePw"></td>
+      </tr>
+      
+   </table>
+   <br/><br/><br/>
+   <br/>
+    <br/>
     
   </div>
  </form>
-   </c:otherwise>
- </c:choose> 
-   	
+ 
+      
 </div>
     
     
