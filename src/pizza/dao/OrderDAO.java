@@ -141,7 +141,6 @@ private static OrderDAO order_dao;
 			if (rs.next()) {
 				// 현재 시퀀스 번호를 저장
 				orderNo = String.valueOf(rs.getInt("order_no"));
-				System.out.println(orderNo);
 			}// end if
 			
 		} finally {
@@ -175,11 +174,10 @@ private static OrderDAO order_dao;
 			// bind 변수 넣기
 			pstmt.setString(1, omVO.getMenu_name());
 			pstmt.setString(2, omVO.getOrder_no());
-			pstmt.setInt(3, (omVO.getOrder_menu_price() * omVO.getOrder_menu_cnt()));
+			pstmt.setInt(3, omVO.getOrder_menu_price());
 			pstmt.setInt(4, omVO.getOrder_menu_cnt());
 			
 			pstmt.execute();
-			
 		} finally {
 			if (pstmt != null) { pstmt.close(); }
 			if (con != null) { con.close(); }
