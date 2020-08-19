@@ -206,25 +206,19 @@ private static MemberDAO member_dao;
 		try {
 			con=getConn();
 			
-			String updatePass="update member set user_pass = 1234 where user_id = 'test1'";
+			String updatePass="update member set user_pass = ? where user_id = ?";
 			//update member set user_pass='0000' where user_id='grace';
 			pstmt=con.prepareStatement(updatePass);
 			
 			
-			System.out.println("DAO "+upVO.getUser_pass());
-			System.out.println("DAO "+upVO.getUser_id());
-			
-			//pstmt.setString(1, upVO.getUser_pass());
-			//pstmt.setString(2, upVO.getUser_id());
-		 
-			System.out.println("updatePassFlag �븵");
+			pstmt.setString(1, upVO.getUser_pass());
+			pstmt.setString(2, upVO.getUser_id());
+
 			updatePassFlag =  pstmt.executeUpdate();
-			System.out.println("updatePassFlag �뮘");
 			
 		}finally {
 			if(pstmt!=null) { pstmt.close(); }//end if
 			if(con!=null) { con.close(); }//end if
-			System.out.println("DAO �걹");
 		}//end finally
 		
 		return updatePassFlag; 
