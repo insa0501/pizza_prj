@@ -97,25 +97,13 @@ return indexList;	//페이지 이동폼을 담은 변수를 반환
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style type="text/css">
-	/******************************* 팝업창 관련 CSS **********************************/
-	#popupWrap{ width: 700px; min-height: 400px; border: 1px solid #BFBFBF; background-color: #FFFFFF}
-	#popupHeader{ height: 30px; background-color: #C10A28; margin-top: 20px}
-	#popupBody{ min-height: 368px; margin-top: 25px; margin-left: 40px }
-	#buttonGrop{ margin-top: 35px; margin-left: 245px; margin-bottom: 20px; clear: both}
-	.userData{ margin-top: 25px}
-	.userDetailTab{ width: 620px; border: 1px solid #CFCFCF; border-spacing: 0px; }
-	.colTh{width: 100px; height: 35px; text-align: center;}
-	.colTd{width: 210px; height: 35px;}
-	th{vertical-align: middle; border: 1px solid #CFCFCF; background-color: #EAEAEA}
-	td{text-align: center; vertical-align: middle; border: 1px solid #CFCFCF}
-	/******************************* 팝업창 관련 CSS **********************************/
-    </style>
+
 <!-- Google CDN -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <link rel="stylesheet" href="../common/css/common_header_footer.css">
 <link rel="stylesheet" href="../common/css/commom_admin_tables.css">
+<link rel="stylesheet" href="css/admin_user_detail_css.css">
  
 <script type="text/javascript">
 
