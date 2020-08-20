@@ -1,0 +1,66 @@
+@charset "EUC-KR";
+
+/******************************* ÆË¾÷Ã¢ °ü·Ã CSS **********************************/
+#popupWrap {
+	width: 700px;
+	min-height: 600px;
+	border: 1px solid #BFBFBF;
+	background-color: #FFFFFF
+}
+
+#popupHeader {
+	height: 30px;
+	background-color: #C10A28;
+	margin-top: 20px
+}
+
+#popupBody {
+	min-height: 568px;
+	margin-top: 25px;
+	margin-left: 40px
+}
+
+#buttonGrop {
+	margin-top: 35px;
+	margin-left: 245px;
+	margin-bottom: 20px;
+	clear: both
+}
+
+.orderData {
+	margin-top: 25px
+}
+
+.orderDetailTab {
+	width: 620px;
+	border: 1px solid #CFCFCF;
+	border-spacing: 0px;
+}
+
+.colTh {
+	width: 100px;
+	height: 35px;
+	text-align: center;
+}
+
+.colTd {
+	width: 210px;
+	height: 35px;
+}
+
+.rowTh {
+	text-align: center;
+}
+
+th {
+	vertical-align: middle;
+	border: 1px solid #CFCFCF;
+	background-color: #EAEAEA
+}
+
+td {
+	text-align: center;
+	vertical-align: middle;
+	border: 1px solid #CFCFCF
+}
+/******************************* ÆË¾÷Ã¢ °ü·Ã CSS **********************************/
