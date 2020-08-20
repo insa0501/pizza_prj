@@ -311,9 +311,8 @@ function searchZipcode(){//다음 API를 사용한 우편번호 찾기
          
       </div>
    </div>   
-   <div class="footer">
-      <c:import url="../common/jsp/common_footer.jsp"/>
-   </div>
+	<!-- 푸터 -->
+	<jsp:include page="../common/jsp/common_footer.jsp"/>
 
 </body>
 </html>
