@@ -8,14 +8,14 @@
 <%@page import="java.util.List"%>
 <%@page import="pizza.dao.OrderDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" trimDirectiveWhitespaces="true"
+    pageEncoding="UTF-8"
     info="마이페이지-주문내역"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 	MemberDAO mDAO = MemberDAO.getInstance();
 	String user_id = (String)session.getAttribute("user_id");
 	
-	if(user_id == null){
+ 	if(user_id == null){
 		response.sendRedirect("http://localhost/pizza_prj/pizza_user/user_login.jsp");
 		return;
 	}
@@ -81,6 +81,8 @@
 				
 				String tempDate = request.getParameter("tempDate");
 				
+				//System.out.println("tempDate "+tempDate);
+				
 				if(tempDate == null){
 					%>
 					<div class="order_box">조회를 원하시는 기간을 선택해주세요</div>
@@ -91,8 +93,10 @@
 						cal = Calendar.getInstance();
 						cal.setTime(new Date());
 						strDate = format.format(cal.getTime());
+						//System.out.println("시작 시간"+strDate);
 						cal.add(Calendar.DATE,1);
 						endDate = format.format(cal.getTime());
+						//System.out.println("끝 시간"+endDate);
 						
 					}//end if
 					
@@ -125,8 +129,13 @@
 						
 					SelectOrderListVO solVO = new SelectOrderListVO(user_id, strDate, endDate);
 					List<UserOrderVO> list = mDAO.selectOrderList(solVO);
+/* 					System.out.println("strDate "+strDate);
+					System.out.println("endDate "+endDate); */
 					pageContext.setAttribute("orderList", list);
 				%>
+				<c:if test="${ orderList.size() == 0 }">
+					<div class="order_box">조회된 주문이 없습니다.</div>
+				</c:if>
 				<c:forEach var="order" items="${orderList}">
 					<div class="order_box"> 
 						<c:set var="i" value="${0}"/>
