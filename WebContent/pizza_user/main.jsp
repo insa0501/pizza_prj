@@ -136,7 +136,7 @@
             <div class="menu_wrap">
 	            <c:forEach var="menu_side" items="${mmList_side}" varStatus="status">
 	                <div class="pizza_menu">
-	                    <div class="pizza_img" style="background-image: url('http://localhost/pizza_prj/common/images/${ menu_pizza.menu_img }');"></div>
+	                    <div class="pizza_img" style="background-image: url('http://localhost/pizza_prj/common/images/${ menu_side.menu_img }');"></div>
 	                    <div class="pizza_discription">
 	                        <span>${menu_side.menu_name}</span>
 	                        <span>${menu_side.menu_price} 원</span>
