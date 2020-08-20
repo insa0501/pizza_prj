@@ -9,18 +9,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="http://localhost/html_prj/common/css/main.css">
+<link rel="stylesheet" type="text/css" href="css/user_dup_id_css.css">
 <title>아이디 확인</title>
-<style type="text/css">
-   #idWrap{ width:470px; height:274px; background: #FFFFFF url("../js0703/images/id_background.png") no-repeat; 
-      margin: 0px auto;   position:relative;}
-   label{ font-size:20px; font-weight:bold; vertical-align: middle;}
-   
-   #idFrm{ width:300px; position: absolute; top:70px; left:60px;}
-</style>
+
 <!-- Google CDN -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-
 
 <script type="text/javascript">
 $(function(){
@@ -61,35 +54,40 @@ $(function(){
 </script>
 </head>
 <body>
-<div id="idWrap">
-   <Form name="cFrm" action="user_dup_id.jsp" method="get">
-   <div id="idFrm">
-      <label>아이디</label>
-      <input type="text" name="user_id" class="inputBox" style="width:160px;"/>
-      <input type="text" style="display:none"/>
-      <input type="button" value="사용" id="btn" name="btn" class="btn" />
-   </div>
-<%
-   String user_id = request.getParameter("user_id");
-   if( user_id != null ){
-      MemberDAO mDAO = MemberDAO.getInstance();
-      try{
-      if(mDAO.selectDupId(user_id)){//아이디가 존재하는 경우
-         %>
-         <div><strong style="color:red;">해당 아이디가 이미 존재합니다.</strong></div>
-         <%
-      }else{
-         pageContext.setAttribute("id", user_id);
-         %>
-         <div><c:out value="${pageScope.id }"/> 아이디는 사용가능합니다.<a href="#void" id="use" onclick="useId('${pageScope.id}')">사용하기</a></div>
-         <%
-      }//end else
-      }catch( SQLException se){
-         se.printStackTrace();
-      }// end catch
-   }//end if
-%>
-   </Form>
+<div class="top_line"></div>
+
+<div id="idWrap" class="id_wrap">
+   <form name="cFrm" action="user_dup_id.jsp" method="get">
+	   <div id="idFrm" class="id_form">
+	      <label>아이디</label>
+	      <input type="text" name="user_id" class="inputBox"/>
+	      <input type="text" style="display:none"/>
+	      <input type="button" value="사용" id="btn" name="btn" class="useBtn" />
+	   </div>
+	<%
+	   String user_id = request.getParameter("user_id");
+	   if( user_id != null ){
+	      MemberDAO mDAO = MemberDAO.getInstance();
+	      try{
+	      if(mDAO.selectDupId(user_id)){//아이디가 존재하는 경우
+	         %>
+	         <div class="id_warning">해당 아이디가 이미 존재합니다.</div>
+	         <%
+	      }else{
+	         pageContext.setAttribute("id", user_id);
+	         %>
+	         <div class="id_possible">
+	         	<span><c:out value="${pageScope.id }"/> 아이디는 사용 가능합니다.</span>
+	         	<a href="#void" id="use" class="use_id" onclick="useId('${pageScope.id}')">사용하기</a>
+	         </div>
+	         <%
+	      }//end else
+	      }catch( SQLException se){
+	         se.printStackTrace();
+	      }// end catch
+	   }//end if
+	%>
+   </form>
    
    
 </div>
