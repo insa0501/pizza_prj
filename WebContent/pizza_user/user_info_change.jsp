@@ -21,14 +21,21 @@ if(user_id == null){//세션에서 꺼내온 아이디가 없다.
 <meta charset="UTF-8">
 
 <title>✍회원정보수정</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 <!-- 다음 api 우편번호 검색 -->
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <!-- Google CDN -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-
+ -->
+ 
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+ <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+ <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+ 
+ 
 <link rel="stylesheet" type="text/css" href="../common/css/common_header_footer.css">
 <link rel="stylesheet" type="text/css" href="../common/css/my_page_menu.css">
 <link rel="stylesheet" type="text/css" href="css/user_info_change.css">
@@ -237,13 +244,13 @@ function searchZipcode(){//다음 API를 사용한 우편번호 찾기
          <div class="my_page_title">마이페이지</div>
          <div class="menu_content">
             <div class="menu_item"><a href="user_order_list.jsp">주문내역</a></div>
-            <div class="menu_item"><a href="user_info_check.jsp">회원정보변경</a></div>
+            <div class="menu_item"><a href="user_info_check.jsp">회원정보 수정</a></div>
          </div>
       </div>
       <div class="main_content">
          <form action="user_info_change.jsp" name="frm" id="frm" method="post"><!-- form 태그  -->
             <input type="hidden" id="page_flag" name="page_flag" />
-            <div class="page_title">회원정보수정</div>
+            <div class="page_title">회원정보 수정</div>
             <ul id="user_info" class="user_info_wrap">
                <li>
                   <label>아이디</label>

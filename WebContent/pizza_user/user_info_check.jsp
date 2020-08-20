@@ -19,21 +19,12 @@
 <meta charset="UTF-8">
 
 <title>회원정보메인</title>
-<!-- <style type="text/css">
-#container{ height:600px; width:80vw; 
-		margin:25px auto;}
-
-#input_area{  margin-top:150px;}
-table{ margin:0px auto;}
-.searchBtn{background-color: #C50000; color:#FFFFFF; font-weight: bold; border-radius: 5px; 
-			border: none; padding:3px 10px 3px 10px;
-			 width:60px;}
-</style> -->
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- Google CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+ <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+ <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+ <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     
 <link rel="stylesheet" type="text/css" href="../common/css/common_header_footer.css">
 <link rel="stylesheet" type="text/css" href="../common/css/my_page_menu.css">
@@ -63,7 +54,7 @@ $(function(){
 			</div>
 		</div>
 		<div class="main_content">
-			<div class="page_title">회원정보수정</div>
+			<div class="page_title">회원정보 수정</div>
 			<div id="input_area">
 				<form action="user_info_change.jsp" method="post" name="frm" id="frm" class="input_pw_form" >
 					<table>
