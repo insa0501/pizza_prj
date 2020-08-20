@@ -1,0 +1,68 @@
+@charset "EUC-KR";
+
+body, html {
+	background-color: white;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.container {
+	margin-top: 50px;
+	width: 70vw;
+	
+}
+
+.main_title {
+	font-size: 2em;
+	font-weight: 600;
+}
+
+.table {
+	margin-top: 50px;
+	width: 50%;
+}
+
+.td_title {
+	width: 150px;
+	line-height: 40px;
+}
+
+.input_pw {
+	width: 200px;
+	height: 40px;
+	border: 1px solid #CBCBCB;
+	background-color: #FFFFFF;
+	padding: 0 20px;
+}
+
+.tr_btn {
+	text-align: center;
+}
+
+.pwChangeBtn {
+	width: 200px;
+	height: 44px;
+	background-color: #c10a28;
+	color: white;
+	font-size: 1.1em;
+	font-weight: 600;
+	border: none;
+	box-shadow: none;
+	border-radius: 5px;
+}
+
+.pwChangeBtn:hover {
+	font-size: 1.2em;
+}
+
+
+.pwChangeBtn,
+.pwChangeBtn:hover {
+	transition: all .2s;	
+	transition-timing-function: ease-in;
+}
