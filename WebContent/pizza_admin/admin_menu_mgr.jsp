@@ -104,29 +104,13 @@ return indexList;	//페이지 이동폼을 담은 변수를 반환
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style type="text/css">
-	/******************************* 팝업창 관련 CSS **********************************/
-	#popupWrap{width: 700px; min-height: 400px; border: 1px solid #BFBFBF; background-color: #FFFFFF}
-	#popupHeader{height: 30px; background-color: #C10A28; margin-top: 20px}
-	#popupBody{min-height: 325px; margin-top: 25px; margin-left: 30px; margin-right: 30px}
-	#buttonGrop{margin-top: 20px; margin-left: 245px; margin-bottom: 20px; clear: both}
-	.menuImgGrop{width: 110px; height: 250px; margin-top: 25px; float: left; text-align: center;}
-	.menuImg{margin-bottom: 20px; border: 1px solid #CFCFCF}
-	.menuData{height: 250px; margin-top: 25px; float: right;}
-	.menuDetailTab{border: 1px solid #CFCFCF; border-spacing: 0px;}
-	.colTh{width: 90px; height: 35px; text-align: center;}
-	.colTd1{width: 180px; height: 35px;}
-	.colTd2{width: 120px; height: 35px;}
-	th{vertical-align: middle; border: 1px solid #CFCFCF; background-color: #EAEAEA}
-	td{text-align: center; vertical-align: middle; border: 1px solid #CFCFCF}
-	/******************************* 팝업창 관련 CSS **********************************/
-    </style>
     
 <!-- Google CDN -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <link rel="stylesheet" href="../common/css/common_header_footer.css">
 <link rel="stylesheet" href="../common/css/commom_admin_tables.css">
+<link rel="stylesheet" href="css/admin_menu_detail_css.css">
 
 <script type="text/javascript">
 
@@ -222,7 +206,7 @@ return indexList;	//페이지 이동폼을 담은 변수를 반환
 		</div>
     <!--******************************* 팝업창 열기 **********************************  -->
 			<c:if test="${ not empty param.page_flag }">
-			<div style="position:absolute; z-index:9999; left: 650px; top: 70px">
+			<div style="position:absolute; z-index:9999; left: 400px; top: 100px">
 			<c:import url="${ param.page_flag }.jsp"></c:import>
 			</div>
 			</c:if>

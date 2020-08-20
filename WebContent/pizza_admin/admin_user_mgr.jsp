@@ -153,7 +153,7 @@ return indexList;	//페이지 이동폼을 담은 변수를 반환
 		</div>
     <!--******************************* 팝업창 열기 **********************************  -->
 		<c:if test="${ not empty param.page_flag }">
-		<div style="position:absolute; z-index:9999; left: 650px; top: 70px">
+		<div style="position:absolute; z-index:9999; left: 400px; top: 100px">
 		<c:import url="${ param.page_flag }.jsp"></c:import>
 		</div>
 		</c:if>

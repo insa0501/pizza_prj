@@ -49,7 +49,7 @@ pageContext.setAttribute("mdVO", mdVO);
 <!--******************************* 이미지+이미지선택 버튼 **********************************  -->
 			<div class="menuImgGrop">
 				<div class="menuImg">
-					<img src="../common/images/${mdVO.menu_img}" id="displayImg" style="width: 110px"/><br/>
+					<img src="../common/images/${mdVO.menu_img}" id="displayImg" class="displayImg"/><br/>
 				</div>
 				<input type="file" value="이미지 선택" id="menuImg" name="menuImg" class="btn btn-dark"/>
 			</div>
