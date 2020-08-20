@@ -86,7 +86,7 @@
 					</c:when>
 					<c:otherwise>
 						<a href="http://localhost/pizza_prj/pizza_user/user_login.jsp">Sign in</a>
-						<a href="#void">Sign up</a>
+						<a href="http://localhost/pizza_prj/pizza_user/user_join.jsp">Sign up</a>
 					</c:otherwise>
 				</c:choose>
 	         </span>
