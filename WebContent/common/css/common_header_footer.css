@@ -22,18 +22,18 @@
 .footer {
 	width: 80vw;
 	display: flex;
-	padding-top: 50px;
+	padding-top: 20px;
 	color: gray;
 	margin-bottom : 50px;
 }
 
 .footer >div:first-child {
-	margin: 0 40px;
+	margin-right: 40px;
 }
 
 .footer >div:last-child {
 	display:flex;
- 	align-items: center;
+	align-items: center;
 }
 
 .go_to_top {
