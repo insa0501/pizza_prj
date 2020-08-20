@@ -1,4 +1,4 @@
-package pizza.admin.vo;
+package pizza.user.vo;
 
 public class UpdateResignVO {
 	private String user_id, user_resdata, user_resign_date;

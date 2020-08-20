@@ -1,7 +1,7 @@
 <%@page import="pizza.admin.vo.MenuDetailVO"%>
 <%@page import="pizza.dao.MenuDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script type="text/javascript">
 	/**********************수정시 이미지 프리뷰*****************************/

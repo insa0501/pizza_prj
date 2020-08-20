@@ -196,8 +196,6 @@ public class MenuDAO {
 	} // selectMenu()
 	
 	
-	
-	
 	public MenuDetailVO selectMenuDetail(String menu_name) throws SQLException {
 		MenuDetailVO mdVO = null;
 		

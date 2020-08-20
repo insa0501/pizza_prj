@@ -1,4 +1,4 @@
-package pizza.admin.vo;
+package pizza.user.vo;
 
 /**
  * 주문한 메뉴 정보를 받는 VO 

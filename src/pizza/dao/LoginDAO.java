@@ -1,5 +1,7 @@
 package pizza.dao;
 
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,6 +12,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import kr.co.sist.util.cipher.DataEncrypt;
 import pizza.user.vo.LoginVO;
 
 public class LoginDAO {
@@ -70,9 +73,20 @@ public class LoginDAO {
 					String selectName = "select user_name from member where user_id=? and user_pass=?";
 					pstmt = con.prepareStatement(selectName);
 					
+					String pass = "";
+					try {
+						//암호화
+						DataEncrypt de = new DataEncrypt("0123456789abcdef");
+						pass = DataEncrypt.messageDigest("MD5", lVO.getUser_pass());
+					} catch (UnsupportedEncodingException e) {
+						e.printStackTrace();
+					} catch (NoSuchAlgorithmException e) {
+						e.printStackTrace();
+					}//end catch
+					
 					//바인드 변수의 값 넣기
 					pstmt.setString(1, lVO.getUser_id());
-					pstmt.setString(2, lVO.getUser_pass());
+					pstmt.setString(2, pass);
 					
 					// 5. 쿼리 수행 후 결과 얻기
 					rs = pstmt.executeQuery();

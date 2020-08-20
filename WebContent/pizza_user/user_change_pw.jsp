@@ -2,7 +2,7 @@
 <%@page import="pizza.user.vo.UpdatePassVO"%>
 <%@page import="pizza.dao.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"
+    pageEncoding="UTF-8" trimDirectiveWhitespaces="true"
     info="비번변경"
     %>
  
@@ -104,27 +104,19 @@
         UpdatePassVO upVO = new UpdatePassVO();  
         
         String user_id_passCh =  session.getAttribute("user_id_passCh").toString();
-        System.out.println("user_change_pw에서 세션 받아 user_id : "+user_id_passCh);
         
-           upVO.setUser_id(user_id_passCh);
+        upVO.setUser_id(user_id_passCh);
            
-          upVO.setUser_pass(user_pass);//upVO에 값 넣기
-          
-          System.out.print("upVO에서 user_id: "+upVO.getUser_id());
-          System.out.print("upVO에서 user_pass : "+upVO.getUser_pass());
+        upVO.setUser_pass(user_pass);//upVO에 값 넣기
       
       int updatePassFlag = 0;
    
       if(upVO.getUser_pass() != null){
-         System.out.print("여기까지 탐"); //여기까지됨,,, 느림,,,?
          
          MemberDAO member_dao =  MemberDAO.getInstance();
          
          updatePassFlag = member_dao.updatePass(upVO);
          
-         System.out.print("여기까지 탐2222"); //여기까지됨,,, 느림,,,?
-         
-         System.out.print("패스워드 변경 flag"+updatePassFlag);
          
          if(updatePassFlag == 1){
             %>

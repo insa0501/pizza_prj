@@ -17,9 +17,9 @@ import javax.sql.DataSource;
 import pizza.admin.vo.AdminOrderVO;
 import pizza.admin.vo.OrderDetailVO;
 import pizza.admin.vo.OrderMenuListVO;
-import pizza.admin.vo.OrderMenuVO;
 import pizza.admin.vo.SelectOrderVO;
 import pizza.admin.vo.UpdateOrderVO;
+import pizza.user.vo.OrderMenuVO;
 import pizza.user.vo.OrderUserInfoVO;
 import pizza.user.vo.OrderVO;
 
@@ -359,13 +359,6 @@ private static OrderDAO order_dao;
 		return odVO;
 	}
 	
-	public List<OrderVO> selectOrderMenu(String orderNo) {
-		List<OrderVO> selectOrderMenulist = new ArrayList<OrderVO>();
-		
-		return selectOrderMenulist;
-	} // selectOrderMenu()
-	
-	
 	public int updateOrder(UpdateOrderVO uoVO) throws SQLException{
 		int updateCnt = 0;
 		
@@ -396,9 +389,4 @@ private static OrderDAO order_dao;
 		return updateCnt;
 	} // updateOrder()
 	
-	public boolean deleteOrder(String orderNo) {
-		boolean deleteOrderFlag = false;
-		
-		return deleteOrderFlag;
-	} // deleteOrder()	
 } // class

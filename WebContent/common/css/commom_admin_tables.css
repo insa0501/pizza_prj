@@ -8,7 +8,7 @@ body {
 
 .main_container {
 	width: 70vw;
-	margin-top: 100px;
+	margin-top: 30px;
 	display: flex;
 	flex-direction: column;
 }

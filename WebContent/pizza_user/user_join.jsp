@@ -1,19 +1,17 @@
+<%@page import="kr.co.sist.util.cipher.DataEncrypt"%>
 <%@page import="java.sql.SQLException"%>
 <%@page import="pizza.dao.MemberDAO"%>
 <%@page import="pizza.user.vo.InsertMemberVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 	request.setCharacterEncoding("UTF-8");
 %>
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-
-
 <title>회원가입</title>
 <!-- 부트스트랩 CSS -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -124,10 +122,6 @@ $(function(){
 	
 });//ready
 
-
-
-
-
 <%-- ID 팝업창 --%>
 function idDup(){
 	var top=window.screenY+80;
@@ -171,10 +165,7 @@ function searchZipcode(){//다음 API를 사용한 우편번호 찾기
 	
 }//searchZipcode
 <%-- @@@@@@@@@@@@@@@@@@@@@@@@우편번호 검색@@@@@@@@@@@@@@@@@@@@@@@@ --%>
-
-
 <%
-
 String user_id = request.getParameter("user_id");
 String user_pass = request.getParameter("user_pass");
 String user_name = request.getParameter("user_name");
@@ -183,9 +174,10 @@ String user_zipcode = request.getParameter("user_zipcode");
 String user_addr1 = request.getParameter("user_addr1");
 String user_addr2 = request.getParameter("user_addr2");
 String user_ip = request.getRemoteAddr();
+
 if( user_id != null ){
-InsertMemberVO imVO = new InsertMemberVO(user_id, user_pass, user_name, user_phone, user_zipcode
-				, user_addr1, user_addr2, user_ip);
+InsertMemberVO imVO = new InsertMemberVO(user_id, user_pass, user_name, user_phone,
+		user_zipcode, user_addr1, user_addr2, user_ip);
 MemberDAO mDAO = MemberDAO.getInstance();
 try{
 	mDAO.insertMember(imVO);

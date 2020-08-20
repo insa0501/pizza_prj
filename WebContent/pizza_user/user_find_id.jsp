@@ -1,7 +1,7 @@
 <%@page import="pizza.user.vo.SelectIdVO"%>
 <%@page import="pizza.dao.*" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"
+    pageEncoding="UTF-8" trimDirectiveWhitespaces="true"
     info="아이디 찾기"
     %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>

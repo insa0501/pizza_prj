@@ -2,7 +2,7 @@
 <%@page import="pizza.user.vo.SelectPassVO"%>
 <%@page import="pizza.dao.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"
+    pageEncoding="UTF-8" trimDirectiveWhitespaces="true"
     info="비번찾기"%>
  <% request.setCharacterEncoding("UTF-8"); %>
  
@@ -119,10 +119,6 @@
         spVO.setUser_id(user_id);
         spVO.setUser_name(user_name);
         spVO.setUser_phone(user_phone);
-        
-        System.out.println(spVO.getUser_id());
-        System.out.println(spVO.getUser_name());
-        System.out.println(spVO.getUser_phone());
     %>
     <%
        boolean selectPassFlag = false;  
@@ -135,7 +131,6 @@
            if(selectPassFlag){ //id,name,phone이 일치하면 updatePassVO에 user_id에 id값 저장
            
                  session.setAttribute("user_id_passCh",user_id);
-                 System.out.println("user_find_pw에서 session" +session.getAttribute("user_id_passCh"));
               
                      %>   
               <script type="text/javascript">

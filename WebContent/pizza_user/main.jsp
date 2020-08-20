@@ -4,7 +4,7 @@
 <%@page import="java.sql.SQLException"%>
 <%@page import="pizza.dao.MenuDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"
+    pageEncoding="UTF-8" trimDirectiveWhitespaces="true"
     info="메인화면에서 피자 종류를 선택하는 화면" %>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>

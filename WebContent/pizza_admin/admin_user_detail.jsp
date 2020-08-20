@@ -2,7 +2,7 @@
 <%@page import="pizza.admin.vo.MemberDetailVO"%>
 <%@page import="pizza.dao.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div id="popupWrap">
 	<div id="popupHeader"></div> <!--************* 헤더 빨간줄 **************  -->

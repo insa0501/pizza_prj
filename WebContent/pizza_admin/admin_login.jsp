@@ -1,11 +1,8 @@
 <%@page import="pizza.admin.vo.AdminVO"%>
 <%@page import="pizza.dao.AdminDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
-<%
-//연습ㅁㄴㅇㅁㄴㅇㅁㄴㅇㅇㄴ
-%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -83,7 +80,7 @@
             <%
                 session.setAttribute("admin_id", lVO.getAdmin_id()); //로그인 된 관리자 아이디를 session에 등록함
             %>
-                location.href = "admin_order_mgr.jsp";
+                location.href="admin_order_mgr.jsp";
             </script>
             <% 
          } else {
@@ -97,7 +94,7 @@
    %> 
        <c:if test="${ admin_id ne '' && admin_id ne null}">
         <script type="text/javascript">
-            location.href="admin_order_mgr.jsp";
+            location.href = "admin_order_mgr.jsp";
             //return안해도 괜찮음.
         </script>
        </c:if>

@@ -1,5 +1,7 @@
 package pizza.dao;
 
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,6 +12,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import kr.co.sist.util.cipher.DataEncrypt;
 import pizza.admin.vo.AdminVO;
 
 public class AdminDAO {
@@ -54,10 +57,21 @@ public class AdminDAO {
 	       String selectAdminId = "   select admin_id, admin_pass from admin   ";
 	       selectAdminId += "   where admin_id=? and admin_pass=?   ";
 	       pstmt = con.prepareStatement(selectAdminId);
-	         
+	       
+	     //암호화
+			String pass = "";
+			try {
+				DataEncrypt de = new DataEncrypt("0123456789abcdef");
+				pass = DataEncrypt.messageDigest("MD5", aVO.getAdmin_pass());
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			} catch (NoSuchAlgorithmException e) {
+				e.printStackTrace();
+			}//end catch
+	       
 	       pstmt.setString(1, aVO.getAdmin_id());
-	       pstmt.setString(2, aVO.getAdmin_pass());
-	         
+	       pstmt.setString(2, pass);
+	       
 	       rs = pstmt.executeQuery();
 	         
 	       if (rs.next()) { //일치하는 값이 있으면

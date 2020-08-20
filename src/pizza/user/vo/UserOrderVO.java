@@ -2,8 +2,6 @@ package pizza.user.vo;
 
 import java.util.List;
 
-import pizza.admin.vo.OrderMenuVO;
-
 public class UserOrderVO {
 	private String user_id, order_status, order_date;
 	private int menu_order_price;

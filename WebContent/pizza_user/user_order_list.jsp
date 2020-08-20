@@ -8,7 +8,7 @@
 <%@page import="java.util.List"%>
 <%@page import="pizza.dao.OrderDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"
+    pageEncoding="UTF-8" trimDirectiveWhitespaces="true"
     info="마이페이지-주문내역"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
@@ -81,8 +81,6 @@
 				
 				String tempDate = request.getParameter("tempDate");
 				
-				//System.out.println("tempDate "+tempDate);
-				
 				if(tempDate == null){
 					%>
 					<div class="order_box">조회를 원하시는 기간을 선택해주세요</div>
@@ -93,10 +91,8 @@
 						cal = Calendar.getInstance();
 						cal.setTime(new Date());
 						strDate = format.format(cal.getTime());
-						//System.out.println("시작 시간"+strDate);
 						cal.add(Calendar.DATE,1);
 						endDate = format.format(cal.getTime());
-						//System.out.println("끝 시간"+endDate);
 						
 					}//end if
 					
@@ -129,8 +125,6 @@
 						
 					SelectOrderListVO solVO = new SelectOrderListVO(user_id, strDate, endDate);
 					List<UserOrderVO> list = mDAO.selectOrderList(solVO);
-/* 					System.out.println("strDate "+strDate);
-					System.out.println("endDate "+endDate); */
 					pageContext.setAttribute("orderList", list);
 				%>
 				<c:forEach var="order" items="${orderList}">

@@ -1,9 +1,9 @@
-<%@page import="pizza.admin.vo.OrderMenuVO"%>
+<%@page import="pizza.user.vo.OrderMenuVO"%>
 <%@page import="pizza.dao.OrderDAO"%>
 <%@page import="pizza.user.vo.OrderUserInfoVO"%>
 <%@page import="pizza.user.vo.OrderVO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"
+    pageEncoding="EUC-KR" trimDirectiveWhitespaces="true"
     info=""%>
 <%
 

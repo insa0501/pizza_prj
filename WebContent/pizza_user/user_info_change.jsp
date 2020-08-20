@@ -1,12 +1,11 @@
-
+<%@page import="pizza.user.vo.selectMyDataVO"%>
 <%@page import="pizza.user.vo.UpdateUserInfoVO"%>
-<%@page import="pizza.admin.vo.UpdateResignVO"%>
+<%@page import="pizza.user.vo.UpdateResignVO"%>
 <%@page import="java.sql.SQLException"%>
 <%@page import="pizza.user.vo.UserInfoVO"%>
-<%@page import="pizza.user.vo.LoginVO"%>
 <%@page import="pizza.dao.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 	request.setCharacterEncoding("UTF-8");
@@ -160,14 +159,14 @@ function searchZipcode(){//다음 API를 사용한 우편번호 찾기
 	
 	
 	String user_pass = request.getParameter("user_pass");
-	LoginVO lVO = new LoginVO();
-	lVO.setUser_id(user_id);
-	lVO.setUser_pass(user_pass);
+	selectMyDataVO smdVO = new selectMyDataVO();
+	smdVO.setUser_id(user_id);
+	smdVO.setUser_pass(user_pass);
 	
 	UserInfoVO uiVO = null;
 	
 	try{
-		uiVO =  mDAO.selectMyData(lVO);
+		uiVO =  mDAO.selectMyData(smdVO);
 		%>
 	<%
 	} catch( SQLException se ){

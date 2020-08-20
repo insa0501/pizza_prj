@@ -4,7 +4,7 @@
 <%@page import="pizza.admin.vo.OrderDetailVO"%>
 <%@page import="pizza.dao.OrderDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <div id="popupWrap">
 	<div id="popupHeader"></div> <!--******* 헤더 빨간줄 ***********  -->
 	<div id="popupBody">
