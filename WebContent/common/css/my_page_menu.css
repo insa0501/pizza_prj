@@ -12,7 +12,7 @@ body, html {
 body {
     display: flex;
     flex-direction: column;
-	align-items: center
+	align-items: center;
 }
 
 
@@ -21,14 +21,14 @@ body {
 	display: flex;
 	width: 75vw;
 	margin-top: 30px;
-    min-height: 300px;
+    min-height: 450px;
 }
 
 
 /* 좌측 메뉴 */
 .my_page_menu {
 	width: 20vw;
-	border-right: 1px solid gray;
+	border-right: 1px solid lightgray;
 }
 
 .my_page_title {
