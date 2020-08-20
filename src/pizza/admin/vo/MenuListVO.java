@@ -1,14 +1,13 @@
 package pizza.admin.vo;
 
 public class MenuListVO {
-	private String menu_name, menu_type, menu_activity;
-	int menu_price;
+	private String menu_name, menu_type, menu_activity, menu_price;
 	
 	public MenuListVO() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public MenuListVO(String menu_name, String menu_type, String menu_activity, int menu_price) {
+	public MenuListVO(String menu_name, String menu_type, String menu_activity, String menu_price) {
 		super();
 		this.menu_name = menu_name;
 		this.menu_type = menu_type;
@@ -28,7 +27,7 @@ public class MenuListVO {
 		return menu_activity;
 	}
 
-	public int getMenu_price() {
+	public String getMenu_price() {
 		return menu_price;
 	}
 
@@ -44,7 +43,7 @@ public class MenuListVO {
 		this.menu_activity = menu_activity;
 	}
 
-	public void setMenu_price(int menu_price) {
+	public void setMenu_price(String menu_price) {
 		this.menu_price = menu_price;
 	}
 	

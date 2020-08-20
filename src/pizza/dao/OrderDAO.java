@@ -222,7 +222,7 @@ private static OrderDAO order_dao;
 			// 주문테이블을 조회하는 쿼리문 작성
 			StringBuilder selectOrder = new StringBuilder();
 			selectOrder
-			.append("	select order_no, user_id, order_status, to_char(order_date,'yyyy-mm-dd hh24:mi') order_date, order_price, menu_name	")
+			.append("	select order_no, user_id, order_status, to_char(order_date,'yyyy-mm-dd hh24:mi') order_date, to_char(order_price,'9,999,999') order_price, menu_name	")
 			.append("	from(select ol.order_no, ol.user_id, ol.order_status, ol.order_date, ol.order_price, om.menu_name, om.menu_type	")
 			.append("		from order_list ol, (select om.order_no, om.menu_name, m.menu_type	")
 			.append("							from menu m, order_menu om	")
@@ -275,7 +275,7 @@ private static OrderDAO order_dao;
 				
 				aoVO = new AdminOrderVO(rs.getString("order_no"), rs.getString("user_id"),
 						rs.getString("menu_name"), rs.getString("order_status"),
-						rs.getString("order_date"), rs.getInt("order_price"), menuCnt.get(rs.getString("order_no")));
+						rs.getString("order_date"), rs.getString("order_price"), menuCnt.get(rs.getString("order_no")));
 			}//end while
 			
 			//마지막 테이블에 경우 이전주문번호와 비교할 현재 주문번호가 없기 때문에 리스트에 추가하지 못하고 while을 빠져나온다.
@@ -307,7 +307,10 @@ private static OrderDAO order_dao;
 			// 쿼리문 작성
 			StringBuilder selectOrder = new StringBuilder();
 			selectOrder
-			.append("	select order_no, order_date, user_id, user_zipcode, user_addr1, user_addr2, user_phone, order_price, order_status, order_pay, user_ip	")
+			.append("	select order_no, to_char(order_date,'yyyy-mm-dd hh24:mi') order_date,	")
+			.append("		user_id, user_zipcode, user_addr1, user_addr2, 	")
+			.append("		substr(user_phone,1,3)||'-'||substr(user_phone,4,4)||'-'||substr(user_phone,7,4) user_phone,	")
+			.append("		to_char(order_price,'9,999,999') order_price, order_status, order_pay, user_ip	")
 			.append("	from order_list	")
 			.append("	where order_no = ?	");
 			
@@ -325,7 +328,7 @@ private static OrderDAO order_dao;
 				odVO = new OrderDetailVO(rs.getString("order_date"), rs.getString("user_id"), 
 						rs.getString("user_zipcode"), rs.getString("user_addr1"), rs.getString("user_addr2"), 
 						rs.getString("user_phone"), rs.getString("order_status"), rs.getString("order_pay"), 
-						rs.getString("user_ip"), rs.getInt("order_price"), list);
+						rs.getString("user_ip"), rs.getString("order_price"), list);
 			}//end while
 			
 			pstmt.close();
@@ -333,7 +336,7 @@ private static OrderDAO order_dao;
 			
 			StringBuilder selectMenu = new StringBuilder();
 			selectMenu
-			.append("	select menu_name, order_menu_price, order_menu_cnt	")
+			.append("	select menu_name, to_char(order_menu_price,'9,999,999') order_menu_price, order_menu_cnt	")
 			.append("	from order_menu	")
 			.append("	where order_no = ?	");
 			
@@ -344,7 +347,7 @@ private static OrderDAO order_dao;
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
-				list.add(new OrderMenuListVO(rs.getString("menu_name"), rs.getInt("order_menu_price"),
+				list.add(new OrderMenuListVO(rs.getString("menu_name"), rs.getString("order_menu_price"),
 						rs.getInt("order_menu_cnt")));
 			}//end while
 			

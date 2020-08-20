@@ -7,12 +7,12 @@ package pizza.admin.vo;
  */
 public class OrderMenuListVO {
 
-	private String menu_name;
-	private int order_menu_price, order_menu_cnt;
+	private String menu_name, order_menu_price;
+	private int order_menu_cnt;
 	
 	public OrderMenuListVO() {
 	}
-	public OrderMenuListVO(String menu_name, int order_menu_price, int order_menu_cnt) {
+	public OrderMenuListVO(String menu_name, String order_menu_price, int order_menu_cnt) {
 		super();
 		this.menu_name = menu_name;
 		this.order_menu_price = order_menu_price;
@@ -21,7 +21,7 @@ public class OrderMenuListVO {
 	public String getMenu_name() {
 		return menu_name;
 	}
-	public int getOrder_menu_price() {
+	public String getOrder_menu_price() {
 		return order_menu_price;
 	}
 	public int getOrder_menu_cnt() {
@@ -30,7 +30,7 @@ public class OrderMenuListVO {
 	public void setMenu_name(String menu_name) {
 		this.menu_name = menu_name;
 	}
-	public void setOrder_menu_price(int order_menu_price) {
+	public void setOrder_menu_price(String order_menu_price) {
 		this.order_menu_price = order_menu_price;
 	}
 	public void setOrder_menu_cnt(int order_menu_cnt) {

@@ -68,7 +68,7 @@
 			<table class="orderDetailTab">
 				<tr>
 					<th class="colTh">주문금액</th>
-					<td class="colTd"><%= odVO.getorder_price() %></td>
+					<td class="colTd"><%= odVO.getorder_price()+"원" %></td>
 					<th class="colTh">배송비</th>
 					<td class="colTd">0원</td>
 				</tr>
@@ -88,7 +88,7 @@
 				%>
 				<tr>
 					<td><%= menuList.get(i).getMenu_name() %></td>
-					<td><%= menuList.get(i).getOrder_menu_price() %></td>
+					<td><%= menuList.get(i).getOrder_menu_price()+"원" %></td>
 					<td><%= menuList.get(i).getOrder_menu_cnt() %></td>
 				</tr>
 				<%}//end for%>

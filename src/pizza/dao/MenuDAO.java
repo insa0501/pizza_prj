@@ -151,7 +151,7 @@ public class MenuDAO {
 			// 쿼리문 작성
 			StringBuilder selectMenu = new StringBuilder();
 			selectMenu
-			.append("	select menu_name, menu_price, menu_type, menu_activity")
+			.append("	select menu_name, to_char(menu_price,'9,999,999') menu_price, menu_type, menu_activity")
 			.append("	from menu	");
 			
 			// 검색 조건 입력시 쿼리문 추가
@@ -183,7 +183,7 @@ public class MenuDAO {
 			
 			while(rs.next()) {
 				selectMenuList.add(new MenuListVO(rs.getString("menu_name"), rs.getString("menu_type"),
-						rs.getString("menu_activity"), rs.getInt("menu_price")));
+						rs.getString("menu_activity"), rs.getString("menu_price")));
 			}//end while
 			
 		} finally {
@@ -209,7 +209,7 @@ public class MenuDAO {
 			
 			StringBuilder selectMenuDetail = new StringBuilder();
 			selectMenuDetail
-			.append("	select menu_name, menu_type, menu_price, menu_img, menu_activity, menu_input_date ")
+			.append("	select menu_name, menu_type, menu_price, menu_img, menu_activity, to_char(menu_input_date,'yyyy-mm-dd hh24:mi') menu_input_date ")
 			.append("	from menu ")
 			.append("	where menu_name=? ");
 		

@@ -441,7 +441,8 @@ private static MemberDAO member_dao;
 			
 			StringBuilder selectOrder = new StringBuilder();
 			selectOrder
-			.append("	select user_id, user_name, user_addr1, user_phone, user_status")
+			.append("	select user_id, user_name, user_addr1,	")
+			.append("		substr(user_phone,1,3)||'-'||substr(user_phone,4,4)||'-'||substr(user_phone,7,4) user_phone, user_status")
 			.append("	from member	");
 			
 			if(!"".equals(smVO.getSelectData()) && smVO.getSelectData() != null) {
@@ -490,7 +491,8 @@ private static MemberDAO member_dao;
 			
 			StringBuilder selectMeber = new StringBuilder();
 			selectMeber
-			.append("	select user_name, user_phone, user_zipcode, user_addr1, user_addr2, user_hiredate, user_ip	")
+			.append("	select user_name, substr(user_phone,1,3)||'-'||substr(user_phone,4,4)||'-'||substr(user_phone,7,4) user_phone,	")
+			.append("		user_zipcode, user_addr1, user_addr2, to_char(user_hiredate,'yyyy-mm-dd hh24:mi') user_hiredate, user_ip	")
 			.append("	from member	")
 			.append("	where user_id = ?	");
 			
@@ -555,7 +557,7 @@ private static MemberDAO member_dao;
 			
 			StringBuilder selectMeber = new StringBuilder();
 			selectMeber
-			.append("	select user_resdata, user_resign_date	")
+			.append("	select user_resdata, to_char(user_resign_date,'yyyy-mm-dd hh24:mi') user_resign_date	")
 			.append("	from member	")
 			.append("	where user_id = ?	");
 			

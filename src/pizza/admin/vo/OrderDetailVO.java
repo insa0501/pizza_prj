@@ -4,13 +4,12 @@ import java.util.List;
 
 public class OrderDetailVO {
 	private String order_date, user_id, user_zipcode, user_addr1, user_addr2, user_phone,
-					order_status, order_pay, user_ip;
+					order_status, order_pay, user_ip, order_price;
 	// 2020-08-08 ±èÈ«¼® - º¯¼ö¸í¼öÁ¤
 	// orderNo -> order_no
 	// id -> user_id / zipcode -> user_zipcode / phone -> user_phone / 
 	// addr1 -> user_addr1 / addr2 -> user_addr2 / status -> order_status
 	// payment -> order_pay / order_ip -> user_ip
-	private int order_price;
 	private List<OrderMenuListVO> menuListVO;
 	
 	
@@ -18,7 +17,7 @@ public class OrderDetailVO {
 	}
 
 	public OrderDetailVO(String order_date, String user_id, String user_zipcode, String user_addr1,
-			String user_addr2, String user_phone, String order_status, String order_pay, String user_ip, int order_price,
+			String user_addr2, String user_phone, String order_status, String order_pay, String user_ip, String order_price,
 			List<OrderMenuListVO> menuListVO) {
 		super();
 		this.order_date = order_date;
@@ -70,7 +69,7 @@ public class OrderDetailVO {
 		return user_ip;
 	}
 
-	public int getorder_price() {
+	public String getorder_price() {
 		return order_price;
 	}
 
@@ -114,7 +113,7 @@ public class OrderDetailVO {
 		this.user_ip = user_ip;
 	}
 
-	public void setorder_price(int order_price) {
+	public void setorder_price(String order_price) {
 		this.order_price = order_price;
 	}
 

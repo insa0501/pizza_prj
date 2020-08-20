@@ -2,10 +2,10 @@ package pizza.admin.vo;
 
 public class AdminOrderVO {
 
-	private String order_no, user_id, menu_name, order_status, order_date;
+	private String order_no, user_id, menu_name, order_status, order_date, order_price;
 	// 2020-08-08 김홍석 - 변수명수정 및 그에따른 생성자와 getter setter 메소드명 변경
 	// orderNo -> order_no / status -> order_status
-	private int order_price, orderCnt;
+	private int orderCnt;
 	// 2020-08-10 임성은 - 콤비네이션 피자 외 3개와 같이 주문번호별 메뉴 수량 조회를 위한 cnt변수 추가
 	
 	public AdminOrderVO() {
@@ -13,7 +13,7 @@ public class AdminOrderVO {
 	}
 
 	public AdminOrderVO(String order_no, String user_id, String menu_name, String order_status, String order_date,
-			int order_price, int orderCnt) {
+			String order_price, int orderCnt) {
 		super();
 		this.order_no = order_no;
 		this.user_id = user_id;
@@ -64,11 +64,11 @@ public class AdminOrderVO {
 		this.order_date = order_date;
 	}
 
-	public int getOrder_price() {
+	public String getOrder_price() {
 		return order_price;
 	}
 
-	public void setOrder_price(int order_price) {
+	public void setOrder_price(String order_price) {
 		this.order_price = order_price;
 	}
 
