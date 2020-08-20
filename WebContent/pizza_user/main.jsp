@@ -160,10 +160,8 @@
         </section>
     </form>
 
-   
-    <section class="footer">
-        어쩌고저쩌고 카피라이트 @copyright 3조 어쩌고저쩌고 카피라이트 @copyright 3조 어쩌고저쩌고 카피라이트 @copyright 3조
-    </section>
+	<!-- 푸터 -->
+	<jsp:include page="../common/jsp/common_footer.jsp"/>
 
     <div class="go_to_top">
         <a href="#header_nav">TOP</a>
