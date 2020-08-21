@@ -199,6 +199,8 @@ return indexList;	//페이지 이동폼을 담은 변수를 반환
             SelectOrderVO soVO = new SelectOrderVO(selectType,selectData);
             List<AdminOrderVO> orderList = oDao.selectOrderList(soVO);
             
+			pageContext.setAttribute("orderList", orderList);
+            
     		//1. 한 화면에 보여줄 게시물의 수
     		int pageScale = 10;
     		
@@ -216,6 +218,16 @@ return indexList;	//페이지 이동폼을 담은 변수를 반환
             if(end_num > orderList.size()) {
             	end_num = orderList.size();
             }//end if
+            %>
+            <c:if test="${empty orderList}">
+	        	<tr>
+	        		<td colspan="6">[ ${ param.selectData } ]로 조회된 결과가 없습니다.</td>
+	        	</tr>
+	        </c:if>
+	        
+	        <%
+            
+            
             
             AdminOrderVO aoVO = null;
           //게시물 테이블
@@ -241,6 +253,9 @@ return indexList;	//페이지 이동폼을 담은 변수를 반환
                     <td><%= aoVO.getOrder_date() %></td>
                 </tr>
             <%}//end for%>
+            
+
+            
             </table>
         </div>
         <div id="result_paging" class="section_pagination">
