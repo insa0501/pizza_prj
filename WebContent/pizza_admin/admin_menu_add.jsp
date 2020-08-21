@@ -74,6 +74,7 @@
 <!--******************************* 이미지+이미지선택 버튼 **********************************  -->
 		  	<div class="menuImgGrop">
 				<div class="menuImg">
+				
 					<img src="../common/images/logo.png" id="preview"style="width: 110px"/><br/>
 				</div>
 				<input type="file" id="upfile" name="upfile"  value="이미지 선택" class="btn btn-dark"/>
