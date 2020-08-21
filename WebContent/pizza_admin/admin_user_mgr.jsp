@@ -195,6 +195,9 @@ return indexList;	//페이지 이동폼을 담은 변수를 반환
             SelectMemberVO smVO = new SelectMemberVO(selectType,selectData);
             List<MemberVO> memberList = mDao.selectMemberList(smVO);
 
+			pageContext.setAttribute("memberList", memberList);
+            
+            
     		//1. 한 화면에 보여줄 게시물의 수
     		int pageScale = 10;
     		
@@ -213,6 +216,17 @@ return indexList;	//페이지 이동폼을 담은 변수를 반환
             	end_num = memberList.size();
             }//end if
             
+            %>
+            
+            <c:if test="${empty memberList}">
+            	<tr>
+            		<td colspan="5">[ ${ param.selectData } ]로 조회된 결과가 없습니다.</td>
+            	</tr>
+            </c:if>
+            
+            <%
+            
+            
             MemberVO mVO = null;
           	//게시물 테이블
             for(int i=start_num-1; i<end_num; i++) {
@@ -230,6 +244,7 @@ return indexList;	//페이지 이동폼을 담은 변수를 반환
                     <td><%= mVO.getUser_status() %></td>
                 </tr>
             <%}//end for%>
+
             </table>
         </div>
         <div id="result_paging" class="section_pagination">
