@@ -1,37 +1,104 @@
-body,html,li,p,ul{margin:0;padding:0}*{box-sizing:border-box}
+body, html, li, p, ul {
+	margin: 0;
+	padding: 0
+}
 
+* {
+	box-sizing: border-box
+}
 
-form{display:flex;flex-direction:column;align-items:center}
-section{width:80vw}ul{text-decoration:none;list-style:none}
+form {
+	display: flex;
+	flex-direction: column;
+	align-items: center
+}
+
+section {
+	width: 80vw
+}
+
+ul {
+	text-decoration: none;
+	list-style: none
+}
+
 ul li {
 	padding: 10px;
 	display: flex;
-	
 }
 
-ul li .list_title{font-weight:600;padding-right:20px}
-ul .list_menu_cnt{color:#c50000}ul .menu_lists{display:flex;justify-content:space-between}
+ul li .list_title {
+	font-weight: 600;
+	padding-right: 20px
+}
 
-.main_section{padding:20px;background-color:#f0f0f0;margin-top:30px}
+ul .list_menu_cnt {
+	color: #c50000
+}
 
-.section_title{font-size:1.5em;font-weight:600;padding:10px 0;border-bottom:1px solid gray}
+ul .menu_lists {
+	display: flex;
+	justify-content: space-between
+}
 
-.section_wrap{display:flex;justify-content:space-between;margin-top:30px}
+form > section:nth-child(2) {
+	min-height: 25vh;
+}
 
-.half_section{width:49%;background-color:#f0f0f0;padding:20px}
+.main_section {
+	padding: 20px;
+	background-color: #f0f0f0;
+	margin-top: 30px
+}
 
-.section_details{height:85%;display:flex;flex-direction:column;justify-content:space-between}
+.section_title {
+	font-size: 1.5em;
+	font-weight: 600;
+	padding: 10px 0;
+	border-bottom: 1px solid gray
+}
 
+.section_wrap {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 30px
+}
+
+.half_section {
+	width: 49%;
+	background-color: #f0f0f0;
+	padding: 20px
+}
+
+.section_details {
+	height: 85%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between
+}
 
 .title1 {
 	width: 90px;
 }
 
-.section_details .pay_radio,.warning{padding:10px 0}.warning{color:red;line-height:2em}
+.section_details .pay_radio, .warning {
+	padding: 10px 0
+}
 
-.total_payment{display:flex;justify-content:space-between;font-size:1.5em;font-weight:600;color:#c50000}
+.warning {
+	color: red;
+	line-height: 2em
+}
 
-.section_details > div:last-child{
+.total_payment {
+	display: flex;
+	justify-content: space-between;
+	font-size: 1.5em;
+	font-weight: 600;
+	color: #c50000
+}
+
+.section_details>div:last-child {
 	display: flex;
 	justify-content: center;
 }
@@ -46,13 +113,12 @@ ul .list_menu_cnt{color:#c50000}ul .menu_lists{display:flex;justify-content:spac
 	border-radius: 15px;
 	color: white;
 	font-weight: 600;
-	transition:all .2s;
-	transition-timing-function:ease-in;
+	transition: all .2s;
+	transition-timing-function: ease-in;
 }
 
 .payment_btn:hover {
-	transition:all .2s;
-	transition-timing-function:ease-in;
+	transition: all .2s;
+	transition-timing-function: ease-in;
 	font-size: 1.1em;
 }
-
