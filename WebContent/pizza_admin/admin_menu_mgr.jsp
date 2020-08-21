@@ -249,6 +249,7 @@ return indexList;	//페이지 이동폼을 담은 변수를 반환
                     <th style="text-align: center">메뉴분류</th>
                     <th style="text-align: center">상태</th>
                 </tr>
+
             <%
             try{
 		
@@ -256,6 +257,8 @@ return indexList;	//페이지 이동폼을 담은 변수를 반환
             SelectMenuVO smVO = new SelectMenuVO(selectType, selectData);
             List<MenuListVO> menuList = mDao.selectMenu(smVO);
 
+            pageContext.setAttribute("menuList", menuList);
+            
     		//1. 한 화면에 보여줄 게시물의 수
     		int pageScale = 10;
     		
@@ -273,7 +276,13 @@ return indexList;	//페이지 이동폼을 담은 변수를 반환
             if(end_num > menuList.size()) {
             	end_num = menuList.size();
             }//end if
-            
+            %>
+            <c:if test="${empty menuList}">
+            	<tr>
+            		<td colspan="4">[ ${ param.selectData } ]로 조회된 결과가 없습니다.</td>
+            	</tr>
+            </c:if>
+			<%
             MenuListVO mVO = null;
             //게시물 테이블
             for(int i=start_num-1; i<end_num; i++) {
@@ -289,6 +298,8 @@ return indexList;	//페이지 이동폼을 담은 변수를 반환
                     <td><%= "Y".equals(mVO.getMenu_activity())?"활성화":"비활성화" %></td>
                 </tr>
             <%}//end for%>
+            
+            
             </table>
         </div>
         <a href="admin_menu_mgr.jsp?page_flag=admin_menu_add" class="add_menu_btn"><input type="button" value="메뉴추가" class="btn_submit add"/></a>
