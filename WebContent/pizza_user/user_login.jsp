@@ -136,7 +136,7 @@
             <input type="password" name="user_pass" id="user_pass"  class="form-control input_pass"   placeholder="input your PW!😎 ">
          </div>
          <div class="d-flex justify-content-center mt-3 login_container">
-            <button type="button" name="loginBtn" id="loginBtn" class="btn login_btn">로그인</button>
+            <button type="button" name="loginBtn" id="loginBtn" class="btn login_btn">LogIn</button>
          </div>
       </form>
       </c:otherwise>

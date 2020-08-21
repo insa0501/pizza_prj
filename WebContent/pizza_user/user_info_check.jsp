@@ -28,6 +28,7 @@
     
 <link rel="stylesheet" type="text/css" href="../common/css/common_header_footer.css">
 <link rel="stylesheet" type="text/css" href="../common/css/my_page_menu.css">
+
 <script type="text/javascript">
 $(function(){
 	$("#chk").click(function(){
@@ -35,9 +36,6 @@ $(function(){
 		$("#frm").submit();
 	});//click
 });//ready
-
-
-
 
 </script>
 </head>
@@ -59,10 +57,10 @@ $(function(){
 				<form action="user_info_change.jsp" method="post" name="frm" id="frm" class="input_pw_form" >
 					<table>
 						<tr>
-							<th colspan="2" style="font-size:16px;">비밀번호를 입력해주세요.</th>
+							<th class="table_th" colspan="2" style="padding: 10px 0;">비밀번호를 입력해주세요.</th>
 						</tr>
 						<tr class="user_input">
-							<td style="width: 160px;"><input type="password" class="user_text" name="user_pass"/></td>
+							<td><input type="password" class="user_text" name="user_pass"/></td>
 							<td><input type="button" value="확인" class="searchBtn" id="chk"/></td>
 						</tr>
 					</table>

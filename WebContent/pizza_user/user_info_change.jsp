@@ -26,15 +26,9 @@ if(user_id == null){//세션에서 꺼내온 아이디가 없다.
 <!-- Google CDN -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
-<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
- -->
- 
-  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
- <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
- <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
- 
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
  
 <link rel="stylesheet" type="text/css" href="../common/css/common_header_footer.css">
 <link rel="stylesheet" type="text/css" href="../common/css/my_page_menu.css">
@@ -297,16 +291,16 @@ function searchZipcode(){//다음 API를 사용한 우편번호 찾기
                      추후 서비스 향상을 위해 탈퇴 이유를 선택해주세요
                   </li>
                   <li>
-                     <input type="checkbox" name="resign_data" class="chkBox" value="원하는 메뉴가 없어서"/>원하는 메뉴가 없어서
+                     <input type="checkbox" name="resign_data" class="chkBox" value="원하는 메뉴가 없어서"/> 원하는 메뉴가 없어서
                   </li>
                   <li>
-                     <input type="checkbox" name="resign_data" class="chkBox" value="가격이 비싸서"/>가격이 비싸서
+                     <input type="checkbox" name="resign_data" class="chkBox" value="가격이 비싸서"/> 가격이 비싸서
                   </li>
                   <li>
-                     <input type="checkbox" name="resign_data" class="chkBox" value="홈페이지 이용이 어려워서"/>홈페이지 이용이 어려워서
+                     <input type="checkbox" name="resign_data" class="chkBox" value="홈페이지 이용이 어려워서"/> 홈페이지 이용이 어려워서
                   </li>
                   <li>
-                     <input type="checkbox" name="resign_data" class="chkBox" value="사이트를 이용하지 않아서"/>사이트를 이용하지 않아서
+                     <input type="checkbox" name="resign_data" class="chkBox" value="사이트를 이용하지 않아서"/> 사이트를 이용하지 않아서
                   </li>
                </ul>
                <div>
